@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkrs.system.mapper.ProjectCashMapper">
+
+    <resultMap type="ProjectCash" id="ProjectCashResult">
+        <result property="id"    column="id"    />
+        <result property="xmqkXmmc"    column="xmqk_xmmc"    />
+        <result property="projectId"    column="project_id"    />
+        <result property="projectEpc"    column="project_epc"    />
+        <result property="projectYear"    column="project_year"    />
+        <result property="outIn"    column="out_in"    />
+        <result property="cashId"    column="cash_id"    />
+        <result property="jan"    column="jan"    />
+        <result property="feb"    column="feb"    />
+        <result property="mar"    column="mar"    />
+        <result property="apr"    column="apr"    />
+        <result property="may"    column="may"    />
+        <result property="jun"    column="jun"    />
+        <result property="jul"    column="jul"    />
+        <result property="aug"    column="aug"    />
+        <result property="sep"    column="sep"    />
+        <result property="oct"    column="oct"    />
+        <result property="nov"    column="nov"    />
+        <result property="decs"    column="decs"    />
+        <result property="all"    column="all"    />
+    </resultMap>
+
+    <resultMap type="ExportProjectCash" id="ExportProjectCashResult">
+        <result property="xmqkXmmc"    column="xmqk_xmmc"    />
+        <result property="projectEpc"    column="project_epc"    />
+        <result property="projectYear"    column="project_year"    />
+        <result property="jan"    column="jan"    />
+        <result property="feb"    column="feb"    />
+        <result property="mar"    column="mar"    />
+        <result property="apr"    column="apr"    />
+        <result property="may"    column="may"    />
+        <result property="jun"    column="jun"    />
+        <result property="jul"    column="jul"    />
+        <result property="aug"    column="aug"    />
+        <result property="sep"    column="sep"    />
+        <result property="oct"    column="oct"    />
+        <result property="nov"    column="nov"    />
+        <result property="decs"    column="decs"    />
+    </resultMap>
+
+    <sql id="selectProjectCashVo">
+        select id, project_id, project_epc, project_year, out_in from project_cash
+    </sql>
+
+    <sql id="selectProjectCashVo1">
+        select a.id, a.project_id, a.project_epc, a.project_year, a.out_in,b.* ,c.xmqk_xmmc from project_cash a
+        left join project_cash_info b on  a.id = b.cash_id
+        left join  project_info c on a.id = c.xmqk_project_id
+    </sql>
+
+    <select id="selectProjectCashList" parameterType="ProjectCash" resultMap="ProjectCashResult">
+        <include refid="selectProjectCashVo1"/>
+        <where>
+            <if test="projectId != null  and projectId != ''"> and a.project_id = #{projectId}</if>
+            <if test="projectEpc != null "> and a.project_epc = #{projectEpc}</if>
+            <if test="projectYear != null  and projectYear != ''"> and a.project_year = #{projectYear}</if>
+            <if test="outIn != null  and outIn != ''"> and a.out_in = #{outIn}</if>
+        </where>
+    </select>
+
+    <select id="selectProjectCashById" parameterType="Long" resultMap="ProjectCashResult">
+        <include refid="selectProjectCashVo1"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertProjectCash" parameterType="ProjectCash" useGeneratedKeys="true" keyProperty="id">
+        insert into project_cash
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="projectId != null">project_id,</if>
+            <if test="projectEpc != null">project_epc,</if>
+            <if test="projectYear != null">project_year,</if>
+            <if test="outIn != null">out_in,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="projectId != null">#{projectId},</if>
+            <if test="projectEpc != null">#{projectEpc},</if>
+            <if test="projectYear != null">#{projectYear},</if>
+            <if test="outIn != null">#{outIn},</if>
+        </trim>
+    </insert>
+
+    <insert id="insertProjectCashInfo" parameterType="ProjectCash" useGeneratedKeys="true" keyProperty="cashId">
+        insert into project_cash_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">cash_id,</if>
+            <if test="jan != null">jan,</if>
+            <if test="feb != null">feb,</if>
+            <if test="mar != null">mar,</if>
+            <if test="apr != null">apr,</if>
+            <if test="may != null">may,</if>
+            <if test="jun != null">jun,</if>
+            <if test="jul != null">jul,</if>
+            <if test="aug != null">aug,</if>
+            <if test="sep != null">sep,</if>
+            <if test="oct != null">oct,</if>
+            <if test="nov != null">nov,</if>
+            <if test="decs != null">`decs`,</if>
+            <if test="all != null">`all`,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="jan != null">#{jan},</if>
+            <if test="feb != null">#{feb},</if>
+            <if test="mar != null">#{mar},</if>
+            <if test="apr != null">#{apr},</if>
+            <if test="may != null">#{may},</if>
+            <if test="jun != null">#{jun},</if>
+            <if test="jul != null">#{jul},</if>
+            <if test="aug != null">#{aug},</if>
+            <if test="sep != null">#{sep},</if>
+            <if test="oct != null">#{oct},</if>
+            <if test="nov != null">#{nov},</if>
+            <if test="decs != null">#{decs},</if>
+            <if test="all != null">#{all},</if>
+        </trim>
+    </insert>
+
+
+    <update id="updateProjectCash" parameterType="ProjectCash">
+        update project_cash
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="projectId != null">project_id = #{projectId},</if>
+            <if test="projectEpc != null">project_epc = #{projectEpc},</if>
+            <if test="projectYear != null">project_year = #{projectYear},</if>
+            <if test="outIn != null">out_in = #{outIn},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <update id="updateProjectCashTo" parameterType="ImportProjectCash">
+        update project_cash
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="projectId != null">project_id = #{projectId},</if>
+            <if test="projectEpc != null">project_epc = #{projectEpc},</if>
+            <if test="projectYear != null">project_year = #{projectYear},</if>
+            <if test="outIn != null">out_in = #{outIn},</if>
+        </trim>
+        where   out_in =  #{outIn} and  project_id =#{projectId} and project_year=#{projectYear}
+    </update>
+
+    <update id="updateProjectCashInfo" parameterType="ProjectCash">
+        update project_cash_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cashId != null">cash_id=#{id},</if>
+            <if test="jan != null">jan=#{jan},</if>
+            <if test="feb != null">feb=#{feb},</if>
+            <if test="mar != null">mar=#{mar},</if>
+            <if test="apr != null">apr=#{apr},</if>
+            <if test="may != null">may=#{may},</if>
+            <if test="jun != null">jun=#{jun},</if>
+            <if test="jul != null">jul=#{jul},</if>
+            <if test="aug != null">aug=#{aug},</if>
+            <if test="sep != null">sep=#{sep},</if>
+            <if test="oct != null">oct=#{oct},</if>
+            <if test="nov != null">nov=#{nov},</if>
+            <if test="decs != null">`decs`=#{decs},</if>
+            <if test="all != null">`all`=#{all},</if>
+        </trim>
+        where cash_id = #{id}
+    </update>
+
+
+    <update id="updateProjectCashInfoTo" parameterType="ImportProjectCash">
+        update project_cash_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="jan != null">jan=#{jan},</if>
+            <if test="feb != null">feb=#{feb},</if>
+            <if test="mar != null">mar=#{mar},</if>
+            <if test="apr != null">apr=#{apr},</if>
+            <if test="may != null">may=#{may},</if>
+            <if test="jun != null">jun=#{jun},</if>
+            <if test="jul != null">jul=#{jul},</if>
+            <if test="aug != null">aug=#{aug},</if>
+            <if test="sep != null">sep=#{sep},</if>
+            <if test="oct != null">oct=#{oct},</if>
+            <if test="nov != null">nov=#{nov},</if>
+            <if test="decs != null">`decs`=#{decs},</if>
+            <if test="all != null">`all`=#{all},</if>
+        </trim>
+        where cash_id = #{cashId}
+    </update>
+
+
+
+
+    <delete id="deleteProjectCashById" parameterType="Long">
+        delete from project_cash where id = #{id}
+    </delete>
+
+    <delete id="deleteProjectCashInfoById" parameterType="Long">
+        delete from project_cash_info where cash_id = #{id}
+    </delete>
+
+    <delete id="deleteProjectCashByIds" parameterType="String">
+        delete from project_cash where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="deleteProjectCashInfoByIds" parameterType="String">
+        delete from project_cash_info where cash_id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="selectProjectInfoList" parameterType="ProjectInfo" resultMap="ExportProjectCashResult">
+        select b.xmqk_xmmc,c.* ,d.* from project_info b
+        LEFT JOIN project_cash c ON b.xmqk_project_id = c.project_id and c.out_in = 0
+        LEFT JOIN project_cash_info d ON c.id = d.cash_id
+        <where>
+            <if test="projectInfo.xmqkProjectId != null  and projectInfo.xmqkProjectId != ''"> and b.xmqk_project_id = #{projectInfo.xmqkProjectId}</if>
+            <if test="projectInfo.xmqkXmmc != null  and projectInfo.xmqkXmmc != ''"> and b.xmqk_xmmc = #{projectInfo.xmqkXmmc}</if>
+            <if test="projectInfo.xmqkRl != null  and projectInfo.xmqkRl != ''"> and b.xmqk_rl = #{projectInfo.xmqkRl}</if>
+            <if test="projectInfo.xmqkXmlx != null "> and b.xmqk_xmlx = #{projectInfo.xmqkXmlx}</if>
+            <if test="projectInfo.xmqkXmxz != null "> and b.xmqk_xmxz = #{projectInfo.xmqkXmxz}</if>
+            <if test="projectInfo.xmqkLyfgs != null "> and b.xmqk_lyfgs = #{projectInfo.xmqkLyfgs}</if>
+            <if test="projectInfo.xmqkJszt != null "> and b.xmqk_jszt = #{projectInfo.xmqkJszt}</if>
+            <if test="projectInfo.xmqkQy != null "> and b.xmqk_qy = #{projectInfo.xmqkQy}</if>
+            <if test="projectInfo.xmqkHtsj != null "> and b.xmqk_htsj = #{projectInfo.xmqkHtsj}</if>
+            <if test="projectInfo.xmqkBwsj != null "> and b.xmqk_bwsj = #{projectInfo.xmqkBwsj}</if>
+            <if test="projectInfo.xmqkRzf != null  and projectInfo.xmqkRzf != ''"> and b.xmqk_rzf = #{projectInfo.xmqkRzf}</if>
+            <if test="projectInfo.xmqkSgf != null  and projectInfo.xmqkSgf != ''"> and b.xmqk_sgf = #{projectInfo.xmqkSgf}</if>
+            <if test="projectInfo.xmqkHzf != null  and projectInfo.xmqkHzf != ''"> and b.xmqk_hzf = #{projectInfo.xmqkHzf}</if>
+            <if test="projectInfo.xmqkRzjl != null  and projectInfo.xmqkRzjl != ''"> and b.xmqk_rzjl = #{projectInfo.xmqkRzjl}</if>
+            <if test="projectInfo.xmqkSwjl != null  and projectInfo.xmqkSwjl != ''"> and b.xmqk_swjl = #{projectInfo.xmqkSwjl}</if>
+            <if test="projectInfo.xmqkXmdqz != null  and projectInfo.xmqkXmdqz != ''"> and b.xmqk_xmdqz = #{projectInfo.xmqkXmdqz}</if>
+            <if test="projectInfo.xmqkSyzkw != null  and projectInfo.xmqkSyzkw != ''"> and b.xmqk_syzkw = #{projectInfo.xmqkSyzkw}</if>
+            <if test="projectInfo.xmqkJckw != null  and projectInfo.xmqkJckw != ''"> and b.xmqk_jckw = #{projectInfo.xmqkJckw}</if>
+            <if test="projectInfo.xmqkJsqk != null  and projectInfo.xmqkJsqk != ''"> and b.xmqk_jsqk = #{projectInfo.xmqkJsqk}</if>
+            <if test="projectInfo.xmqkSbdh != null  and projectInfo.xmqkSbdh != ''"> and b.xmqk_sbdh = #{projectInfo.xmqkSbdh}</if>
+            <if test="projectInfo.xmqkTzyjcsdj != null "> and b.xmqk_tzyjcsdj = #{projectInfo.xmqkTzyjcsdj}</if>
+            <if test="projectInfo.xmqkYjcszj != null "> and b.xmqk_yjcszj = #{projectInfo.xmqkYjcszj}</if>
+            <if test="projectInfo.xmqkEpcJsj != null "> and b.xmqk_epc_jsj = #{projectInfo.xmqkEpcJsj}</if>
+            <if test="projectInfo.xmqkEpcZjjsj != null "> and b.xmqk_epc_zjjsj = #{projectInfo.xmqkEpcZjjsj}</if>
+            <if test="projectInfo.xmqkYjsyhj != null "> and b.xmqk_yjsyhj = #{projectInfo.xmqkYjsyhj}</if>
+            <if test="projectInfo.xmqkXmgscb != null "> and b.xmqk_xmgscb = #{projectInfo.xmqkXmgscb}</if>
+            <if test="projectInfo.xmqkXmepccb != null "> and b.xmqk_xmepccb = #{projectInfo.xmqkXmepccb}</if>
+            <if test="projectInfo.xmqkQzzyf != null "> and b.xmqk_qzzyf = #{projectInfo.xmqkQzzyf}</if>
+            <if test="projectInfo.xmqkZcb != null "> and b.xmqk_zcb = #{projectInfo.xmqkZcb}</if>
+            <if test="projectInfo.xmqkSjYsysgk != null "> and b.xmqk_sj_ysysgk = #{projectInfo.xmqkSjYsysgk}</if>
+            <if test="projectInfo.xmqkYsrzk != null "> and b.xmqk_ysrzk = #{projectInfo.xmqkYsrzk}</if>
+            <if test="projectInfo.xmqkGzk != null "> and b.xmqk_gzk = #{projectInfo.xmqkGzk}</if>
+            <if test="projectInfo.xmqkYsdf != null "> and b.xmqk_ysdf = #{projectInfo.xmqkYsdf}</if>
+            <if test="projectInfo.xmqkSjsrhj != null "> and b.xmqk_sjsrhj = #{projectInfo.xmqkSjsrhj}</if>
+            <if test="projectInfo.xmqkYsye != null "> and b.xmqk_ysye = #{projectInfo.xmqkYsye}</if>
+            <if test="projectInfo.xmqkYfsbk != null "> and b.xmqk_yfsbk = #{projectInfo.xmqkYfsbk}</if>
+            <if test="projectInfo.xmqkYfjak != null "> and b.xmqk_yfjak = #{projectInfo.xmqkYfjak}</if>
+            <if test="projectInfo.xmqkYfqtkx != null "> and b.xmqk_yfqtkx = #{projectInfo.xmqkYfqtkx}</if>
+            <if test="projectInfo.xmqkYfzje != null "> and b.xmqk_yfzje = #{projectInfo.xmqkYfzje}</if>
+            <if test="projectInfo.xmqkYssjye != null "> and b.xmqk_yssjye = #{projectInfo.xmqkYssjye}</if>
+            <if test="projectInfo.xmqkSjyfwfkx != null "> and b.xmqk_sjyfwfkx = #{projectInfo.xmqkSjyfwfkx}</if>
+            <if test="projectInfo.xmqkHtzfye != null "> and b.xmqk_htzfye = #{projectInfo.xmqkHtzfye}</if>
+            <if test="projectInfo.xmqkYflybzj != null "> and b.xmqk_yflybzj = #{projectInfo.xmqkYflybzj}</if>
+            <if test="projectInfo.xmqkYtlybzj != null "> and b.xmqk_ytlybzj = #{projectInfo.xmqkYtlybzj}</if>
+            <if test="projectInfo.xmqkRemark != null  and projectInfo.xmqkRemark != ''"> and b.xmqk_remark = #{projectInfo.xmqkRemark}</if>
+            <if test="projectInfo.isDelete != null  and projectInfo.isDelete != ''"> and b.is_delete = #{projectInfo.isDelete}</if>
+        </where>
+    </select>
+
+    <select id="selectProjectInfoListCashIn" parameterType="ProjectInfo" resultMap="ExportProjectCashResult">
+        select b.xmqk_xmmc,c.* ,d.* from project_info b
+        LEFT JOIN project_cash c ON b.xmqk_project_id = c.project_id and c.out_in = 1
+        LEFT JOIN project_cash_info d ON c.id = d.cash_id
+        <where>
+            <if test="projectInfo.xmqkProjectId != null  and projectInfo.xmqkProjectId != ''"> and b.xmqk_project_id = #{projectInfo.xmqkProjectId}</if>
+            <if test="projectInfo.xmqkXmmc != null  and projectInfo.xmqkXmmc != ''"> and b.xmqk_xmmc = #{projectInfo.xmqkXmmc}</if>
+            <if test="projectInfo.xmqkRl != null  and projectInfo.xmqkRl != ''"> and b.xmqk_rl = #{projectInfo.xmqkRl}</if>
+            <if test="projectInfo.xmqkXmlx != null "> and b.xmqk_xmlx = #{projectInfo.xmqkXmlx}</if>
+            <if test="projectInfo.xmqkXmxz != null "> and b.xmqk_xmxz = #{projectInfo.xmqkXmxz}</if>
+            <if test="projectInfo.xmqkLyfgs != null "> and b.xmqk_lyfgs = #{projectInfo.xmqkLyfgs}</if>
+            <if test="projectInfo.xmqkJszt != null "> and b.xmqk_jszt = #{projectInfo.xmqkJszt}</if>
+            <if test="projectInfo.xmqkQy != null "> and b.xmqk_qy = #{projectInfo.xmqkQy}</if>
+            <if test="projectInfo.xmqkHtsj != null "> and b.xmqk_htsj = #{projectInfo.xmqkHtsj}</if>
+            <if test="projectInfo.xmqkBwsj != null "> and b.xmqk_bwsj = #{projectInfo.xmqkBwsj}</if>
+            <if test="projectInfo.xmqkRzf != null  and projectInfo.xmqkRzf != ''"> and b.xmqk_rzf = #{projectInfo.xmqkRzf}</if>
+            <if test="projectInfo.xmqkSgf != null  and projectInfo.xmqkSgf != ''"> and b.xmqk_sgf = #{projectInfo.xmqkSgf}</if>
+            <if test="projectInfo.xmqkHzf != null  and projectInfo.xmqkHzf != ''"> and b.xmqk_hzf = #{projectInfo.xmqkHzf}</if>
+            <if test="projectInfo.xmqkRzjl != null  and projectInfo.xmqkRzjl != ''"> and b.xmqk_rzjl = #{projectInfo.xmqkRzjl}</if>
+            <if test="projectInfo.xmqkSwjl != null  and projectInfo.xmqkSwjl != ''"> and b.xmqk_swjl = #{projectInfo.xmqkSwjl}</if>
+            <if test="projectInfo.xmqkXmdqz != null  and projectInfo.xmqkXmdqz != ''"> and b.xmqk_xmdqz = #{projectInfo.xmqkXmdqz}</if>
+            <if test="projectInfo.xmqkSyzkw != null  and projectInfo.xmqkSyzkw != ''"> and b.xmqk_syzkw = #{projectInfo.xmqkSyzkw}</if>
+            <if test="projectInfo.xmqkJckw != null  and projectInfo.xmqkJckw != ''"> and b.xmqk_jckw = #{projectInfo.xmqkJckw}</if>
+            <if test="projectInfo.xmqkJsqk != null  and projectInfo.xmqkJsqk != ''"> and b.xmqk_jsqk = #{projectInfo.xmqkJsqk}</if>
+            <if test="projectInfo.xmqkSbdh != null  and projectInfo.xmqkSbdh != ''"> and b.xmqk_sbdh = #{projectInfo.xmqkSbdh}</if>
+            <if test="projectInfo.xmqkTzyjcsdj != null "> and b.xmqk_tzyjcsdj = #{projectInfo.xmqkTzyjcsdj}</if>
+            <if test="projectInfo.xmqkYjcszj != null "> and b.xmqk_yjcszj = #{projectInfo.xmqkYjcszj}</if>
+            <if test="projectInfo.xmqkEpcJsj != null "> and b.xmqk_epc_jsj = #{projectInfo.xmqkEpcJsj}</if>
+            <if test="projectInfo.xmqkEpcZjjsj != null "> and b.xmqk_epc_zjjsj = #{projectInfo.xmqkEpcZjjsj}</if>
+            <if test="projectInfo.xmqkYjsyhj != null "> and b.xmqk_yjsyhj = #{projectInfo.xmqkYjsyhj}</if>
+            <if test="projectInfo.xmqkXmgscb != null "> and b.xmqk_xmgscb = #{projectInfo.xmqkXmgscb}</if>
+            <if test="projectInfo.xmqkXmepccb != null "> and b.xmqk_xmepccb = #{projectInfo.xmqkXmepccb}</if>
+            <if test="projectInfo.xmqkQzzyf != null "> and b.xmqk_qzzyf = #{projectInfo.xmqkQzzyf}</if>
+            <if test="projectInfo.xmqkZcb != null "> and b.xmqk_zcb = #{projectInfo.xmqkZcb}</if>
+            <if test="projectInfo.xmqkSjYsysgk != null "> and b.xmqk_sj_ysysgk = #{projectInfo.xmqkSjYsysgk}</if>
+            <if test="projectInfo.xmqkYsrzk != null "> and b.xmqk_ysrzk = #{projectInfo.xmqkYsrzk}</if>
+            <if test="projectInfo.xmqkGzk != null "> and b.xmqk_gzk = #{projectInfo.xmqkGzk}</if>
+            <if test="projectInfo.xmqkYsdf != null "> and b.xmqk_ysdf = #{projectInfo.xmqkYsdf}</if>
+            <if test="projectInfo.xmqkSjsrhj != null "> and b.xmqk_sjsrhj = #{projectInfo.xmqkSjsrhj}</if>
+            <if test="projectInfo.xmqkYsye != null "> and b.xmqk_ysye = #{projectInfo.xmqkYsye}</if>
+            <if test="projectInfo.xmqkYfsbk != null "> and b.xmqk_yfsbk = #{projectInfo.xmqkYfsbk}</if>
+            <if test="projectInfo.xmqkYfjak != null "> and b.xmqk_yfjak = #{projectInfo.xmqkYfjak}</if>
+            <if test="projectInfo.xmqkYfqtkx != null "> and b.xmqk_yfqtkx = #{projectInfo.xmqkYfqtkx}</if>
+            <if test="projectInfo.xmqkYfzje != null "> and b.xmqk_yfzje = #{projectInfo.xmqkYfzje}</if>
+            <if test="projectInfo.xmqkYssjye != null "> and b.xmqk_yssjye = #{projectInfo.xmqkYssjye}</if>
+            <if test="projectInfo.xmqkSjyfwfkx != null "> and b.xmqk_sjyfwfkx = #{projectInfo.xmqkSjyfwfkx}</if>
+            <if test="projectInfo.xmqkHtzfye != null "> and b.xmqk_htzfye = #{projectInfo.xmqkHtzfye}</if>
+            <if test="projectInfo.xmqkYflybzj != null "> and b.xmqk_yflybzj = #{projectInfo.xmqkYflybzj}</if>
+            <if test="projectInfo.xmqkYtlybzj != null "> and b.xmqk_ytlybzj = #{projectInfo.xmqkYtlybzj}</if>
+            <if test="projectInfo.xmqkRemark != null  and projectInfo.xmqkRemark != ''"> and b.xmqk_remark = #{projectInfo.xmqkRemark}</if>
+            <if test="projectInfo.isDelete != null  and projectInfo.isDelete != ''"> and b.is_delete = #{projectInfo.isDelete}</if>
+        </where>
+    </select>
+
+    <insert id="insertProjectCashImport" parameterType="ImportProjectCash" useGeneratedKeys="true" keyProperty="id">
+        insert into project_cash
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="projectId != null">project_id,</if>
+            <if test="projectEpc != null">project_epc,</if>
+            <if test="projectYear != null">project_year,</if>
+            <if test="outIn != null">out_in,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="projectId != null">#{projectId},</if>
+            <if test="projectEpc != null">#{projectEpc},</if>
+            <if test="projectYear != null">#{projectYear},</if>
+            <if test="outIn != null">#{outIn},</if>
+        </trim>
+    </insert>
+
+    <select id="selectProjectInfoChekCashIn" resultType="Integer">
+
+         select id  from   project_cash     where     out_in =  #{projectCash.outIn} and  project_id =#{projectCash.projectId} and project_year=#{projectCash.projectYear}
+    </select>
+
+    <insert id="insertUpdateBatch"   useGeneratedKeys="true" keyProperty="id" >
+        insert into project_cash(
+        project_id,
+        project_epc,
+        project_year,
+        out_in
+        )
+        values(
+        #{projectCash.projectId},
+        #{projectCash.projectEpc},
+        #{projectCash.projectYear},
+        #{projectCash.outIn}
+        )
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="projectCash.projectId != null">project_id=#{projectCash.projectId},</if>
+            <if test="projectCash.projectEpc != null">project_epc=#{projectCash.projectEpc},</if>
+            <if test="projectCash.projectYear != null">project_year=#{projectCash.projectYear},</if>
+            <if test="projectCash.outIn != null">out_in=#{projectCash.outIn},</if>
+        </trim>
+
+    </insert>
+
+
+
+
+    <insert id="insertProjectCashInfoImport" parameterType="ImportProjectCash" useGeneratedKeys="true" keyProperty="cashId">
+        insert into project_cash_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">cash_id,</if>
+            <if test="jan != null">jan,</if>
+            <if test="feb != null">feb,</if>
+            <if test="mar != null">mar,</if>
+            <if test="apr != null">apr,</if>
+            <if test="may != null">may,</if>
+            <if test="jun != null">jun,</if>
+            <if test="jul != null">jul,</if>
+            <if test="aug != null">aug,</if>
+            <if test="sep != null">sep,</if>
+            <if test="oct != null">oct,</if>
+            <if test="nov != null">nov,</if>
+            <if test="decs != null">`decs`,</if>
+            <if test="all != null">`all`,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="jan != null">#{jan},</if>
+            <if test="feb != null">#{feb},</if>
+            <if test="mar != null">#{mar},</if>
+            <if test="apr != null">#{apr},</if>
+            <if test="may != null">#{may},</if>
+            <if test="jun != null">#{jun},</if>
+            <if test="jul != null">#{jul},</if>
+            <if test="aug != null">#{aug},</if>
+            <if test="sep != null">#{sep},</if>
+            <if test="oct != null">#{oct},</if>
+            <if test="nov != null">#{nov},</if>
+            <if test="decs != null">#{decs},</if>
+            <if test="all != null">#{all},</if>
+        </trim>
+    </insert>
+
+
+    <insert id="insertUpdateBatchCashInfo"   useGeneratedKeys="true" keyProperty="cashId">
+
+
+        insert into project_cash_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="projectCash.id != null">cash_id,</if>
+            <if test="projectCash.jan != null">jan,</if>
+            <if test="projectCash.feb != null">feb,</if>
+            <if test="projectCash.mar != null">mar,</if>
+            <if test="projectCash.apr != null">apr,</if>
+            <if test="projectCash.may != null">may,</if>
+            <if test="projectCash.jun != null">jun,</if>
+            <if test="projectCash.jul != null">jul,</if>
+            <if test="projectCash.aug != null">aug,</if>
+            <if test="projectCash.sep != null">sep,</if>
+            <if test="projectCash.oct != null">oct,</if>
+            <if test="projectCash.nov != null">nov,</if>
+            <if test="projectCash.decs != null">`decs`,</if>
+            <if test="projectCash.all != null">`all`,</if>
+        </trim>
+        <trim prefix="values (" suffix=")"  suffixOverrides=",">
+            <if test="projectCash.id != null">#{projectCash.id},</if>
+            <if test="projectCash.jan != null">#{projectCash.jan},</if>
+            <if test="projectCash.feb != null">#{projectCash.feb},</if>
+            <if test="projectCash.mar != null">#{projectCash.mar},</if>
+            <if test="projectCash.apr != null">#{projectCash.apr},</if>
+            <if test="projectCash.may != null">#{projectCash.may},</if>
+            <if test="projectCash.jun != null">#{projectCash.jun},</if>
+            <if test="projectCash.jul != null">#{projectCash.jul},</if>
+            <if test="projectCash.aug != null">#{projectCash.aug},</if>
+            <if test="projectCash.sep != null">#{projectCash.sep},</if>
+            <if test="projectCash.oct != null">#{projectCash.oct},</if>
+            <if test="projectCash.nov != null">#{projectCash.nov},</if>
+            <if test="projectCash.decs != null">#{projectCash.decs},</if>
+            <if test="projectCash.all != null">#{projectCash.all},</if>
+        </trim>
+        on duplicate key update
+        <trim prefix="" suffixOverrides=",">
+            <if test="projectCash.id != null">cash_id=#{projectCash.id},</if>
+            <if test="projectCash.jan != null">jan=#{projectCash.jan},</if>
+            <if test="projectCash.feb != null">feb=#{projectCash.feb},</if>
+            <if test="projectCash.mar != null">mar=#{projectCash.mar},</if>
+            <if test="projectCash.apr != null">apr=#{projectCash.apr},</if>
+            <if test="projectCash.may != null">may=#{projectCash.may},</if>
+            <if test="projectCash.jun != null">jun=#{projectCash.jun},</if>
+            <if test="projectCash.jul != null">jul=#{projectCash.jul},</if>
+            <if test="projectCash.aug != null">aug=#{projectCash.aug},</if>
+            <if test="projectCash.sep != null">sep=#{projectCash.sep},</if>
+            <if test="projectCash.oct != null">oct=#{projectCash.oct},</if>
+            <if test="projectCash.nov != null">nov=#{projectCash.nov},</if>
+            <if test="projectCash.decs != null">`decs`=#{projectCash.decs},</if>
+            <if test="projectCash.all != null">`all`=#{projectCash.all},</if>
+        </trim>
+    </insert>
+
+
+</mapper>

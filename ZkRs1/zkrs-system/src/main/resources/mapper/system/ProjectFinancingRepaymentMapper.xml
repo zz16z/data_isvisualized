@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkrs.system.mapper.ProjectFinancingRepaymentMapper">
+
+    <resultMap type="ProjectFinancingRepayment" id="ProjectFinancingRepaymentResult">
+        <result property="id"    column="id"    />
+        <result property="financingId"    column="financing_id"    />
+        <result property="projectId"    column="project_id"    />
+        <result property="beginPay"    column="begin_pay"    />
+        <result property="repaymentYear"    column="repayment_year"    />
+        <result property="janPrincipal"    column="jan_principal"    />
+        <result property="janInterest"    column="jan_interest"    />
+        <result property="janService"    column="jan_service"    />
+        <result property="febPrincipal"    column="feb_principal"    />
+        <result property="febInterest"    column="feb_interest"    />
+        <result property="febService"    column="feb_service"    />
+        <result property="marPrincipal"    column="mar_principal"    />
+        <result property="marInterest"    column="mar_interest"    />
+        <result property="marService"    column="mar_service"    />
+        <result property="aprPrincipal"    column="apr_principal"    />
+        <result property="aprInterest"    column="apr_interest"    />
+        <result property="aprService"    column="apr_service"    />
+        <result property="mayPrincipal"    column="may_principal"    />
+        <result property="mayInterest"    column="may_interest"    />
+        <result property="mayService"    column="may_service"    />
+        <result property="junPrincipal"    column="jun_principal"    />
+        <result property="junInterest"    column="jun_interest"    />
+        <result property="junService"    column="jun_service"    />
+        <result property="julPrincipal"    column="jul_principal"    />
+        <result property="julInterest"    column="jul_interest"    />
+        <result property="julService"    column="jul_service"    />
+        <result property="augPrincipal"    column="aug_principal"    />
+        <result property="augInterest"    column="aug_interest"    />
+        <result property="augService"    column="aug_service"    />
+        <result property="sepPrincipal"    column="sep_principal"    />
+        <result property="sepInterest"    column="sep_interest"    />
+        <result property="sepService"    column="sep_service"    />
+        <result property="octPrincipal"    column="oct_principal"    />
+        <result property="octInterest"    column="oct_interest"    />
+        <result property="octService"    column="oct_service"    />
+        <result property="novPrincipal"    column="nov_principal"    />
+        <result property="novInterest"    column="nov_interest"    />
+        <result property="novService"    column="nov_service"    />
+        <result property="decPrincipal"    column="dec_principal"    />
+        <result property="decInterest"    column="dec_interest"    />
+        <result property="decService"    column="dec_service"    />
+    </resultMap>
+
+    <resultMap type="ExportFinancingStill" id="ExportProjectFinancingRepaymentResult">
+        <result property="xmqkXmmc"    column="xmqk_xmmc"    />
+        <result property="financingId"    column="financing_id"    />
+        <result property="xmrzRzjg"    column="xmrz_rzjg"    />
+        <result property="beginPay"    column="begin_pay"    />
+        <result property="financingRq"    column="financing_rq"    />
+        <result property="financingCb"    column="financing_cb"    />
+        <result property="financingLx"    column="financing_lx"    />
+        <result property="financingSxf"    column="financing_sxf"    />
+    </resultMap>
+
+    <sql id="selectProjectFinancingRepaymentVo">
+        select id, financing_id, project_id, begin_pay, repayment_year, jan_principal, jan_interest, jan_service, feb_principal, feb_interest, feb_service, mar_principal, mar_interest, mar_service, apr_principal, apr_interest, apr_service, may_principal, may_interest, may_service, jun_principal, jun_interest, jun_service, jul_principal, jul_interest, jul_service, aug_principal, aug_interest, aug_service, sep_principal, sep_interest, sep_service, oct_principal, oct_interest, oct_service, nov_principal, nov_interest, nov_service, dec_principal, dec_interest, dec_service from project_financing_repayment
+    </sql>
+
+    <select id="selectProjectFinancingRepaymentList" parameterType="ProjectFinancingRepayment" resultMap="ProjectFinancingRepaymentResult">
+        <include refid="selectProjectFinancingRepaymentVo"/>
+        <where>
+            <if test="financingId != null  and financingId != ''"> and financing_id = #{financingId}</if>
+            <if test="beginPay != null  and beginPay != ''"> and begin_pay = #{beginPay}</if>
+            <if test="janPrincipal != null "> and jan_principal = #{janPrincipal}</if>
+            <if test="janInterest != null "> and jan_interest = #{janInterest}</if>
+            <if test="janService != null "> and jan_service = #{janService}</if>
+            <if test="febPrincipal != null "> and feb_principal = #{febPrincipal}</if>
+            <if test="febInterest != null "> and feb_interest = #{febInterest}</if>
+            <if test="febService != null "> and feb_service = #{febService}</if>
+            <if test="marPrincipal != null "> and mar_principal = #{marPrincipal}</if>
+            <if test="marInterest != null "> and mar_interest = #{marInterest}</if>
+            <if test="marService != null "> and mar_service = #{marService}</if>
+            <if test="aprPrincipal != null "> and apr_principal = #{aprPrincipal}</if>
+            <if test="aprInterest != null "> and apr_interest = #{aprInterest}</if>
+            <if test="aprService != null "> and apr_service = #{aprService}</if>
+            <if test="mayPrincipal != null "> and may_principal = #{mayPrincipal}</if>
+            <if test="mayInterest != null "> and may_interest = #{mayInterest}</if>
+            <if test="mayService != null "> and may_service = #{mayService}</if>
+            <if test="junPrincipal != null "> and jun_principal = #{junPrincipal}</if>
+            <if test="junInterest != null "> and jun_interest = #{junInterest}</if>
+            <if test="junService != null "> and jun_service = #{junService}</if>
+            <if test="julPrincipal != null "> and jul_principal = #{julPrincipal}</if>
+            <if test="julInterest != null "> and jul_interest = #{julInterest}</if>
+            <if test="julService != null "> and jul_service = #{julService}</if>
+            <if test="augPrincipal != null "> and aug_principal = #{augPrincipal}</if>
+            <if test="augInterest != null "> and aug_interest = #{augInterest}</if>
+            <if test="augService != null "> and aug_service = #{augService}</if>
+            <if test="sepPrincipal != null "> and sep_principal = #{sepPrincipal}</if>
+            <if test="sepInterest != null "> and sep_interest = #{sepInterest}</if>
+            <if test="sepService != null "> and sep_service = #{sepService}</if>
+            <if test="octPrincipal != null "> and oct_principal = #{octPrincipal}</if>
+            <if test="octInterest != null "> and oct_interest = #{octInterest}</if>
+            <if test="octService != null "> and oct_service = #{octService}</if>
+            <if test="novPrincipal != null "> and nov_principal = #{novPrincipal}</if>
+            <if test="novInterest != null "> and nov_interest = #{novInterest}</if>
+            <if test="novService != null "> and nov_service = #{novService}</if>
+            <if test="decPrincipal != null "> and dec_principal = #{decPrincipal}</if>
+            <if test="decInterest != null "> and dec_interest = #{decInterest}</if>
+            <if test="decService != null "> and dec_service = #{decService}</if>
+        </where>
+    </select>
+    
+    <select id="selectProjectFinancingRepaymentByFinancingId" parameterType="Long" resultMap="ProjectFinancingRepaymentResult">
+        <include refid="selectProjectFinancingRepaymentVo"/>
+        where financing_id = #{financingId}
+    </select>
+
+    <insert id="insertProjectFinancingRepayment" parameterType="ProjectFinancingRepayment" useGeneratedKeys="true" keyProperty="id">
+        insert into project_financing_repayment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="financingId != null">financing_id,</if>
+            <if test="projectId != null and projectId != ''">project_id,</if>
+            <if test="beginPay != null and beginPay != ''">begin_pay,</if>
+            <if test="repaymentYear != null and repaymentYear != ''">repayment_year,</if>
+            <if test="janPrincipal != null">jan_principal,</if>
+            <if test="janInterest != null">jan_interest,</if>
+            <if test="janService != null">jan_service,</if>
+            <if test="febPrincipal != null">feb_principal,</if>
+            <if test="febInterest != null">feb_interest,</if>
+            <if test="febService != null">feb_service,</if>
+            <if test="marPrincipal != null">mar_principal,</if>
+            <if test="marInterest != null">mar_interest,</if>
+            <if test="marService != null">mar_service,</if>
+            <if test="aprPrincipal != null">apr_principal,</if>
+            <if test="aprInterest != null">apr_interest,</if>
+            <if test="aprService != null">apr_service,</if>
+            <if test="mayPrincipal != null">may_principal,</if>
+            <if test="mayInterest != null">may_interest,</if>
+            <if test="mayService != null">may_service,</if>
+            <if test="junPrincipal != null">jun_principal,</if>
+            <if test="junInterest != null">jun_interest,</if>
+            <if test="junService != null">jun_service,</if>
+            <if test="julPrincipal != null">jul_principal,</if>
+            <if test="julInterest != null">jul_interest,</if>
+            <if test="julService != null">jul_service,</if>
+            <if test="augPrincipal != null">aug_principal,</if>
+            <if test="augInterest != null">aug_interest,</if>
+            <if test="augService != null">aug_service,</if>
+            <if test="sepPrincipal != null">sep_principal,</if>
+            <if test="sepInterest != null">sep_interest,</if>
+            <if test="sepService != null">sep_service,</if>
+            <if test="octPrincipal != null">oct_principal,</if>
+            <if test="octInterest != null">oct_interest,</if>
+            <if test="octService != null">oct_service,</if>
+            <if test="novPrincipal != null">nov_principal,</if>
+            <if test="novInterest != null">nov_interest,</if>
+            <if test="novService != null">nov_service,</if>
+            <if test="decPrincipal != null">dec_principal,</if>
+            <if test="decInterest != null">dec_interest,</if>
+            <if test="decService != null">dec_service,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="financingId != null">#{financingId},</if>
+            <if test="projectId != null and projectId != ''">#{projectId},</if>
+            <if test="beginPay != null and beginPay != ''">#{beginPay},</if>
+            <if test="repaymentYear != null and repaymentYear != ''">#{repaymentYear},</if>
+            <if test="janPrincipal != null">#{janPrincipal},</if>
+            <if test="janInterest != null">#{janInterest},</if>
+            <if test="janService != null">#{janService},</if>
+            <if test="febPrincipal != null">#{febPrincipal},</if>
+            <if test="febInterest != null">#{febInterest},</if>
+            <if test="febService != null">#{febService},</if>
+            <if test="marPrincipal != null">#{marPrincipal},</if>
+            <if test="marInterest != null">#{marInterest},</if>
+            <if test="marService != null">#{marService},</if>
+            <if test="aprPrincipal != null">#{aprPrincipal},</if>
+            <if test="aprInterest != null">#{aprInterest},</if>
+            <if test="aprService != null">#{aprService},</if>
+            <if test="mayPrincipal != null">#{mayPrincipal},</if>
+            <if test="mayInterest != null">#{mayInterest},</if>
+            <if test="mayService != null">#{mayService},</if>
+            <if test="junPrincipal != null">#{junPrincipal},</if>
+            <if test="junInterest != null">#{junInterest},</if>
+            <if test="junService != null">#{junService},</if>
+            <if test="julPrincipal != null">#{julPrincipal},</if>
+            <if test="julInterest != null">#{julInterest},</if>
+            <if test="julService != null">#{julService},</if>
+            <if test="augPrincipal != null">#{augPrincipal},</if>
+            <if test="augInterest != null">#{augInterest},</if>
+            <if test="augService != null">#{augService},</if>
+            <if test="sepPrincipal != null">#{sepPrincipal},</if>
+            <if test="sepInterest != null">#{sepInterest},</if>
+            <if test="sepService != null">#{sepService},</if>
+            <if test="octPrincipal != null">#{octPrincipal},</if>
+            <if test="octInterest != null">#{octInterest},</if>
+            <if test="octService != null">#{octService},</if>
+            <if test="novPrincipal != null">#{novPrincipal},</if>
+            <if test="novInterest != null">#{novInterest},</if>
+            <if test="novService != null">#{novService},</if>
+            <if test="decPrincipal != null">#{decPrincipal},</if>
+            <if test="decInterest != null">#{decInterest},</if>
+            <if test="decService != null">#{decService},</if>
+        </trim>
+    </insert>
+
+    <update id="updateProjectFinancingRepayment" parameterType="ProjectFinancingRepayment">
+        update project_financing_repayment
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="projectId != null">project_id = #{projectId},</if>
+            <if test="beginPay != null">begin_pay = #{beginPay},</if>
+            <if test="repaymentYear != null">repayment_year = #{repaymentYear},</if>
+            <if test="janPrincipal != null">jan_principal = #{janPrincipal},</if>
+            <if test="janInterest != null">jan_interest = #{janInterest},</if>
+            <if test="janService != null">jan_service = #{janService},</if>
+            <if test="febPrincipal != null">feb_principal = #{febPrincipal},</if>
+            <if test="febInterest != null">feb_interest = #{febInterest},</if>
+            <if test="febService != null">feb_service = #{febService},</if>
+            <if test="marPrincipal != null">mar_principal = #{marPrincipal},</if>
+            <if test="marInterest != null">mar_interest = #{marInterest},</if>
+            <if test="marService != null">mar_service = #{marService},</if>
+            <if test="aprPrincipal != null">apr_principal = #{aprPrincipal},</if>
+            <if test="aprInterest != null">apr_interest = #{aprInterest},</if>
+            <if test="aprService != null">apr_service = #{aprService},</if>
+            <if test="mayPrincipal != null">may_principal = #{mayPrincipal},</if>
+            <if test="mayInterest != null">may_interest = #{mayInterest},</if>
+            <if test="mayService != null">may_service = #{mayService},</if>
+            <if test="junPrincipal != null">jun_principal = #{junPrincipal},</if>
+            <if test="junInterest != null">jun_interest = #{junInterest},</if>
+            <if test="junService != null">jun_service = #{junService},</if>
+            <if test="julPrincipal != null">jul_principal = #{julPrincipal},</if>
+            <if test="julInterest != null">jul_interest = #{julInterest},</if>
+            <if test="julService != null">jul_service = #{julService},</if>
+            <if test="augPrincipal != null">aug_principal = #{augPrincipal},</if>
+            <if test="augInterest != null">aug_interest = #{augInterest},</if>
+            <if test="augService != null">aug_service = #{augService},</if>
+            <if test="sepPrincipal != null">sep_principal = #{sepPrincipal},</if>
+            <if test="sepInterest != null">sep_interest = #{sepInterest},</if>
+            <if test="sepService != null">sep_service = #{sepService},</if>
+            <if test="octPrincipal != null">oct_principal = #{octPrincipal},</if>
+            <if test="octInterest != null">oct_interest = #{octInterest},</if>
+            <if test="octService != null">oct_service = #{octService},</if>
+            <if test="novPrincipal != null">nov_principal = #{novPrincipal},</if>
+            <if test="novInterest != null">nov_interest = #{novInterest},</if>
+            <if test="novService != null">nov_service = #{novService},</if>
+            <if test="decPrincipal != null">dec_principal = #{decPrincipal},</if>
+            <if test="decInterest != null">dec_interest = #{decInterest},</if>
+            <if test="decService != null">dec_service = #{decService},</if>
+        </trim>
+        where financing_id = #{financingId} and project_id=#{projectId} and repayment_year = #{repaymentYear}
+    </update>
+
+    <delete id="deleteProjectFinancingRepaymentByFinancingIds" parameterType="Long">
+        delete from project_financing_repayment where financing_id = #{financingId}
+    </delete>
+
+    <delete id="deleteProjectFinancingRepaymentByIds" parameterType="String">
+        delete from project_financing_repayment where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+<!--    <select id="selectIsExistRepayment"   resultType="java.lang.Integer">-->
+<!--        select  count(1) from project_financing_repayment where project_id = #{projectInfo.projectId} and financing_id = #{projectInfo.financingId} and repayment_year = #{projectInfo.repaymentYear}-->
+<!--    </select>-->
+
+    <select id="selectIsExistRepayment"   resultType="java.lang.Integer">
+        select  count(1) from financing_still where  financing_id = #{projectInfo.financingId}
+    </select>
+
+    <update id="updateProjectFinancingRepaymentById" parameterType="ProjectFinancingRepayment">
+        update project_financing_repayment
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="financingId != null">financing_id = #{financingId},</if>
+            <if test="projectId != null and projectId != ''">project_id = #{projectId},</if>
+            <if test="beginPay != null and beginPay != ''">begin_pay = #{beginPay},</if>
+            <if test="repaymentYear != null and repaymentYear != ''">repayment_year = #{repaymentYear},</if>
+            <if test="janPrincipal != null">jan_principal = #{janPrincipal},</if>
+            <if test="janInterest != null">jan_interest = #{janInterest},</if>
+            <if test="janService != null">jan_service = #{janService},</if>
+            <if test="febPrincipal != null">feb_principal = #{febPrincipal},</if>
+            <if test="febInterest != null">feb_interest = #{febInterest},</if>
+            <if test="febService != null">feb_service = #{febService},</if>
+            <if test="marPrincipal != null">mar_principal = #{marPrincipal},</if>
+            <if test="marInterest != null">mar_interest = #{marInterest},</if>
+            <if test="marService != null">mar_service = #{marService},</if>
+            <if test="aprPrincipal != null">apr_principal = #{aprPrincipal},</if>
+            <if test="aprInterest != null">apr_interest = #{aprInterest},</if>
+            <if test="aprService != null">apr_service = #{aprService},</if>
+            <if test="mayPrincipal != null">may_principal = #{mayPrincipal},</if>
+            <if test="mayInterest != null">may_interest = #{mayInterest},</if>
+            <if test="mayService != null">may_service = #{mayService},</if>
+            <if test="junPrincipal != null">jun_principal = #{junPrincipal},</if>
+            <if test="junInterest != null">jun_interest = #{junInterest},</if>
+            <if test="junService != null">jun_service = #{junService},</if>
+            <if test="julPrincipal != null">jul_principal = #{julPrincipal},</if>
+            <if test="julInterest != null">jul_interest = #{julInterest},</if>
+            <if test="julService != null">jul_service = #{julService},</if>
+            <if test="augPrincipal != null">aug_principal = #{augPrincipal},</if>
+            <if test="augInterest != null">aug_interest = #{augInterest},</if>
+            <if test="augService != null">aug_service = #{augService},</if>
+            <if test="sepPrincipal != null">sep_principal = #{sepPrincipal},</if>
+            <if test="sepInterest != null">sep_interest = #{sepInterest},</if>
+            <if test="sepService != null">sep_service = #{sepService},</if>
+            <if test="octPrincipal != null">oct_principal = #{octPrincipal},</if>
+            <if test="octInterest != null">oct_interest = #{octInterest},</if>
+            <if test="octService != null">oct_service = #{octService},</if>
+            <if test="novPrincipal != null">nov_principal = #{novPrincipal},</if>
+            <if test="novInterest != null">nov_interest = #{novInterest},</if>
+            <if test="novService != null">nov_service = #{novService},</if>
+            <if test="decPrincipal != null">dec_principal = #{decPrincipal},</if>
+            <if test="decInterest != null">dec_interest = #{decInterest},</if>
+            <if test="decService != null">dec_service = #{decService},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteProjectFinancingRepayment" parameterType="String">
+        delete from project_financing_repayment where financing_id in
+        <foreach item="xmrzId" collection="array" open="(" separator="," close=")">
+            #{xmrzId}
+        </foreach>
+    </delete>
+
+    <select id="selectProjectInfoList"  parameterType="ProjectInfo" resultMap="ExportProjectFinancingRepaymentResult">
+        select b.xmqk_xmmc,a.*,c.* from project_financing a
+        LEFT JOIN  project_info b ON a.xmrz_project_id=b.xmqk_project_id
+        LEFT JOIN  financing_still c ON a.xmrz_id = c.financing_id
+        <where>
+            <if test="projectInfo.xmqkProjectId != null  and projectInfo.xmqkProjectId != ''"> and b.xmqk_project_id = #{projectInfo.xmqkProjectId}</if>
+            <if test="projectInfo.xmqkXmmc != null  and projectInfo.xmqkXmmc != ''"> and b.xmqk_xmmc = #{projectInfo.xmqkXmmc}</if>
+            <if test="projectInfo.xmqkRl != null  and projectInfo.xmqkRl != ''"> and b.xmqk_rl = #{projectInfo.xmqkRl}</if>
+            <if test="projectInfo.xmqkXmlx != null "> and b.xmqk_xmlx = #{projectInfo.xmqkXmlx}</if>
+            <if test="projectInfo.xmqkXmxz != null "> and b.xmqk_xmxz = #{projectInfo.xmqkXmxz}</if>
+            <if test="projectInfo.xmqkLyfgs != null "> and b.xmqk_lyfgs = #{projectInfo.xmqkLyfgs}</if>
+            <if test="projectInfo.xmqkJszt != null "> and b.xmqk_jszt = #{projectInfo.xmqkJszt}</if>
+            <if test="projectInfo.xmqkQy != null "> and b.xmqk_qy = #{projectInfo.xmqkQy}</if>
+            <if test="projectInfo.xmqkHtsj != null "> and b.xmqk_htsj = #{projectInfo.xmqkHtsj}</if>
+            <if test="projectInfo.xmqkBwsj != null "> and b.xmqk_bwsj = #{projectInfo.xmqkBwsj}</if>
+            <if test="projectInfo.xmqkRzf != null  and projectInfo.xmqkRzf != ''"> and b.xmqk_rzf = #{projectInfo.xmqkRzf}</if>
+            <if test="projectInfo.xmqkSgf != null  and projectInfo.xmqkSgf != ''"> and b.xmqk_sgf = #{projectInfo.xmqkSgf}</if>
+            <if test="projectInfo.xmqkHzf != null  and projectInfo.xmqkHzf != ''"> and b.xmqk_hzf = #{projectInfo.xmqkHzf}</if>
+            <if test="projectInfo.xmqkRzjl != null  and projectInfo.xmqkRzjl != ''"> and b.xmqk_rzjl = #{projectInfo.xmqkRzjl}</if>
+            <if test="projectInfo.xmqkSwjl != null  and projectInfo.xmqkSwjl != ''"> and b.xmqk_swjl = #{projectInfo.xmqkSwjl}</if>
+            <if test="projectInfo.xmqkXmdqz != null  and projectInfo.xmqkXmdqz != ''"> and b.xmqk_xmdqz = #{projectInfo.xmqkXmdqz}</if>
+            <if test="projectInfo.xmqkSyzkw != null  and projectInfo.xmqkSyzkw != ''"> and b.xmqk_syzkw = #{projectInfo.xmqkSyzkw}</if>
+            <if test="projectInfo.xmqkJckw != null  and projectInfo.xmqkJckw != ''"> and b.xmqk_jckw = #{projectInfo.xmqkJckw}</if>
+            <if test="projectInfo.xmqkJsqk != null  and projectInfo.xmqkJsqk != ''"> and b.xmqk_jsqk = #{projectInfo.xmqkJsqk}</if>
+            <if test="projectInfo.xmqkSbdh != null  and projectInfo.xmqkSbdh != ''"> and b.xmqk_sbdh = #{projectInfo.xmqkSbdh}</if>
+            <if test="projectInfo.xmqkTzyjcsdj != null "> and b.xmqk_tzyjcsdj = #{projectInfo.xmqkTzyjcsdj}</if>
+            <if test="projectInfo.xmqkYjcszj != null "> and b.xmqk_yjcszj = #{projectInfo.xmqkYjcszj}</if>
+            <if test="projectInfo.xmqkEpcJsj != null "> and b.xmqk_epc_jsj = #{projectInfo.xmqkEpcJsj}</if>
+            <if test="projectInfo.xmqkEpcZjjsj != null "> and b.xmqk_epc_zjjsj = #{projectInfo.xmqkEpcZjjsj}</if>
+            <if test="projectInfo.xmqkYjsyhj != null "> and b.xmqk_yjsyhj = #{projectInfo.xmqkYjsyhj}</if>
+            <if test="projectInfo.xmqkXmgscb != null "> and b.xmqk_xmgscb = #{projectInfo.xmqkXmgscb}</if>
+            <if test="projectInfo.xmqkXmepccb != null "> and b.xmqk_xmepccb = #{projectInfo.xmqkXmepccb}</if>
+            <if test="projectInfo.xmqkQzzyf != null "> and b.xmqk_qzzyf = #{projectInfo.xmqkQzzyf}</if>
+            <if test="projectInfo.xmqkZcb != null "> and b.xmqk_zcb = #{projectInfo.xmqkZcb}</if>
+            <if test="projectInfo.xmqkSjYsysgk != null "> and b.xmqk_sj_ysysgk = #{projectInfo.xmqkSjYsysgk}</if>
+            <if test="projectInfo.xmqkYsrzk != null "> and b.xmqk_ysrzk = #{projectInfo.xmqkYsrzk}</if>
+            <if test="projectInfo.xmqkGzk != null "> and b.xmqk_gzk = #{projectInfo.xmqkGzk}</if>
+            <if test="projectInfo.xmqkYsdf != null "> and b.xmqk_ysdf = #{projectInfo.xmqkYsdf}</if>
+            <if test="projectInfo.xmqkSjsrhj != null "> and b.xmqk_sjsrhj = #{projectInfo.xmqkSjsrhj}</if>
+            <if test="projectInfo.xmqkYsye != null "> and b.xmqk_ysye = #{projectInfo.xmqkYsye}</if>
+            <if test="projectInfo.xmqkYfsbk != null "> and b.xmqk_yfsbk = #{projectInfo.xmqkYfsbk}</if>
+            <if test="projectInfo.xmqkYfjak != null "> and b.xmqk_yfjak = #{projectInfo.xmqkYfjak}</if>
+            <if test="projectInfo.xmqkYfqtkx != null "> and b.xmqk_yfqtkx = #{projectInfo.xmqkYfqtkx}</if>
+            <if test="projectInfo.xmqkYfzje != null "> and b.xmqk_yfzje = #{projectInfo.xmqkYfzje}</if>
+            <if test="projectInfo.xmqkYssjye != null "> and b.xmqk_yssjye = #{projectInfo.xmqkYssjye}</if>
+            <if test="projectInfo.xmqkSjyfwfkx != null "> and b.xmqk_sjyfwfkx = #{projectInfo.xmqkSjyfwfkx}</if>
+            <if test="projectInfo.xmqkHtzfye != null "> and b.xmqk_htzfye = #{projectInfo.xmqkHtzfye}</if>
+            <if test="projectInfo.xmqkYflybzj != null "> and b.xmqk_yflybzj = #{projectInfo.xmqkYflybzj}</if>
+            <if test="projectInfo.xmqkYtlybzj != null "> and b.xmqk_ytlybzj = #{projectInfo.xmqkYtlybzj}</if>
+            <if test="projectInfo.xmqkRemark != null  and projectInfo.xmqkRemark != ''"> and b.xmqk_remark = #{projectInfo.xmqkRemark}</if>
+            <if test="projectInfo.isDelete != null  and projectInfo.isDelete != ''"> and b.is_delete = #{projectInfo.isDelete}</if>
+        </where>
+        ORDER BY a.xmrz_id,c.financing_rq
+    </select>
+</mapper>

@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkrs.system.mapper.ElectricityStatisticsMapper">
+    
+    <resultMap type="ElectricityStatistics" id="ElectricityStatisticsResult">
+        <result property="dltjId"    column="dltj_id"    />
+        <result property="dltjProjectId"    column="dltj_project_id"    />
+        <result property="dltjRq"    column="dltj_rq"    />
+        <result property="dltjYjfdl"    column="dltj_yjfdl"    />
+        <result property="dltjSjfdl"    column="dltj_sjfdl"    />
+        <result property="dltjPc"    column="dltj_pc"    />
+        <result property="dltjLjswdl"    column="dltj_ljswdl"    />
+        <result property="dltjLjjsdl"    column="dltj_ljjsdl"    />
+        <result property="dltjQdlqk"    column="dltj_qdlqk"    />
+        <result property="dltjSyjsdfyssj"    column="dltj_syjsdfyssj"    />
+        <result property="dltjLjwdzdf"    column="dltj_ljwdzdf"    />
+        <result property="dltjGdgchk"    column="dltj_gdgchk"    />
+        <result property="dltjDfsy"    column="dltj_dfsy"    />
+        <result property="dltjBt"    column="dltj_bt"    />
+        <result property="dltjBysrhj"    column="dltj_bysrhj"    />
+        <result property="dltjXwdf"    column="dltj_xwdf"    />
+        <result property="dltjRggz"    column="dltj_rggz"    />
+        <result property="dltjWjbljqt"    column="dltj_wjbljqt"    />
+        <result property="dltjLx"    column="dltj_lx"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="isDelete"    column="is_delete"    />
+        <result property="dltjSyhj"    column="dltj_syhj"    />
+        <result property="dltZczj"    column="dlt_zczj"    />
+        <result property="dltjLjysgb"    column="dltj_ljysgb"    />
+        <result property="dltjSjjsdl"    column="dltj_sjjsdl"    />
+        <result property="dltjDfjsljsjdz"    column="dltj_dfjsljsjdz"    />
+        <result property="dltjQt"    column="dltj_qt"    />
+        <result property="dltjByzchj"    column="dltj_byzchj"    />
+        <result property="dltjBxk"    column="dltj_bxk"    />
+        <result property="dltjSyjsdfysje"    column="dltj_syjsdfysje"    />
+        <result property="dltjLjfdl"    column="dltj_ljfdl"    />
+        <result property="dltjDfjsljyjdz"    column="dltj_dfjsljyjdz"    />
+        <result property="dltjYjdfsr"    column="dltj_yjdfsr"    />
+        <result property="dltjSjdfsr"    column="dltj_sjdfsr"    />
+        <result property="dltjDljsljysje"    column="dltj_dljsljysje"    />
+    </resultMap>
+
+    <resultMap type="ExportElectricity" id="ExportElectricityStatisticsResult">
+
+        <result property="xmqkXmmc"    column="xmqk_xmmc"    />
+        <result property="dltjRq"    column="dltj_rq"    />
+        <result property="dltjYjfdl"    column="dltj_yjfdl"    />
+        <result property="dltjSjfdl"    column="dltj_sjfdl"    />
+        <result property="dltjPc"    column="dltj_pc"    />
+        <result property="dltjLjswdl"    column="dltj_ljswdl"    />
+        <result property="dltjLjjsdl"    column="dltj_ljjsdl"    />
+        <result property="dltjLjwdzdf"    column="dltj_ljwdzdf"    />
+        <result property="dltjDfsy"    column="dltj_dfsy"    />
+        <result property="dltjBt"    column="dltj_bt"    />
+        <result property="dltjBysrhj"    column="dltj_bysrhj"    />
+        <result property="dltjXwdf"    column="dltj_xwdf"    />
+        <result property="dltjRggz"    column="dltj_rggz"    />
+        <result property="dltjWjbljqt"    column="dltj_wjbljqt"    />
+        <result property="dltjLx"    column="dltj_lx"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="dltjSjjsdl"    column="dltj_sjjsdl"    />
+        <result property="dltjDfjsljsjdz"    column="dltj_dfjsljsjdz"    />
+        <result property="dltjQt"    column="dltj_qt"    />
+        <result property="dltjByzchj"    column="dltj_byzchj"    />
+        <result property="dltjLjfdl"    column="dltj_ljfdl"    />
+        <result property="dltjSjdfsr"    column="dltj_sjdfsr"    />
+    </resultMap>
+
+    <sql id="selectElectricityStatisticsVo">
+        select a.dltj_id, a.dltj_project_id, a.dltj_rq, a.dltj_yjfdl, a.dltj_sjfdl, a.dltj_pc ,a.dltj_ljswdl,a.dltj_ljjsdl,a.dltj_qdlqk, a.dltj_syjsdfyssj, a.dltj_ljwdzdf, a.dltj_gdgchk, a.dltj_dfsy, a.dltj_bt, a.dltj_bysrhj, a.dltj_xwdf, a.dltj_rggz, a.dltj_wjbljqt, a.dltj_lx, a.create_by, a.create_time, a.update_by, a.update_time, a.is_delete, a.dltj_syhj, a.dlt_zczj, a.dltj_ljysgb, a.dltj_sjjsdl, a.dltj_dfjsljsjdz, a.dltj_qt, a.dltj_byzchj,
+               a.dltj_bxk, a.dltj_syjsdfysje , a.dltj_ljfdl , a.dltj_dfjsljyjdz , a.dltj_yjdfsr , a.dltj_sjdfsr  , a.dltj_dljsljysje,b.xmqk_xmmc as projectName from electricity_statistics a left  join project_info b on a.dltj_project_id  = b.xmqk_project_id
+    </sql>
+
+    <select id="selectElectricityStatisticsList" parameterType="ElectricityStatistics" resultMap="ElectricityStatisticsResult">
+        <include refid="selectElectricityStatisticsVo"/>
+        <where>  
+            and a.dltj_project_id = #{dltjProjectId}
+            <if test="dltjRq != null "> and a.dltj_rq = #{dltjRq}</if>
+            <if test="dltjYjfdl != null  and dltjYjfdl != ''"> and a.dltj_yjfdl = #{dltjYjfdl}</if>
+            <if test="dltjQdlqk != null  and dltjQdlqk != ''"> and a.dltj_qdlqk = #{dltjQdlqk}</if>
+            <if test="dltjSyjsdfyssj != null "> and a.dltj_syjsdfyssj = #{dltjSyjsdfyssj}</if>
+            <if test="dltjLjwdzdf != null "> and a.dltj_ljwdzdf = #{dltjLjwdzdf}</if>
+            <if test="dltjGdgchk != null "> and a.dltj_gdgchk = #{dltjGdgchk}</if>
+            <if test="dltjDfsy != null "> and a.dltj_dfsy = #{dltjDfsy}</if>
+            <if test="dltjBt != null "> and a.dltj_bt = #{dltjBt}</if>
+            <if test="dltjBysrhj != null "> and a.dltj_bysrhj = #{dltjBysrhj}</if>
+            <if test="dltjXwdf != null "> and a.dltj_xwdf = #{dltjXwdf}</if>
+            <if test="dltjRggz != null "> and a.dltj_rggz = #{dltjRggz}</if>
+            <if test="dltjWjbljqt != null "> and a.dltj_wjbljqt = #{dltjWjbljqt}</if>
+            <if test="dltjLx != null "> and a.dltj_lx = #{dltjLx}</if>
+            <if test="isDelete != null  and isDelete != ''"> and a.is_delete = #{isDelete}</if>
+            <if test="dltjSyhj != null "> and a.dltj_syhj = #{dltjSyhj}</if>
+            <if test="dltZczj != null "> and a.dlt_zczj = #{dltZczj}</if>
+            <if test="dltjLjysgb != null "> and a.dltj_ljysgb = #{dltjLjysgb}</if>
+            <if test="dltjSjjsdl != null "> and a.dltj_sjjsdl = #{dltjSjjsdl}</if>
+            <if test="dltjDfjsljsjdz != null "> and a.dltj_dfjsljsjdz = #{dltjDfjsljsjdz}</if>
+            <if test="dltjQt != null "> and a.dltj_qt = #{dltjQt}</if>
+            <if test="dltjByzchj != null "> and a.dltj_byzchj = #{dltjByzchj}</if>
+            <if test="dltjBxk != null "> and a.dltj_bxk = #{dltjBxk}</if>
+            <if test="dltjSyjsdfysje != null "> and a.dltj_syjsdfysje = #{dltjSyjsdfysje}</if>
+        </where>
+    </select>
+
+
+    <select id="selectElectricityStatisticsExport" parameterType="ElectricityStatistics" resultMap="ElectricityStatisticsResult">
+       select
+        b.xmqk_xmmc projectName,
+        a.dltj_rq,
+        a.dltj_yjfdl,
+        a.dltj_qdlqk,
+        a.dltj_syjsdfyssj,
+        a.dltj_ljwdzdf,
+        a.dltj_gdgchk,
+        a.dltj_dfsy,
+        a.dltj_bt,
+        a.dltj_bysrhj,
+        a.dltj_xwdf,
+        a.dltj_rggz,
+        a.dltj_wjbljqt,
+        a.dltj_lx,
+        a.dltj_syhj,
+        a.dlt_zczj,
+        a.dltj_ljysgb,
+        a.dltj_sjjsdl,
+        a.dltj_dfjsljsjdz,
+        a.dltj_qt,
+        a.dltj_byzchj,
+        a.dltj_bxk,
+        a.dltj_syjsdfysje , a.dltj_ljfdl , a.dltj_dfjsljyjdz , a.dltj_yjdfsr , a.dltj_sjdfsr ,a.dltj_dljsljysje
+        from electricity_statistics  a LEFT JOIN   project_info    b   on  a.dltj_project_id=b.xmqk_project_id
+        <where>
+           <if test="dltjProjectId != null ">a.dltj_project_id = #{dltjProjectId}</if>
+            <!--            and a.dltj_project_id = #{dltjProjectId} -->
+            <if test="dltjRq != null "> and a.dltj_rq = #{dltjRq}</if>
+            <if test="dltjYjfdl != null  and dltjYjfdl != ''"> and a.dltj_yjfdl = #{dltjYjfdl}</if>
+            <if test="dltjQdlqk != null  and dltjQdlqk != ''"> and a.dltj_qdlqk = #{dltjQdlqk}</if>
+            <if test="dltjSyjsdfyssj != null "> and a.dltj_syjsdfyssj = #{dltjSyjsdfyssj}</if>
+            <if test="dltjLjwdzdf != null "> and a.dltj_ljwdzdf = #{dltjLjwdzdf}</if>
+            <if test="dltjGdgchk != null "> and a.dltj_gdgchk = #{dltjGdgchk}</if>
+            <if test="dltjDfsy != null "> and a.dltj_dfsy = #{dltjDfsy}</if>
+            <if test="dltjBt != null "> and a.dltj_bt = #{dltjBt}</if>
+            <if test="dltjBysrhj != null "> and a.dltj_bysrhj = #{dltjBysrhj}</if>
+            <if test="dltjXwdf != null "> and a.dltj_xwdf = #{dltjXwdf}</if>
+            <if test="dltjRggz != null "> and a.dltj_rggz = #{dltjRggz}</if>
+            <if test="dltjWjbljqt != null "> and a.dltj_wjbljqt = #{dltjWjbljqt}</if>
+            <if test="dltjLx != null "> and a.dltj_lx = #{dltjLx}</if>
+            <if test="dltjSyhj != null "> and a.dltj_syhj = #{dltjSyhj}</if>
+            <if test="dltZczj != null "> and a.dlt_zczj = #{dltZczj}</if>
+            <if test="dltjLjysgb != null "> and a.dltj_ljysgb = #{dltjLjysgb}</if>
+            <if test="dltjSjjsdl != null "> and a.dltj_sjjsdl = #{dltjSjjsdl}</if>
+            <if test="dltjDfjsljsjdz != null "> and a.dltj_dfjsljsjdz = #{dltjDfjsljsjdz}</if>
+            <if test="dltjQt != null "> and a.dltj_qt = #{dltjQt}</if>
+            <if test="dltjByzchj != null "> and a.dltj_byzchj = #{dltjByzchj}</if>
+            <if test="dltjBxk != null "> and a.dltj_bxk = #{dltjBxk}</if>
+            <if test="dltjSyjsdfysje != null "> and a.dltj_syjsdfysje = #{dltjSyjsdfysje}</if>
+        </where>
+    </select>
+    
+    <select id="selectElectricityStatisticsByDltjId" parameterType="Long" resultMap="ElectricityStatisticsResult">
+        <include refid="selectElectricityStatisticsVo"/>
+        where dltj_id = #{dltjId}
+    </select>
+        
+    <insert id="insertElectricityStatistics" parameterType="ElectricityStatistics" useGeneratedKeys="true" keyProperty="dltjId">
+        insert into electricity_statistics
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dltjProjectId != null">dltj_project_id,</if>
+            <if test="dltjRq != null">dltj_rq,</if>
+            <if test="dltjYjfdl != null">dltj_yjfdl,</if>
+            <if test="dltjQdlqk != null">dltj_qdlqk,</if>
+            <if test="dltjSyjsdfyssj != null">dltj_syjsdfyssj,</if>
+            <if test="dltjLjwdzdf != null">dltj_ljwdzdf,</if>
+            <if test="dltjGdgchk != null">dltj_gdgchk,</if>
+            <if test="dltjDfsy != null">dltj_dfsy,</if>
+            <if test="dltjBt != null">dltj_bt,</if>
+            <if test="dltjBysrhj != null">dltj_bysrhj,</if>
+            <if test="dltjXwdf != null">dltj_xwdf,</if>
+            <if test="dltjRggz != null">dltj_rggz,</if>
+            <if test="dltjWjbljqt != null">dltj_wjbljqt,</if>
+            <if test="dltjLx != null">dltj_lx,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="isDelete != null">is_delete,</if>
+            <if test="dltjSyhj != null">dltj_syhj,</if>
+            <if test="dltZczj != null">dlt_zczj,</if>
+            <if test="dltjLjysgb != null">dltj_ljysgb,</if>
+            <if test="dltjSjjsdl != null">dltj_sjjsdl,</if>
+            <if test="dltjDfjsljsjdz != null">dltj_dfjsljsjdz,</if>
+            <if test="dltjQt != null">dltj_qt,</if>
+            <if test="dltjByzchj != null">dltj_byzchj,</if>
+            <if test="dltjBxk != null">dltj_bxk,</if>
+            <if test="dltjSyjsdfysje != null">dltj_syjsdfysje,</if>
+            <if test="dltjLjfdl != null">dltj_ljfdl,</if>
+            <if test="dltjDfjsljyjdz != null">dltj_dfjsljyjdz,</if>
+            <if test="dltjYjdfsr != null">dltj_yjdfsr,</if>
+            <if test="dltjSjdfsr != null">dltj_sjdfsr,</if>
+            <if test="dltjDljsljysje != null">dltj_dljsljysje,</if>
+
+
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="dltjProjectId != null">#{dltjProjectId},</if>
+            <if test="dltjRq != null">#{dltjRq},</if>
+            <if test="dltjYjfdl != null">#{dltjYjfdl},</if>
+            <if test="dltjQdlqk != null">#{dltjQdlqk},</if>
+            <if test="dltjSyjsdfyssj != null">#{dltjSyjsdfyssj},</if>
+            <if test="dltjLjwdzdf != null">#{dltjLjwdzdf},</if>
+            <if test="dltjGdgchk != null">#{dltjGdgchk},</if>
+            <if test="dltjDfsy != null">#{dltjDfsy},</if>
+            <if test="dltjBt != null">#{dltjBt},</if>
+            <if test="dltjBysrhj != null">#{dltjBysrhj},</if>
+            <if test="dltjXwdf != null">#{dltjXwdf},</if>
+            <if test="dltjRggz != null">#{dltjRggz},</if>
+            <if test="dltjWjbljqt != null">#{dltjWjbljqt},</if>
+            <if test="dltjLx != null">#{dltjLx},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="isDelete != null">#{isDelete},</if>
+            <if test="dltjSyhj != null">#{dltjSyhj},</if>
+            <if test="dltZczj != null">#{dltZczj},</if>
+            <if test="dltjLjysgb != null">#{dltjLjysgb},</if>
+            <if test="dltjSjjsdl != null">#{dltjSjjsdl},</if>
+            <if test="dltjDfjsljsjdz != null">#{dltjDfjsljsjdz},</if>
+            <if test="dltjQt != null">#{dltjQt},</if>
+            <if test="dltjByzchj != null">#{dltjByzchj},</if>
+            <if test="dltjBxk != null">#{dltjBxk},</if>
+            <if test="dltjSyjsdfysje != null">#{dltjSyjsdfysje},</if>
+            <if test="dltjLjfdl != null">#{dltjLjfdl},</if>
+            <if test="dltjDfjsljyjdz != null">#{dltjDfjsljyjdz},</if>
+            <if test="dltjYjdfsr != null">#{dltjYjdfsr},</if>
+            <if test="dltjSjdfsr != null">#{dltjSjdfsr},</if>
+            <if test="dltjDljsljysje != null">#{dltjDljsljysje},</if>
+
+
+         </trim>
+    </insert>
+
+    <update id="updateElectricityStatistics" parameterType="ElectricityStatistics">
+        update electricity_statistics
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="dltjProjectId != null">dltj_project_id = #{dltjProjectId},</if>
+            <if test="dltjRq != null">dltj_rq = #{dltjRq},</if>
+            <if test="dltjYjfdl != null">dltj_yjfdl = #{dltjYjfdl},</if>
+            <if test="dltjSjfdl != null">dltj_sjfdl = #{dltjSjfdl},</if>
+            <if test="dltjLjjsdl != null">dltj_ljjsdl = #{dltjLjjsdl},</if>
+            <if test="dltjLjswdl != null">dltj_ljswdl = #{dltjLjswdl},</if>
+            <if test="dltjPc != null">dltj_pc = #{dltjPc},</if>
+            <if test="dltjQdlqk != null">dltj_qdlqk = #{dltjQdlqk},</if>
+            <if test="dltjSyjsdfyssj != null">dltj_syjsdfyssj = #{dltjSyjsdfyssj},</if>
+            <if test="dltjLjwdzdf != null">dltj_ljwdzdf = #{dltjLjwdzdf},</if>
+            <if test="dltjGdgchk != null">dltj_gdgchk = #{dltjGdgchk},</if>
+            <if test="dltjDfsy != null">dltj_dfsy = #{dltjDfsy},</if>
+            <if test="dltjBt != null">dltj_bt = #{dltjBt},</if>
+            <if test="dltjBysrhj != null">dltj_bysrhj = #{dltjBysrhj},</if>
+            <if test="dltjXwdf != null">dltj_xwdf = #{dltjXwdf},</if>
+            <if test="dltjRggz != null">dltj_rggz = #{dltjRggz},</if>
+            <if test="dltjWjbljqt != null">dltj_wjbljqt = #{dltjWjbljqt},</if>
+            <if test="dltjLx != null">dltj_lx = #{dltjLx},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="isDelete != null">is_delete = #{isDelete},</if>
+            <if test="dltjSyhj != null">dltj_syhj = #{dltjSyhj},</if>
+            <if test="dltZczj != null">dlt_zczj = #{dltZczj},</if>
+            <if test="dltjLjysgb != null">dltj_ljysgb = #{dltjLjysgb},</if>
+            <if test="dltjSjjsdl != null">dltj_sjjsdl = #{dltjSjjsdl},</if>
+            <if test="dltjDfjsljsjdz != null">dltj_dfjsljsjdz = #{dltjDfjsljsjdz},</if>
+            <if test="dltjQt != null">dltj_qt = #{dltjQt},</if>
+            <if test="dltjByzchj != null">dltj_byzchj = #{dltjByzchj},</if>
+            <if test="dltjBxk != null">dltj_bxk = #{dltjBxk},</if>
+            <if test="dltjSyjsdfysje != null">dltj_syjsdfysje = #{dltjSyjsdfysje},</if>
+            <if test="dltjLjfdl != null">dltj_ljfdl = #{dltjLjfdl},</if>
+            <if test="dltjDfjsljyjdz != null">dltj_dfjsljyjdz = #{dltjDfjsljyjdz},</if>
+            <if test="dltjYjdfsr != null">dltj_yjdfsr = #{dltjYjdfsr},</if>
+            <if test="dltjSjdfsr != null">dltj_sjdfsr = #{dltjSjdfsr},</if>
+            <if test="dltjDljsljysje != null">dltj_dljsljysje = #{dltjDljsljysje},</if>
+        </trim>
+        where dltj_id = #{dltjId}
+    </update>
+
+    <delete id="deleteElectricityStatisticsByDltjId" parameterType="Long">
+        delete from electricity_statistics where dltj_id = #{dltjId}
+    </delete>
+
+    <delete id="deleteElectricityStatisticsByDltjIds" parameterType="String">
+        delete from electricity_statistics where dltj_id in 
+        <foreach item="dltjId" collection="array" open="(" separator="," close=")">
+            #{dltjId}
+        </foreach>
+    </delete>
+
+
+
+    <insert id="importBox"    useGeneratedKeys="true" keyProperty="dltjId" >
+        insert into  electricity_statistics(
+        dltj_project_id,
+        dltj_rq,
+        dltj_yjfdl,
+        dltj_qdlqk,
+        dltj_syjsdfyssj,
+        dltj_ljwdzdf,
+        dltj_gdgchk,
+        dltj_dfsy,
+        dltj_bt,
+        dltj_bysrhj,
+        dltj_xwdf,
+        dltj_rggz,
+        dltj_wjbljqt,
+        dltj_lx,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        is_delete,
+        dltj_syhj,
+        dlt_zczj,
+        dltj_ljysgb,
+        dltj_sjjsdl,
+        dltj_dfjsljsjdz,
+        dltj_qt,
+        dltj_byzchj,
+        dltj_bxk,
+        dltj_syjsdfysje,
+        dltj_ljfdl,
+        dltj_dfjsljyjdz,
+        dltj_yjdfsr,
+        dltj_sjdfsr,
+        dltj_dljsljysje )
+        values
+        <foreach collection="listData" item="listItme" separator=",">
+            (
+            #{listItme.dltjProjectId},
+            #{listItme.dltjRq},
+            #{listItme.dltjYjfdl},
+            #{listItme.dltjQdlqk},
+            #{listItme.dltjSyjsdfyssj},
+            #{listItme.dltjLjwdzdf},
+            #{listItme.dltjGdgchk},
+            #{listItme.dltjDfsy},
+            #{listItme.dltjBt},
+            #{listItme.dltjBysrhj},
+            #{listItme.dltjXwdf},
+            #{listItme.dltjRggz},
+            #{listItme.dltjWjbljqt},
+            #{listItme.dltjLx},
+            #{listItme.createBy},
+            #{listItme.createTime},
+            #{listItme.updateBy},
+            #{listItme.updateTime},
+            #{listItme.isDelete},
+            #{listItme.dltjSyhj},
+            #{listItme.dltZczj},
+            #{listItme.dltjLjysgb},
+            #{listItme.dltjSjjsdl},
+            #{listItme.dltjDfjsljsjdz},
+            #{listItme.dltjQt},
+            #{listItme.dltjByzchj},
+            #{listItme.dltjBxk},
+            #{listItme.dltjSyjsdfysje},
+            #{listItme.dltjLjfdl},
+            #{listItme.dltjDfjsljyjdz},
+            #{listItme.dltjYjdfsr},
+            #{listItme.dltjSjdfsr},
+            #{listItme.dltjDljsljysje}
+            )
+        </foreach>
+
+    </insert>
+
+
+
+
+
+    <delete id="deleteElectricityStatisticsByDltjIdJl" parameterType="String">
+        delete from electricity_statistics where dltj_project_id = #{dltjId}
+    </delete>
+
+    <delete id="deleteElectricityStatisticsByDltjIdsJl" parameterType="String">
+        delete from electricity_statistics where dltj_project_id in
+        <foreach item="dltjId" collection="array" open="(" separator="," close=")">
+            #{dltjId}
+        </foreach>
+    </delete>
+
+
+    <insert id="importBoxElectricityCash" parameterType="ElectricityCash" useGeneratedKeys="true" keyProperty="dltjId">
+        insert into electricity_statistics(
+            <if test="electricityCash.xmqkProjectId != null">dltj_project_id,</if>
+            <if test="electricityCash.dltjRq != null">dltj_rq,</if>
+            <if test="electricityCash.dltjYjfdl != null">dltj_yjfdl,</if>
+            <if test="electricityCash.dltjSjfdl != null">dltj_sjfdl,</if>
+            <if test="electricityCash.dltjPc != null">dltj_pc,</if>
+            <if test="electricityCash.dltjSjjsdl != null">dltj_sjjsdl,</if>
+            <if test="electricityCash.dltjSjdfsr != null">dltj_sjdfsr,</if>
+            <if test="electricityCash.dltjLjswdl != null">dltj_ljswdl,</if>
+            <if test="electricityCash.dltjLjjsdl != null">dltj_ljjsdl,</if>
+            <if test="electricityCash.dltjLjfdl != null">dltj_ljfdl,</if>
+            <if test="electricityCash.dltjDfjsljsjdz != null">dltj_dfjsljsjdz,</if>
+            <if test="electricityCash.dltjLjwdzdf != null">dltj_ljwdzdf,</if>
+            <if test="electricityCash.dltjDfsy != null">dltj_dfsy,</if>
+            <if test="electricityCash.dltjBt != null">dltj_bt,</if>
+            <if test="electricityCash.dltjQt != null">dltj_qt,</if>
+            <if test="electricityCash.dltjBysrhj != null">dltj_bysrhj,</if>
+            <if test="electricityCash.dltjLx != null">dltj_lx,</if>
+            <if test="electricityCash.dltjXwdf != null">dltj_xwdf,</if>
+            <if test="electricityCash.dltjRggz != null">dltj_rggz,</if>
+            <if test="electricityCash.dltjWjbljqt != null">dltj_wjbljqt,</if>
+            <if test="electricityCash.dltjByzchj != null">dltj_byzchj,</if>
+            create_time
+        )values(
+            <if test="electricityCash.xmqkProjectId != null">#{electricityCash.xmqkProjectId},</if>
+            <if test="electricityCash.dltjRq != null">#{electricityCash.dltjRq},</if>
+            <if test="electricityCash.dltjYjfdl != null">#{electricityCash.dltjYjfdl},</if>
+            <if test="electricityCash.dltjSjfdl != null">#{electricityCash.dltjSjfdl},</if>
+            <if test="electricityCash.dltjPc != null">#{electricityCash.dltjPc},</if>
+            <if test="electricityCash.dltjSjjsdl != null">#{electricityCash.dltjSjjsdl},</if>
+            <if test="electricityCash.dltjSjdfsr != null">#{electricityCash.dltjSjdfsr},</if>
+            <if test="electricityCash.dltjLjswdl != null">#{electricityCash.dltjLjswdl},</if>
+            <if test="electricityCash.dltjLjjsdl != null">#{electricityCash.dltjLjjsdl},</if>
+            <if test="electricityCash.dltjLjfdl != null">#{electricityCash.dltjLjfdl},</if>
+            <if test="electricityCash.dltjDfjsljsjdz != null">#{electricityCash.dltjDfjsljsjdz},</if>
+            <if test="electricityCash.dltjLjwdzdf != null">#{electricityCash.dltjLjwdzdf},</if>
+            <if test="electricityCash.dltjDfsy != null">#{electricityCash.dltjDfsy},</if>
+            <if test="electricityCash.dltjBt != null">#{electricityCash.dltjBt},</if>
+            <if test="electricityCash.dltjQt != null">#{electricityCash.dltjQt},</if>
+            <if test="electricityCash.dltjBysrhj != null">#{electricityCash.dltjBysrhj},</if>
+            <if test="electricityCash.dltjLx != null">#{electricityCash.dltjLx},</if>
+            <if test="electricityCash.dltjXwdf != null">#{electricityCash.dltjXwdf},</if>
+            <if test="electricityCash.dltjRggz != null">#{electricityCash.dltjRggz},</if>
+            <if test="electricityCash.dltjWjbljqt != null">#{electricityCash.dltjWjbljqt},</if>
+            <if test="electricityCash.dltjByzchj != null">#{electricityCash.dltjByzchj},</if>
+            sysdate()
+        )
+    </insert>
+
+    <insert id="insertUpdateBatch0"  >
+
+        <foreach collection="listData" item="electricityCash" separator=";">
+            insert into electricity_statistics(
+            <trim suffix="" suffixOverrides=",">
+            <if test="electricityCash.xmqkProjectId != null">dltj_project_id,</if>
+            <if test="electricityCash.dltjRq != null">dltj_rq,</if>
+            <if test="electricityCash.dltjYjfdl != null">dltj_yjfdl,</if>
+            <if test="electricityCash.dltjSjfdl != null">dltj_sjfdl,</if>
+            <if test="electricityCash.dltjPc != null">dltj_pc,</if>
+            <if test="electricityCash.dltjSjjsdl != null">dltj_sjjsdl,</if>
+            <if test="electricityCash.dltjSjdfsr != null">dltj_sjdfsr,</if>
+            <if test="electricityCash.dltjLjswdl != null">dltj_ljswdl,</if>
+            <if test="electricityCash.dltjLjjsdl != null">dltj_ljjsdl,</if>
+            <if test="electricityCash.dltjLjfdl != null">dltj_ljfdl,</if>
+            <if test="electricityCash.dltjDfjsljsjdz != null">dltj_dfjsljsjdz,</if>
+            <if test="electricityCash.dltjLjwdzdf != null">dltj_ljwdzdf,</if>
+            <if test="electricityCash.dltjDfsy != null">dltj_dfsy,</if>
+            <if test="electricityCash.dltjBt != null">dltj_bt,</if>
+            <if test="electricityCash.dltjQt != null">dltj_qt,</if>
+            <if test="electricityCash.dltjBysrhj != null">dltj_bysrhj,</if>
+            <if test="electricityCash.dltjLx != null">dltj_lx,</if>
+            <if test="electricityCash.dltjXwdf != null">dltj_xwdf,</if>
+            <if test="electricityCash.dltjRggz != null">dltj_rggz,</if>
+            <if test="electricityCash.dltjWjbljqt != null">dltj_wjbljqt,</if>
+            <if test="electricityCash.dltjByzchj != null">dltj_byzchj,</if>
+            create_time
+            </trim>
+            )values(
+            <trim suffix="" suffixOverrides=",">
+            <if test="electricityCash.xmqkProjectId != null">#{electricityCash.xmqkProjectId},</if>
+            <if test="electricityCash.dltjRq != null">#{electricityCash.dltjRq},</if>
+            <if test="electricityCash.dltjYjfdl != null">#{electricityCash.dltjYjfdl},</if>
+            <if test="electricityCash.dltjSjfdl != null">#{electricityCash.dltjSjfdl},</if>
+            <if test="electricityCash.dltjPc != null">#{electricityCash.dltjPc},</if>
+            <if test="electricityCash.dltjSjjsdl != null">#{electricityCash.dltjSjjsdl},</if>
+            <if test="electricityCash.dltjSjdfsr != null">#{electricityCash.dltjSjdfsr},</if>
+            <if test="electricityCash.dltjLjswdl != null">#{electricityCash.dltjLjswdl},</if>
+            <if test="electricityCash.dltjLjjsdl != null">#{electricityCash.dltjLjjsdl},</if>
+            <if test="electricityCash.dltjLjfdl != null">#{electricityCash.dltjLjfdl},</if>
+            <if test="electricityCash.dltjDfjsljsjdz != null">#{electricityCash.dltjDfjsljsjdz},</if>
+            <if test="electricityCash.dltjLjwdzdf != null">#{electricityCash.dltjLjwdzdf},</if>
+            <if test="electricityCash.dltjDfsy != null">#{electricityCash.dltjDfsy},</if>
+            <if test="electricityCash.dltjBt != null">#{electricityCash.dltjBt},</if>
+            <if test="electricityCash.dltjQt != null">#{electricityCash.dltjQt},</if>
+            <if test="electricityCash.dltjBysrhj != null">#{electricityCash.dltjBysrhj},</if>
+            <if test="electricityCash.dltjLx != null">#{electricityCash.dltjLx},</if>
+            <if test="electricityCash.dltjXwdf != null">#{electricityCash.dltjXwdf},</if>
+            <if test="electricityCash.dltjRggz != null">#{electricityCash.dltjRggz},</if>
+            <if test="electricityCash.dltjWjbljqt != null">#{electricityCash.dltjWjbljqt},</if>
+            <if test="electricityCash.dltjByzchj != null">#{electricityCash.dltjByzchj},</if>
+            sysdate()
+            </trim>
+            )
+            on duplicate key update
+            <trim suffix="" suffixOverrides=",">
+            <if test="electricityCash.xmqkProjectId != null">dltj_project_id=#{electricityCash.xmqkProjectId},</if>
+            <if test="electricityCash.dltjRq != null">dltj_rq=#{electricityCash.dltjRq},</if>
+            <if test="electricityCash.dltjYjfdl != null">dltj_yjfdl=#{electricityCash.dltjYjfdl},</if>
+            <if test="electricityCash.dltjSjfdl != null">dltj_sjfdl=#{electricityCash.dltjSjfdl},</if>
+            <if test="electricityCash.dltjPc != null">dltj_pc=#{electricityCash.dltjPc},</if>
+            <if test="electricityCash.dltjSjjsdl != null">dltj_sjjsdl=#{electricityCash.dltjSjjsdl},</if>
+            <if test="electricityCash.dltjSjdfsr != null">dltj_sjdfsr=#{electricityCash.dltjSjdfsr},</if>
+            <if test="electricityCash.dltjLjswdl != null">dltj_ljswdl=#{electricityCash.dltjLjswdl},</if>
+            <if test="electricityCash.dltjLjjsdl != null">dltj_ljjsdl=#{electricityCash.dltjLjjsdl},</if>
+            <if test="electricityCash.dltjLjfdl != null">dltj_ljfdl=#{electricityCash.dltjLjfdl},</if>
+            <if test="electricityCash.dltjDfjsljsjdz != null">dltj_dfjsljsjdz=#{electricityCash.dltjDfjsljsjdz},</if>
+            <if test="electricityCash.dltjLjwdzdf != null">dltj_ljwdzdf=#{electricityCash.dltjLjwdzdf},</if>
+            <if test="electricityCash.dltjDfsy != null">dltj_dfsy=#{electricityCash.dltjDfsy},</if>
+            <if test="electricityCash.dltjBt != null">dltj_bt=#{electricityCash.dltjBt},</if>
+            <if test="electricityCash.dltjQt != null">dltj_qt=#{electricityCash.dltjQt},</if>
+            <if test="electricityCash.dltjBysrhj != null">dltj_bysrhj=#{electricityCash.dltjBysrhj},</if>
+            <if test="electricityCash.dltjLx != null">dltj_lx=#{electricityCash.dltjLx},</if>
+            <if test="electricityCash.dltjXwdf != null">dltj_xwdf=#{electricityCash.dltjXwdf},</if>
+            <if test="electricityCash.dltjRggz != null">dltj_rggz=#{electricityCash.dltjRggz},</if>
+            <if test="electricityCash.dltjWjbljqt != null">dltj_wjbljqt=#{electricityCash.dltjWjbljqt},</if>
+            <if test="electricityCash.dltjByzchj != null">dltj_byzchj=#{electricityCash.dltjByzchj},</if>
+
+            </trim>
+        </foreach>
+    </insert>
+
+    <insert id="insertUpdateBatch"  >
+            insert into electricity_statistics(
+            <trim suffix="" suffixOverrides=",">
+                <if test="electricityCash.xmqkProjectId != null">dltj_project_id,</if>
+                <if test="electricityCash.dltjRq != null">dltj_rq,</if>
+                <if test="electricityCash.dltjYjfdl != null">dltj_yjfdl,</if>
+                <if test="electricityCash.dltjSjfdl != null">dltj_sjfdl,</if>
+                <if test="electricityCash.dltjPc != null">dltj_pc,</if>
+                <if test="electricityCash.dltjSjjsdl != null">dltj_sjjsdl,</if>
+                <if test="electricityCash.dltjSjdfsr != null">dltj_sjdfsr,</if>
+                <if test="electricityCash.dltjLjswdl != null">dltj_ljswdl,</if>
+                <if test="electricityCash.dltjLjjsdl != null">dltj_ljjsdl,</if>
+                <if test="electricityCash.dltjLjfdl != null">dltj_ljfdl,</if>
+                <if test="electricityCash.dltjDfjsljsjdz != null">dltj_dfjsljsjdz,</if>
+                <if test="electricityCash.dltjLjwdzdf != null">dltj_ljwdzdf,</if>
+                <if test="electricityCash.dltjDfsy != null">dltj_dfsy,</if>
+                <if test="electricityCash.dltjBt != null">dltj_bt,</if>
+                <if test="electricityCash.dltjQt != null">dltj_qt,</if>
+                <if test="electricityCash.dltjBysrhj != null">dltj_bysrhj,</if>
+                <if test="electricityCash.dltjLx != null">dltj_lx,</if>
+                <if test="electricityCash.dltjXwdf != null">dltj_xwdf,</if>
+                <if test="electricityCash.dltjRggz != null">dltj_rggz,</if>
+                <if test="electricityCash.dltjWjbljqt != null">dltj_wjbljqt,</if>
+                <if test="electricityCash.dltjByzchj != null">dltj_byzchj,</if>
+                create_time
+            </trim>
+            )values(
+            <trim suffix="" suffixOverrides=",">
+                <if test="electricityCash.xmqkProjectId != null">#{electricityCash.xmqkProjectId},</if>
+                <if test="electricityCash.dltjRq != null">#{electricityCash.dltjRq},</if>
+                <if test="electricityCash.dltjYjfdl != null">#{electricityCash.dltjYjfdl},</if>
+                <if test="electricityCash.dltjSjfdl != null">#{electricityCash.dltjSjfdl},</if>
+                <if test="electricityCash.dltjPc != null">#{electricityCash.dltjPc},</if>
+                <if test="electricityCash.dltjSjjsdl != null">#{electricityCash.dltjSjjsdl},</if>
+                <if test="electricityCash.dltjSjdfsr != null">#{electricityCash.dltjSjdfsr},</if>
+                <if test="electricityCash.dltjLjswdl != null">#{electricityCash.dltjLjswdl},</if>
+                <if test="electricityCash.dltjLjjsdl != null">#{electricityCash.dltjLjjsdl},</if>
+                <if test="electricityCash.dltjLjfdl != null">#{electricityCash.dltjLjfdl},</if>
+                <if test="electricityCash.dltjDfjsljsjdz != null">#{electricityCash.dltjDfjsljsjdz},</if>
+                <if test="electricityCash.dltjLjwdzdf != null">#{electricityCash.dltjLjwdzdf},</if>
+                <if test="electricityCash.dltjDfsy != null">#{electricityCash.dltjDfsy},</if>
+                <if test="electricityCash.dltjBt != null">#{electricityCash.dltjBt},</if>
+                <if test="electricityCash.dltjQt != null">#{electricityCash.dltjQt},</if>
+                <if test="electricityCash.dltjBysrhj != null">#{electricityCash.dltjBysrhj},</if>
+                <if test="electricityCash.dltjLx != null">#{electricityCash.dltjLx},</if>
+                <if test="electricityCash.dltjXwdf != null">#{electricityCash.dltjXwdf},</if>
+                <if test="electricityCash.dltjRggz != null">#{electricityCash.dltjRggz},</if>
+                <if test="electricityCash.dltjWjbljqt != null">#{electricityCash.dltjWjbljqt},</if>
+                <if test="electricityCash.dltjByzchj != null">#{electricityCash.dltjByzchj},</if>
+                sysdate()
+            </trim>
+            )
+            on duplicate key update
+            <trim suffix="" suffixOverrides=",">
+                <if test="electricityCash.xmqkProjectId != null">dltj_project_id=#{electricityCash.xmqkProjectId},</if>
+                <if test="electricityCash.dltjRq != null">dltj_rq=#{electricityCash.dltjRq},</if>
+                <if test="electricityCash.dltjYjfdl != null">dltj_yjfdl=#{electricityCash.dltjYjfdl},</if>
+                <if test="electricityCash.dltjSjfdl != null">dltj_sjfdl=#{electricityCash.dltjSjfdl},</if>
+                <if test="electricityCash.dltjPc != null">dltj_pc=#{electricityCash.dltjPc},</if>
+                <if test="electricityCash.dltjSjjsdl != null">dltj_sjjsdl=#{electricityCash.dltjSjjsdl},</if>
+                <if test="electricityCash.dltjSjdfsr != null">dltj_sjdfsr=#{electricityCash.dltjSjdfsr},</if>
+                <if test="electricityCash.dltjLjswdl != null">dltj_ljswdl=#{electricityCash.dltjLjswdl},</if>
+                <if test="electricityCash.dltjLjjsdl != null">dltj_ljjsdl=#{electricityCash.dltjLjjsdl},</if>
+                <if test="electricityCash.dltjLjfdl != null">dltj_ljfdl=#{electricityCash.dltjLjfdl},</if>
+                <if test="electricityCash.dltjDfjsljsjdz != null">dltj_dfjsljsjdz=#{electricityCash.dltjDfjsljsjdz},</if>
+                <if test="electricityCash.dltjLjwdzdf != null">dltj_ljwdzdf=#{electricityCash.dltjLjwdzdf},</if>
+                <if test="electricityCash.dltjDfsy != null">dltj_dfsy=#{electricityCash.dltjDfsy},</if>
+                <if test="electricityCash.dltjBt != null">dltj_bt=#{electricityCash.dltjBt},</if>
+                <if test="electricityCash.dltjQt != null">dltj_qt=#{electricityCash.dltjQt},</if>
+                <if test="electricityCash.dltjBysrhj != null">dltj_bysrhj=#{electricityCash.dltjBysrhj},</if>
+                <if test="electricityCash.dltjLx != null">dltj_lx=#{electricityCash.dltjLx},</if>
+                <if test="electricityCash.dltjXwdf != null">dltj_xwdf=#{electricityCash.dltjXwdf},</if>
+                <if test="electricityCash.dltjRggz != null">dltj_rggz=#{electricityCash.dltjRggz},</if>
+                <if test="electricityCash.dltjWjbljqt != null">dltj_wjbljqt=#{electricityCash.dltjWjbljqt},</if>
+                <if test="electricityCash.dltjByzchj != null">dltj_byzchj=#{electricityCash.dltjByzchj},</if>
+                sysdate()
+            </trim>
+    </insert>
+    <select id="selectProjectInfoList" parameterType="ProjectInfo" resultMap="ExportElectricityStatisticsResult">
+        select b.xmqk_xmmc,c.* from project_info b
+        LEFT JOIN electricity_statistics c ON b.xmqk_project_id = c.dltj_project_id
+        <where>
+            <if test="projectInfo.xmqkProjectId != null  and projectInfo.xmqkProjectId != ''"> and b.xmqk_project_id = #{projectInfo.xmqkProjectId}</if>
+            <if test="projectInfo.xmqkXmmc != null  and projectInfo.xmqkXmmc != ''"> and b.xmqk_xmmc = #{projectInfo.xmqkXmmc}</if>
+            <if test="projectInfo.xmqkRl != null  and projectInfo.xmqkRl != ''"> and b.xmqk_rl = #{projectInfo.xmqkRl}</if>
+            <if test="projectInfo.xmqkXmlx != null "> and b.xmqk_xmlx = #{projectInfo.xmqkXmlx}</if>
+            <if test="projectInfo.xmqkXmxz != null "> and b.xmqk_xmxz = #{projectInfo.xmqkXmxz}</if>
+            <if test="projectInfo.xmqkLyfgs != null "> and b.xmqk_lyfgs = #{projectInfo.xmqkLyfgs}</if>
+            <if test="projectInfo.xmqkJszt != null "> and b.xmqk_jszt = #{projectInfo.xmqkJszt}</if>
+            <if test="projectInfo.xmqkQy != null "> and b.xmqk_qy = #{projectInfo.xmqkQy}</if>
+            <if test="projectInfo.xmqkHtsj != null "> and b.xmqk_htsj = #{projectInfo.xmqkHtsj}</if>
+            <if test="projectInfo.xmqkBwsj != null "> and b.xmqk_bwsj = #{projectInfo.xmqkBwsj}</if>
+            <if test="projectInfo.xmqkRzf != null  and projectInfo.xmqkRzf != ''"> and b.xmqk_rzf = #{projectInfo.xmqkRzf}</if>
+            <if test="projectInfo.xmqkSgf != null  and projectInfo.xmqkSgf != ''"> and b.xmqk_sgf = #{projectInfo.xmqkSgf}</if>
+            <if test="projectInfo.xmqkHzf != null  and projectInfo.xmqkHzf != ''"> and b.xmqk_hzf = #{projectInfo.xmqkHzf}</if>
+            <if test="projectInfo.xmqkRzjl != null  and projectInfo.xmqkRzjl != ''"> and b.xmqk_rzjl = #{projectInfo.xmqkRzjl}</if>
+            <if test="projectInfo.xmqkSwjl != null  and projectInfo.xmqkSwjl != ''"> and b.xmqk_swjl = #{projectInfo.xmqkSwjl}</if>
+            <if test="projectInfo.xmqkXmdqz != null  and projectInfo.xmqkXmdqz != ''"> and b.xmqk_xmdqz = #{projectInfo.xmqkXmdqz}</if>
+            <if test="projectInfo.xmqkSyzkw != null  and projectInfo.xmqkSyzkw != ''"> and b.xmqk_syzkw = #{projectInfo.xmqkSyzkw}</if>
+            <if test="projectInfo.xmqkJckw != null  and projectInfo.xmqkJckw != ''"> and b.xmqk_jckw = #{projectInfo.xmqkJckw}</if>
+            <if test="projectInfo.xmqkJsqk != null  and projectInfo.xmqkJsqk != ''"> and b.xmqk_jsqk = #{projectInfo.xmqkJsqk}</if>
+            <if test="projectInfo.xmqkSbdh != null  and projectInfo.xmqkSbdh != ''"> and b.xmqk_sbdh = #{projectInfo.xmqkSbdh}</if>
+            <if test="projectInfo.xmqkTzyjcsdj != null "> and b.xmqk_tzyjcsdj = #{projectInfo.xmqkTzyjcsdj}</if>
+            <if test="projectInfo.xmqkYjcszj != null "> and b.xmqk_yjcszj = #{projectInfo.xmqkYjcszj}</if>
+            <if test="projectInfo.xmqkEpcJsj != null "> and b.xmqk_epc_jsj = #{projectInfo.xmqkEpcJsj}</if>
+            <if test="projectInfo.xmqkEpcZjjsj != null "> and b.xmqk_epc_zjjsj = #{projectInfo.xmqkEpcZjjsj}</if>
+            <if test="projectInfo.xmqkYjsyhj != null "> and b.xmqk_yjsyhj = #{projectInfo.xmqkYjsyhj}</if>
+            <if test="projectInfo.xmqkXmgscb != null "> and b.xmqk_xmgscb = #{projectInfo.xmqkXmgscb}</if>
+            <if test="projectInfo.xmqkXmepccb != null "> and b.xmqk_xmepccb = #{projectInfo.xmqkXmepccb}</if>
+            <if test="projectInfo.xmqkQzzyf != null "> and b.xmqk_qzzyf = #{projectInfo.xmqkQzzyf}</if>
+            <if test="projectInfo.xmqkZcb != null "> and b.xmqk_zcb = #{projectInfo.xmqkZcb}</if>
+            <if test="projectInfo.xmqkSjYsysgk != null "> and b.xmqk_sj_ysysgk = #{projectInfo.xmqkSjYsysgk}</if>
+            <if test="projectInfo.xmqkYsrzk != null "> and b.xmqk_ysrzk = #{projectInfo.xmqkYsrzk}</if>
+            <if test="projectInfo.xmqkGzk != null "> and b.xmqk_gzk = #{projectInfo.xmqkGzk}</if>
+            <if test="projectInfo.xmqkYsdf != null "> and b.xmqk_ysdf = #{projectInfo.xmqkYsdf}</if>
+            <if test="projectInfo.xmqkSjsrhj != null "> and b.xmqk_sjsrhj = #{projectInfo.xmqkSjsrhj}</if>
+            <if test="projectInfo.xmqkYsye != null "> and b.xmqk_ysye = #{projectInfo.xmqkYsye}</if>
+            <if test="projectInfo.xmqkYfsbk != null "> and b.xmqk_yfsbk = #{projectInfo.xmqkYfsbk}</if>
+            <if test="projectInfo.xmqkYfjak != null "> and b.xmqk_yfjak = #{projectInfo.xmqkYfjak}</if>
+            <if test="projectInfo.xmqkYfqtkx != null "> and b.xmqk_yfqtkx = #{projectInfo.xmqkYfqtkx}</if>
+            <if test="projectInfo.xmqkYfzje != null "> and b.xmqk_yfzje = #{projectInfo.xmqkYfzje}</if>
+            <if test="projectInfo.xmqkYssjye != null "> and b.xmqk_yssjye = #{projectInfo.xmqkYssjye}</if>
+            <if test="projectInfo.xmqkSjyfwfkx != null "> and b.xmqk_sjyfwfkx = #{projectInfo.xmqkSjyfwfkx}</if>
+            <if test="projectInfo.xmqkHtzfye != null "> and b.xmqk_htzfye = #{projectInfo.xmqkHtzfye}</if>
+            <if test="projectInfo.xmqkYflybzj != null "> and b.xmqk_yflybzj = #{projectInfo.xmqkYflybzj}</if>
+            <if test="projectInfo.xmqkYtlybzj != null "> and b.xmqk_ytlybzj = #{projectInfo.xmqkYtlybzj}</if>
+            <if test="projectInfo.xmqkRemark != null  and projectInfo.xmqkRemark != ''"> and b.xmqk_remark = #{projectInfo.xmqkRemark}</if>
+            <if test="projectInfo.isDelete != null  and projectInfo.isDelete != ''"> and b.is_delete = #{projectInfo.isDelete}</if>
+        </where>
+    </select>
+
+
+    <select id="selectProjectInfoChek" resultType="Integer">
+         select dltj_id  from   electricity_statistics   where   dltj_project_id=#{electricityCash.xmqkProjectId}    and  dltj_rq=#{electricityCash.dltjRq}
+
+    </select>
+
+
+    <update id="updateElectricity" >
+        update electricity_statistics
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="electricityCash.xmqkProjectId != null">dltj_project_id=#{electricityCash.xmqkProjectId},</if>
+            <if test="electricityCash.dltjRq != null">dltj_rq=#{electricityCash.dltjRq},</if>
+            <if test="electricityCash.dltjYjfdl != null">dltj_yjfdl=#{electricityCash.dltjYjfdl},</if>
+            <if test="electricityCash.dltjSjfdl != null">dltj_sjfdl=#{electricityCash.dltjSjfdl},</if>
+            <if test="electricityCash.dltjPc != null">dltj_pc=#{electricityCash.dltjPc},</if>
+            <if test="electricityCash.dltjSjjsdl != null">dltj_sjjsdl=#{electricityCash.dltjSjjsdl},</if>
+            <if test="electricityCash.dltjSjdfsr != null">dltj_sjdfsr=#{electricityCash.dltjSjdfsr},</if>
+            <if test="electricityCash.dltjLjswdl != null">dltj_ljswdl=#{electricityCash.dltjLjswdl},</if>
+            <if test="electricityCash.dltjLjjsdl != null">dltj_ljjsdl=#{electricityCash.dltjLjjsdl},</if>
+            <if test="electricityCash.dltjLjfdl != null">dltj_ljfdl=#{electricityCash.dltjLjfdl},</if>
+            <if test="electricityCash.dltjDfjsljsjdz != null">dltj_dfjsljsjdz=#{electricityCash.dltjDfjsljsjdz},</if>
+            <if test="electricityCash.dltjLjwdzdf != null">dltj_ljwdzdf=#{electricityCash.dltjLjwdzdf},</if>
+            <if test="electricityCash.dltjDfsy != null">dltj_dfsy=#{electricityCash.dltjDfsy},</if>
+            <if test="electricityCash.dltjBt != null">dltj_bt=#{electricityCash.dltjBt},</if>
+            <if test="electricityCash.dltjQt != null">dltj_qt=#{electricityCash.dltjQt},</if>
+            <if test="electricityCash.dltjBysrhj != null">dltj_bysrhj=#{electricityCash.dltjBysrhj},</if>
+            <if test="electricityCash.dltjLx != null">dltj_lx=#{electricityCash.dltjLx},</if>
+            <if test="electricityCash.dltjXwdf != null">dltj_xwdf=#{electricityCash.dltjXwdf},</if>
+            <if test="electricityCash.dltjRggz != null">dltj_rggz=#{electricityCash.dltjRggz},</if>
+            <if test="electricityCash.dltjWjbljqt != null">dltj_wjbljqt=#{electricityCash.dltjWjbljqt},</if>
+            <if test="electricityCash.dltjByzchj != null">dltj_byzchj=#{electricityCash.dltjByzchj},</if>
+
+        </trim>
+        where dltj_id = #{electricityCash.dltjId}
+    </update>
+</mapper>

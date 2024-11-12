@@ -1,0 +1,2131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkrs.system.mapper.api.ApiElectricityStatisticsMapper">
+
+
+
+    <select id="selectProjectJsqk" resultType="com.zkrs.system.domain.api.ApiXmFgsskqk">
+
+               select
+                CONCAT_WS(":",convert(IF(ISNULL(e.fj /f.hj),0,e.fj /f.hj),decimal(16,2) )   *100 ,e.zd_name)     blByZdName
+                 from  (
+                select
+
+                 sum(b.xjlsjqk_sr_hj) fj   ,d.zd_name  zd_name
+
+                 from  expect_cash     a
+
+                         LEFT JOIN   actual_cash  b   on  a.xjlsjqk_yjxjl_id=b.xjlsjqk_yjxjl_id
+                         LEFT JOIN    project_info     c  on  a.xjlyjqk_project_id=c.xmqk_project_id
+                         LEFT JOIN business_dictionary d  on   c.xmqk_jszt=d.id
+                where
+
+                 d.zd_name  is NOT NULL
+
+                     and d.p_id=9
+                  GROUP BY c.xmqk_jszt )  e
+
+                LEFT JOIN   (
+                select
+                 sum(b.xjlsjqk_sr_hj) hj
+                 from  expect_cash     a
+                         LEFT JOIN   actual_cash  b   on  a.xjlsjqk_yjxjl_id=b.xjlsjqk_yjxjl_id
+                         LEFT JOIN    project_info     c  on  a.xjlyjqk_project_id=c.xmqk_project_id
+                         LEFT JOIN business_dictionary d  on   c.xmqk_jszt=d.id
+
+                where
+
+
+                      d.zd_name  is NOT NULL
+                   and d.p_id=9
+
+                ) f  on  1=1
+
+    </select>
+    <!-- 2023.1.4-->
+<!--    <select id="selectProjectJsqk" resultType="com.zkrs.system.domain.api.ApiXmFgsskqk">-->
+
+<!--               select-->
+<!--                CONCAT_WS(":",convert(IF(ISNULL(e.fj /f.hj),0,e.fj /f.hj),decimal(16,2) )   *100 ,e.zd_name)     blByZdName-->
+<!--                 from  (-->
+<!--                select-->
+
+<!--                 sum(b.xjlsjqk_sr_hj) fj   ,d.zd_name  zd_name-->
+
+<!--                 from  expect_cash     a-->
+
+<!--                         LEFT JOIN   actual_cash  b   on  a.xjlsjqk_yjxjl_id=b.xjlsjqk_yjxjl_id-->
+<!--                         LEFT JOIN    project_info     c  on  a.xjlyjqk_project_id=c.xmqk_project_id-->
+<!--                         LEFT JOIN business_dictionary d  on   c.xmqk_jszt=d.id-->
+<!--                where-->
+
+<!--                   YEAR(NOW())=YEAR( a.xjlyjqk_rq)-->
+
+<!--                   and   d.zd_name  is NOT NULL-->
+
+<!--                     and d.p_id=9-->
+<!--                  GROUP BY c.xmqk_jszt )  e-->
+
+<!--                LEFT JOIN   (-->
+<!--                select-->
+<!--                 sum(b.xjlsjqk_sr_hj) hj-->
+<!--                 from  expect_cash     a-->
+<!--                         LEFT JOIN   actual_cash  b   on  a.xjlsjqk_yjxjl_id=b.xjlsjqk_yjxjl_id-->
+<!--                         LEFT JOIN    project_info     c  on  a.xjlyjqk_project_id=c.xmqk_project_id-->
+<!--                         LEFT JOIN business_dictionary d  on   c.xmqk_jszt=d.id-->
+
+<!--                where-->
+
+<!--                   YEAR(NOW())=YEAR( a.xjlyjqk_rq)-->
+<!--                   and   d.zd_name  is NOT NULL-->
+<!--                   and d.p_id=9-->
+
+<!--                ) f  on  1=1-->
+
+<!--    </select>-->
+
+    <select id="selectProjectFgxm" resultType="com.zkrs.system.domain.api.ApiXmFgxm">
+
+
+        select
+
+        sum(xjlyjqkYjcszj) xjlyjqkYjcszj , sum(xjlyjqkYjxmgscb)  xjlyjqkYjxmgscb,  sum(xjlyjqkYjepcjsj)  xjlyjqkYjepcjsj,
+
+        sum(xjlsjqkSrHj) xjlsjqkSrHj , sum(xjlyjqkYjecpcb)  xjlyjqkYjecpcb, sum(xjlsjqkZcHj) xjlsjqkZcHj , sum(yjlr) yjlr,
+
+        sum(xjlsjqkXmyszkze)  xjlsjqkXmyszkze,
+
+        sum(ysjsr) ysjsr ,
+
+        sum(nsjsr) nsjsr
+
+        from  (
+
+        select sum(a.xjlyjqk_yjcszj)   xjlyjqkYjcszj ,  sum(a.xjlyjqk_yjxmcb) xjlyjqkYjxmgscb , sum(a.xjlyjqk_yjepcjsj) xjlyjqkYjepcjsj ,
+
+        sum(b.xjlsjqk_sr_hj) xjlsjqkSrHj , sum(a.xjlyjqk_yjecpcb) xjlyjqkYjecpcb ,sum(b.xjlsjqk_zc_hj) xjlsjqkZcHj ,
+
+        if(sum(a.xjlyjqk_yjcszj-a.xjlyjqk_yjxmgscb)>0,sum(a.xjlyjqk_yjcszj-a.xjlyjqk_yjxmgscb),0) yjlr,
+
+        sum(b.xjlsjqk_xmyszkze) xjlsjqkXmyszkze ,
+
+        sum(b.xjlsjqk_sr_hj) ysjsr,
+
+        0 nsjsr
+
+        from expect_cash  a   LEFT JOIN  actual_cash b on  a.xjlsjqk_yjxjl_id=b.xjlsjqk_yjxjl_id
+
+        LEFT JOIN  project_info  c  on a.xjlyjqk_project_id=c.xmqk_project_id
+
+        <where>
+
+
+            <if test="yearValue != null and yearValue != ''">
+
+                and  YEAR(a.xjlyjqk_rq)=#{yearValue}
+            </if>
+
+            <if test="monthValue != null and monthValue != ''">
+
+                and month(a.xjlyjqk_rq)=#{monthValue}
+            </if>
+
+            <if test="xmTYpe != null and xmTYpe != ''">
+                and    c.xmqk_xmlx=#{xmTYpe}
+            </if>
+
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+        </where>
+        UNION all
+
+        Select    0 xjlyjqkYjcszj , 0 xjlyjqkYjxmgscb ,  0 xjlyjqkYjepcjsj ,
+
+        0 xjlsjqkSrHj , 0 xjlyjqkYjecpcb , 0 xjlsjqkZcHj , 0 yjlr,
+
+        0 xjlsjqkXmyszkze , 0 ysjsr ,  sum(b.xjlsjqk_sr_hj) nsjsr
+
+        from expect_cash  a   LEFT JOIN  actual_cash b on  a.xjlsjqk_yjxjl_id=b.xjlsjqk_yjxjl_id
+        LEFT JOIN  project_info  c  on a.xjlyjqk_project_id=c.xmqk_project_id
+
+        <where>
+
+
+            <if test="yearValue != null and yearValue != ''">
+
+                and  YEAR(a.xjlyjqk_rq)=#{yearValue}
+            </if>
+
+
+            <if test="xmTYpe != null and xmTYpe != ''">
+                and     c.xmqk_xmlx=#{xmTYpe}
+            </if>
+
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+        </where>
+
+        )  ee
+
+
+
+    </select>
+
+
+
+    <!--   2022.12.20备份 -->
+    <!--    <select id="selectprojectFgsskqk" resultType="com.zkrs.system.domain.api.ApiXmFgsskqk">-->
+
+    <!--        select-->
+
+    <!--        CONCAT_WS(":",convert(IF(ISNULL(e.fj /f.hj),0,e.fj /f.hj),decimal(16,2) )   *100 ,e.zd_name)     blByZdName-->
+
+    <!--        from-->
+
+    <!--        (-->
+    <!--        select-->
+    <!--        sum(a.dltj_sjjsdl )  fj    ,c.zd_name  zd_name-->
+
+    <!--        from electricity_statistics a  LEFT JOIN  project_info  b on  a.dltj_project_id=b.xmqk_project_id-->
+    <!--        LEFT JOIN business_dictionary c  on   b.xmqk_lyfgs=c.id-->
+    <!--        <where>-->
+
+    <!--            <if test="yearValue != null and yearValue != ''">-->
+
+    <!--                and    YEAR(a.dltj_rq )=#{yearValue}-->
+    <!--            </if>-->
+    <!--            <if test="monthValue != null and monthValue != ''">-->
+    <!--                and    month(a.dltj_rq )=#{monthValue}-->
+    <!--            </if>-->
+
+    <!--        </where>-->
+
+    <!--        GROUP BY   b.xmqk_lyfgs  ) e-->
+
+    <!--        LEFT JOIN   (-->
+    <!--        select-->
+    <!--        sum(a.dltj_sjjsdl )  hj-->
+
+    <!--        from electricity_statistics a  LEFT JOIN  project_info  b on  a.dltj_project_id=b.xmqk_project_id-->
+    <!--        LEFT JOIN business_dictionary c  on   b.xmqk_lyfgs=c.id-->
+    <!--        <where>-->
+
+    <!--            <if test="yearValue != null and yearValue != ''">-->
+
+    <!--                and    YEAR(a.dltj_rq )=#{yearValue}-->
+    <!--            </if>-->
+    <!--            <if test="monthValue != null and monthValue != ''">-->
+    <!--                and     month(a.dltj_rq )=#{monthValue}-->
+    <!--            </if>-->
+
+    <!--        </where>-->
+    <!--        )  f   on   1=1-->
+
+    <!--    </select>-->
+
+
+
+    <select id="selectprojectFgsskqk" resultType="com.zkrs.system.domain.api.ApiXmFgsskqk">
+        SELECT
+        CONCAT_WS(
+        ":",
+        CONVERT (
+        IF
+        ( ISNULL( e.fj / f.hj ), 0, e.fj / f.hj ),
+        DECIMAL ( 16, 2 )
+        ) * 100,
+        e.zd_name
+        ) blByZdName
+        FROM
+        (
+        SELECT
+        ef.*
+        FROM
+        (
+        SELECT
+        sum(
+        ifnull( cc.fj, 0 )) fj,
+        ee.zd_name zd_name,
+        cc.xjlyjqk_rq xjlyjqk_rq
+        FROM
+        (
+        SELECT
+        sum(
+        ifnull( aa.xjlsjqk_sr_hj, 0 )) fj,
+        bb.xjlyjqk_project_id xjlyjqk_project_id,
+        bb.xjlyjqk_rq xjlyjqk_rq
+        FROM
+        actual_cash aa
+        LEFT JOIN expect_cash bb ON aa.xjlsjqk_yjxjl_id = bb.xjlsjqk_yjxjl_id
+        GROUP BY
+        bb.xjlyjqk_project_id
+        ) cc
+        LEFT JOIN project_info dd ON cc.xjlyjqk_project_id = dd.xmqk_project_id
+        LEFT JOIN business_dictionary ee ON dd.xmqk_lyfgs = ee.id
+        GROUP BY
+        dd.xmqk_lyfgs
+        ) ef
+        <where>
+            <if test="yearValue != null and yearValue != ''">
+                and    YEAR(ef.xjlyjqk_rq )=#{yearValue}
+            </if>
+            <if test="monthValue != null and monthValue != ''">
+                and     month(ef.xjlyjqk_rq )=#{monthValue}
+            </if>
+
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(ef.xjlyjqk_rq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(ef.xjlyjqk_rq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+        </where>
+        ) e
+        LEFT JOIN (
+        SELECT
+        sum( ff.fj ) hj
+        FROM
+        (
+        SELECT
+        sum(
+        ifnull( cc.fj, 0 )) fj,
+        cc.xjlyjqk_rq xjlyjqk_rq
+        FROM
+        (
+        SELECT
+        sum(
+        ifnull( aa.xjlsjqk_sr_hj, 0 )) fj,
+        bb.xjlyjqk_project_id xjlyjqk_project_id,
+        bb.xjlyjqk_rq xjlyjqk_rq
+        FROM
+        actual_cash aa
+        LEFT JOIN expect_cash bb ON aa.xjlsjqk_yjxjl_id = bb.xjlsjqk_yjxjl_id
+        GROUP BY
+        bb.xjlyjqk_project_id
+        ) cc
+        LEFT JOIN project_info dd ON cc.xjlyjqk_project_id = dd.xmqk_project_id
+        GROUP BY
+        dd.xmqk_lyfgs
+        ) ff
+        <where>
+            <if test="yearValue != null and yearValue != ''">
+                and    YEAR(ff.xjlyjqk_rq )=#{yearValue}
+            </if>
+            <if test="monthValue != null and monthValue != ''">
+                and     month(ff.xjlyjqk_rq )=#{monthValue}
+            </if>
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(ff.xjlyjqk_rq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(ff.xjlyjqk_rq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+        </where>
+
+        ) f ON 1 = 1
+
+
+    </select>
+
+    <select id="selectprojectXjlqkHj" resultType="com.zkrs.system.domain.api.ApiXmXjlqkHj">
+
+        select
+
+        sum(aa1.month1+aa1.month2+aa1.month3+aa1.month4+aa1.month5+aa1.month6+
+        aa1.month7+aa1.month8+aa1.month9+aa1.month10+aa1.month11+aa1.month12)  hj   ,   '预计现金流总支出总计'  fName
+
+        from  (
+        SELECT
+        CASE
+        WHEN
+        ${allWhere} THEN
+        IFNULL( sum(  b.jan ), 0 )
+        WHEN 1=${monthValue} THEN
+        IFNULL( sum(  b.jan ), 0 )
+        ELSE 0
+        END AS month1,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.feb ), 0 )
+        WHEN 2=${monthValue} THEN
+        IFNULL( sum(  b.feb ), 0 )
+        ELSE 0
+        END AS month2,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.mar ), 0 )
+        WHEN 3=${monthValue} THEN  IFNULL( sum(  b.mar ), 0 )
+        ELSE 0
+        END AS month3,
+        CASE
+
+        WHEN ${allWhere}  THEN
+        IFNULL( sum(  b.apr ), 0 )
+        WHEN 4=${monthValue} THEN IFNULL( sum(  b.apr ), 0 )
+        ELSE 0
+        END AS month4,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.may ), 0 )
+        WHEN 5=${monthValue} THEN IFNULL( sum(  b.may ), 0 )
+        ELSE 0
+        END AS month5,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.jun ), 0 )
+        WHEN 6=${monthValue} THEN  IFNULL( sum(  b.jun ), 0 )
+        ELSE 0
+        END AS month6,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.jul ), 0 )
+        WHEN 7=${monthValue} THEN IFNULL( sum(  b.jul ), 0 )
+        ELSE 0
+        END AS month7,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.aug ), 0 )
+        WHEN 8=${monthValue} THEN IFNULL( sum(  b.aug ), 0 )
+        ELSE 0
+        END AS month8,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.sep ), 0 )
+        WHEN 9=${monthValue} THEN IFNULL( sum(  b.sep ), 0 )
+        ELSE 0
+        END AS month9,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.oct ), 0 )
+        WHEN 10=${monthValue} THEN IFNULL( sum(  b.oct ), 0 )
+        ELSE 0
+        END AS month10,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.nov ), 0 )
+        WHEN 11=${monthValue} THEN IFNULL( sum(  b.nov ), 0 )
+        ELSE 0
+        END AS month11,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.decs ), 0 )
+        WHEN 12=${monthValue} THEN  IFNULL( sum(  b.decs ), 0 )
+        ELSE 0
+        END AS month12
+
+        FROM  project_cash a
+        LEFT JOIN project_cash_info b ON a.id = b.cash_id
+        LEFT JOIN project_info c ON a.project_id = c.xmqk_project_id
+
+
+        <where>
+
+            a.out_in=0
+
+            <if test="yearValue != null and yearValue != ''">
+
+                and   a.project_year  =#{yearValue}
+            </if>
+
+
+            <if test="projectType != null and projectType != ''">
+                AND c.xmqk_xmlx =#{projectType}
+            </if>
+
+            <if test="projectType == null or projectType == ''">
+                AND c.xmqk_xmlx IN (30, 31)
+            </if>
+
+        </where>
+
+        )  aa1
+
+        UNION ALL
+
+        select
+
+        sum(aa1.month1+aa1.month2+aa1.month3+aa1.month4+aa1.month5+aa1.month6+
+        aa1.month7+aa1.month8+aa1.month9+aa1.month10+aa1.month11+aa1.month12)  hj   ,   '预计现金流总收入总计'  fName
+
+        from  (
+        SELECT
+        CASE
+        WHEN
+        ${allWhere} THEN
+        IFNULL( sum(  b.jan ), 0 )
+        WHEN 1=${monthValue} THEN
+        IFNULL( sum(  b.jan ), 0 )
+        ELSE 0
+        END AS month1,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.feb ), 0 )
+        WHEN 2=${monthValue} THEN
+        IFNULL( sum(  b.feb ), 0 )
+        ELSE 0
+        END AS month2,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.mar ), 0 )
+        WHEN 3=${monthValue} THEN  IFNULL( sum(  b.mar ), 0 )
+        ELSE 0
+        END AS month3,
+        CASE
+
+        WHEN ${allWhere}  THEN
+        IFNULL( sum(  b.apr ), 0 )
+        WHEN 4=${monthValue} THEN IFNULL( sum(  b.apr ), 0 )
+        ELSE 0
+        END AS month4,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.may ), 0 )
+        WHEN 5=${monthValue} THEN IFNULL( sum(  b.may ), 0 )
+        ELSE 0
+        END AS month5,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.jun ), 0 )
+        WHEN 6=${monthValue} THEN  IFNULL( sum(  b.jun ), 0 )
+        ELSE 0
+        END AS month6,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.jul ), 0 )
+        WHEN 7=${monthValue} THEN IFNULL( sum(  b.jul ), 0 )
+        ELSE 0
+        END AS month7,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.aug ), 0 )
+        WHEN 8=${monthValue} THEN IFNULL( sum(  b.aug ), 0 )
+        ELSE 0
+        END AS month8,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.sep ), 0 )
+        WHEN 9=${monthValue} THEN IFNULL( sum(  b.sep ), 0 )
+        ELSE 0
+        END AS month9,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.oct ), 0 )
+        WHEN 10=${monthValue} THEN IFNULL( sum(  b.oct ), 0 )
+        ELSE 0
+        END AS month10,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.nov ), 0 )
+        WHEN 11=${monthValue} THEN IFNULL( sum(  b.nov ), 0 )
+        ELSE 0
+        END AS month11,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.decs ), 0 )
+        WHEN 12=${monthValue} THEN  IFNULL( sum(  b.decs ), 0 )
+        ELSE 0
+        END AS month12
+
+        FROM  project_cash a
+        LEFT JOIN project_cash_info b ON a.id = b.cash_id
+        LEFT JOIN project_info c ON a.project_id = c.xmqk_project_id
+
+
+        <where>
+
+            a.out_in=1
+
+            <if test="yearValue != null and yearValue != ''">
+
+                and   a.project_year  =#{yearValue}
+            </if>
+
+            <if test="projectType != null and projectType != ''">
+                AND c.xmqk_xmlx =#{projectType}
+            </if>
+
+            <if test="projectType == null or projectType == ''">
+                AND c.xmqk_xmlx IN (30, 31)
+            </if>
+
+        </where>
+
+        )  aa1
+
+        UNION ALL
+
+        SELECT
+        if(ISNULL(  sum(b.xjlsjqk_sr_hj) ) ,0,sum(b.xjlsjqk_sr_hj))  hj   ,   '实际现金流总收入总计'  fName
+        FROM
+        expect_cash a
+        LEFT JOIN actual_cash b ON a.xjlsjqk_yjxjl_id = b.xjlsjqk_yjxjl_id
+        LEFT JOIN project_info c ON a.xjlyjqk_project_id = c.xmqk_project_id
+        <where>
+            <if test="yearValue != null and yearValue != ''  ">
+                and   YEAR (a.xjlyjqk_rq) =#{yearValue}
+            </if>
+
+            <if test="monthValue != null and monthValue != '' and  monthValue != '-100'  ">
+                and   MONTH (a.xjlyjqk_rq)  =#{monthValue}
+            </if>
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+            <if test="projectType != null and projectType != ''">
+                AND c.xmqk_xmlx=#{projectType}
+            </if>
+
+            <if test="projectType == null or projectType == ''">
+                AND c.xmqk_xmlx IN (30, 31)
+            </if>
+        </where>
+
+        UNION ALL
+
+        SELECT
+        if(ISNULL( sum(b.xjlsjqk_zc_hj)  ) ,0,sum(b.xjlsjqk_zc_hj))  hj  ,   '实际现金流总支出总计'  fName
+        FROM
+        expect_cash a
+        LEFT JOIN actual_cash b ON a.xjlsjqk_yjxjl_id = b.xjlsjqk_yjxjl_id
+        LEFT JOIN project_info c ON a.xjlyjqk_project_id = c.xmqk_project_id
+        <where>
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR (a.xjlyjqk_rq)  =#{yearValue}
+            </if>
+
+            <if test="monthValue != null and monthValue != '' and  monthValue != '-100' ">
+                and   MONTH (a.xjlyjqk_rq)  =#{monthValue}
+            </if>
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+            <if test="projectType != null and projectType != ''">
+                AND c.xmqk_xmlx=#{projectType}
+            </if>
+
+            <if test="projectType == null or projectType == ''">
+                AND c.xmqk_xmlx IN (30, 31)
+            </if>
+        </where>
+
+
+    </select>
+
+
+    <select id="selectProjectZjXjlqk" resultType="com.zkrs.system.domain.api.ApiXmXjlqk">
+
+        SELECT
+        CASE
+        WHEN
+        ${allWhere} THEN
+        IFNULL( sum(  b.jan ), 0 )
+        WHEN 1=${monthValue} THEN
+        IFNULL( sum(  b.jan ), 0 )
+        ELSE 0
+        END AS month1,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.feb ), 0 )
+        WHEN 2=${monthValue} THEN
+        IFNULL( sum(  b.feb ), 0 )
+        ELSE 0
+        END AS month2,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.mar ), 0 )
+        WHEN 3=${monthValue} THEN  IFNULL( sum(  b.mar ), 0 )
+        ELSE 0
+        END AS month3,
+        CASE
+
+        WHEN ${allWhere}  THEN
+        IFNULL( sum(  b.apr ), 0 )
+        WHEN 4=${monthValue} THEN IFNULL( sum(  b.apr ), 0 )
+        ELSE 0
+        END AS month4,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.may ), 0 )
+        WHEN 5=${monthValue} THEN IFNULL( sum(  b.may ), 0 )
+        ELSE 0
+        END AS month5,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.jun ), 0 )
+        WHEN 6=${monthValue} THEN  IFNULL( sum(  b.jun ), 0 )
+        ELSE 0
+        END AS month6,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.jul ), 0 )
+        WHEN 7=${monthValue} THEN IFNULL( sum(  b.jul ), 0 )
+        ELSE 0
+        END AS month7,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.aug ), 0 )
+        WHEN 8=${monthValue} THEN IFNULL( sum(  b.aug ), 0 )
+        ELSE 0
+        END AS month8,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.sep ), 0 )
+        WHEN 9=${monthValue} THEN IFNULL( sum(  b.sep ), 0 )
+        ELSE 0
+        END AS month9,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.oct ), 0 )
+        WHEN 10=${monthValue} THEN IFNULL( sum(  b.oct ), 0 )
+        ELSE 0
+        END AS month10,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.nov ), 0 )
+        WHEN 11=${monthValue} THEN IFNULL( sum(  b.nov ), 0 )
+        ELSE 0
+        END AS month11,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.decs ), 0 )
+        WHEN 12=${monthValue} THEN  IFNULL( sum(  b.decs ), 0 )
+        ELSE 0
+        END AS month12
+
+        FROM  project_cash a
+        LEFT JOIN project_cash_info b ON a.id = b.cash_id
+        LEFT JOIN project_info c ON a.project_id = c.xmqk_project_id
+
+
+        <where>
+
+            a.out_in=1
+
+            <if test="yearValue != null and yearValue != ''">
+
+                and   a.project_year =#{yearValue}
+            </if>
+
+
+            <if test="projectType != null and projectType != ''">
+                AND c.xmqk_xmlx =#{projectType}
+            </if>
+
+            <if test="projectType == null or projectType == ''">
+                AND c.xmqk_xmlx IN (30, 31)
+            </if>
+
+        </where>
+
+        union all
+
+        SELECT
+        CASE
+        WHEN
+        ${allWhere} THEN
+        IFNULL( sum(  b.jan ), 0 )
+        WHEN 1=${monthValue} THEN
+        IFNULL( sum(  b.jan ), 0 )
+        ELSE 0
+        END AS month1,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.feb ), 0 )
+        WHEN 2=${monthValue} THEN
+        IFNULL( sum(  b.feb ), 0 )
+        ELSE 0
+        END AS month2,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.mar ), 0 )
+        WHEN 3=${monthValue} THEN  IFNULL( sum(  b.mar ), 0 )
+        ELSE 0
+        END AS month3,
+        CASE
+
+        WHEN ${allWhere}  THEN
+        IFNULL( sum(  b.apr ), 0 )
+        WHEN 4=${monthValue} THEN IFNULL( sum(  b.apr ), 0 )
+        ELSE 0
+        END AS month4,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.may ), 0 )
+        WHEN 5=${monthValue} THEN IFNULL( sum(  b.may ), 0 )
+        ELSE 0
+        END AS month5,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.jun ), 0 )
+        WHEN 6=${monthValue} THEN  IFNULL( sum(  b.jun ), 0 )
+        ELSE 0
+        END AS month6,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.jul ), 0 )
+        WHEN 7=${monthValue} THEN IFNULL( sum(  b.jul ), 0 )
+        ELSE 0
+        END AS month7,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.aug ), 0 )
+        WHEN 8=${monthValue} THEN IFNULL( sum(  b.aug ), 0 )
+        ELSE 0
+        END AS month8,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.sep ), 0 )
+        WHEN 9=${monthValue} THEN IFNULL( sum(  b.sep ), 0 )
+        ELSE 0
+        END AS month9,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.oct ), 0 )
+        WHEN 10=${monthValue} THEN IFNULL( sum(  b.oct ), 0 )
+        ELSE 0
+        END AS month10,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.nov ), 0 )
+        WHEN 11=${monthValue} THEN IFNULL( sum(  b.nov ), 0 )
+        ELSE 0
+        END AS month11,
+        CASE
+
+        WHEN ${allWhere} THEN
+        IFNULL( sum(  b.decs ), 0 )
+        WHEN 12=${monthValue} THEN  IFNULL( sum(  b.decs ), 0 )
+        ELSE 0
+        END AS month12
+        FROM  project_cash a
+        LEFT JOIN project_cash_info b ON a.id = b.cash_id
+        LEFT JOIN project_info c ON a.project_id = c.xmqk_project_id
+
+        <where>
+
+            a.out_in=0
+
+            <if test="yearValue != null and yearValue != ''">
+
+                and   a.project_year  =#{yearValue}
+            </if>
+
+
+            <if test="projectType != null and projectType != ''">
+                AND c.xmqk_xmlx =#{projectType}
+            </if>
+
+            <if test="projectType == null or projectType == ''">
+                AND c.xmqk_xmlx IN (30, 31)
+            </if>
+
+        </where>
+
+        union all
+
+        select  sum(d.month1) month1 ,sum(d.month2) month2 ,sum(d.month3) month3 ,sum(d.month4) month4 ,sum(d.month5) month5 ,
+        sum(d.month6) month6 ,sum(d.month7) month7 ,sum(d.month8) month8 ,sum(d.month9) month9 ,sum(d.month10) month10 ,sum(d.month11) month11 ,
+        sum(d.month12) month12
+
+
+        from  (
+        SELECT
+
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 1 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month1 ,
+
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 2 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month2 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 3 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month3 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 4 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month4 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 5 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month5 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 6 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month6 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 7 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month7 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 8 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month8 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 9 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month9 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 10 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month10 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 11 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month11 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 12 THEN	 b.xjlsjqk_sr_hj
+        ELSE  0
+        END AS month12
+
+
+        FROM
+        expect_cash a
+        LEFT JOIN actual_cash b ON a.xjlsjqk_yjxjl_id = b.xjlsjqk_yjxjl_id
+        LEFT JOIN project_info c ON a.xjlyjqk_project_id = c.xmqk_project_id
+
+        <where>
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR (a.xjlyjqk_rq)  =#{yearValue}
+            </if>
+
+            <if test="monthValue != null and monthValue != '' and  monthValue != '-100'  ">
+                and   MONTH (a.xjlyjqk_rq)  =#{monthValue}
+            </if>
+
+            <if test="projectType != null and projectType != ''">
+                AND c.xmqk_xmlx=#{projectType}
+            </if>
+
+            <if test="projectType == null or projectType == ''">
+                AND c.xmqk_xmlx IN (30, 31)
+            </if>
+        </where>
+
+        ) d
+
+
+        union all
+
+
+
+        select  sum(d.month1) month1 ,sum(d.month2) month2 ,sum(d.month3) month3 ,sum(d.month4) month4 ,sum(d.month5) month5 ,
+        sum(d.month6) month6 ,sum(d.month7) month7 ,sum(d.month8) month8 ,sum(d.month9) month9 ,sum(d.month10) month10 ,sum(d.month11) month11 ,
+        sum(d.month12) month12
+
+
+        from  (
+        SELECT
+
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 1 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month1 ,
+
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 2 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month2 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 3 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month3 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 4 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month4 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 5 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month5 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 6 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month6 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 7 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month7 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 8 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month8 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 9 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month9 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 10 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month10 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 11 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month11 ,
+        CASE
+        WHEN month(a.xjlyjqk_rq) = 12 THEN	 b.xjlsjqk_zc_hj
+        ELSE  0
+        END AS month12
+
+
+
+        FROM
+        expect_cash a
+        LEFT JOIN actual_cash b ON a.xjlsjqk_yjxjl_id = b.xjlsjqk_yjxjl_id
+        LEFT JOIN project_info c ON a.xjlyjqk_project_id = c.xmqk_project_id
+
+        <where>
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR (a.xjlyjqk_rq)  =#{yearValue}
+            </if>
+
+            <if test="monthValue != null and monthValue != '' and  monthValue != '-100'  ">
+                and   MONTH (a.xjlyjqk_rq)  =#{monthValue}
+            </if>
+
+            <if test="projectType != null and projectType != ''">
+                AND c.xmqk_xmlx=#{projectType}
+            </if>
+
+            <if test="projectType == null or projectType == ''">
+                AND c.xmqk_xmlx IN (30, 31)
+            </if>
+        </where>
+
+        ) d
+    </select>
+
+    <select id="selectProjectZjTj" resultType="com.zkrs.system.domain.api.ApiXmZjtj">
+
+        select sum(e.xjlsjqkYsye) xjlsjqkYsye , sum(e.xjlsjqkYfwsk) xjlsjqkYfwsk ,
+
+        sum(e.xmqkQzzyf) xmqkQzzyf ,  sum(e.xmqkYflybzj)  xmqkYflybzj ,  sum(e.xmqkQzzyfXmgs) xmqkQzzyfXmgs
+
+        from  (
+        select if(ISNULL(sum(b.xjlsjqk_ysye)),0,sum(b.xjlsjqk_ysye))     xjlsjqkYsye    , if(ISNULL(sum(b.xjlsjqk_yfwsk)),0, sum(b.xjlsjqk_yfwsk) )    xjlsjqkYfwsk
+        ,   0 xmqkQzzyf  ,  0 xmqkYflybzj , 0 xmqkQzzyfXmgs
+        from
+           expect_cash a
+                LEFT JOIN actual_cash b ON a.xjlsjqk_yjxjl_id = b.xjlsjqk_yjxjl_id
+
+
+        UNION all
+
+        select   0 xjlsjqkYsye  , 0 xjlsjqkYfwsk ,
+
+            if(ISNULL(sum(b.xjlsjqk_yfzkye)),0,sum(b.xjlsjqk_yfzkye))   xmqkQzzyf     , if(ISNULL(sum(b.xjlsjqk_lybzj)),0,sum(b.xjlsjqk_lybzj))   xmqkYflybzj
+            ,  if(ISNULL(sum(c.xmqk_qzzyf)),0,sum(c.xmqk_qzzyf))   xmqkQzzyfXmgs
+
+        from
+        project_info  c LEFT JOIN  expect_cash a  on   c.xmqk_project_id  =a.xjlyjqk_project_id
+
+         LEFT JOIN actual_cash b ON a.xjlsjqk_yjxjl_id = b.xjlsjqk_yjxjl_id
+
+
+
+        ) e
+
+    </select>
+    <!-- 2022.12.20 -->
+
+<!--    <select id="selectProjectZjTj" resultType="com.zkrs.system.domain.api.ApiXmZjtj">-->
+
+<!--        select sum(e.xjlsjqkYsye) xjlsjqkYsye , sum(e.xjlsjqkYfwsk) xjlsjqkYfwsk ,-->
+
+<!--        sum(e.xmqkQzzyf) xmqkQzzyf ,  sum(e.xmqkYflybzj)  xmqkYflybzj ,  sum(e.xmqkQzzyfXmgs) xmqkQzzyfXmgs-->
+
+<!--        from  (-->
+<!--        select if(ISNULL(sum(b.xjlsjqk_ysye)),0,sum(b.xjlsjqk_ysye))     xjlsjqkYsye    , if(ISNULL(sum(b.xjlsjqk_yfwsk)),0, sum(b.xjlsjqk_yfzkye) )    xjlsjqkYfwsk-->
+<!--        ,   0 xmqkQzzyf  ,  0 xmqkYflybzj , 0 xmqkQzzyfXmgs-->
+<!--        from-->
+<!--           expect_cash a-->
+<!--                LEFT JOIN actual_cash b ON a.xjlsjqk_yjxjl_id = b.xjlsjqk_yjxjl_id-->
+<!--        and-->
+
+<!--        YEAR(a.xjlyjqk_rq)=YEAR(NOW())-->
+
+<!--        UNION all-->
+
+<!--        select   0 xjlsjqkYsye  , 0 xjlsjqkYfwsk ,-->
+
+<!--            if(ISNULL(sum(c.xmqk_qzzyf)),0,sum(c.xmqk_qzzyf))   xmqkQzzyf     , if(ISNULL(sum(b.xjlsjqk_lybzj)),0,sum(b.xjlsjqk_lybzj))   xmqkYflybzj-->
+<!--            ,  if(ISNULL(sum(c.xmqk_qzzyf)),0,sum(c.xmqk_qzzyf))   xmqkQzzyfXmgs-->
+
+<!--        from-->
+<!--        project_info  c LEFT JOIN  expect_cash a  on   c.xmqk_project_id  =a.xjlyjqk_project_id-->
+
+<!--         LEFT JOIN actual_cash b ON a.xjlsjqk_yjxjl_id = b.xjlsjqk_yjxjl_id-->
+
+<!--        where-->
+<!--        YEAR(c.xmqk_htsj)=YEAR(NOW())-->
+
+<!--        ) e-->
+
+<!--    </select>-->
+
+
+
+<!--    <select id="selectProjectZjRzqk" resultType="com.zkrs.system.domain.api.ApiXmXjrzqk">-->
+<!--        select-->
+<!--        sum(byyjfk) byyjfk  , sum(bysjfk) bysjfk ,   sum(byyjhk) byyjhk ,  sum(bysjhk)    bysjhk ,-->
+
+<!--        sum(xmrzRzze)  xmrzRzze-->
+
+<!--        from (-->
+
+<!--        select if(ISNULL(sum(b.xmrz_yjxbfk)),0,sum(b.xmrz_yjxbfk))  byyjfk  , 0 bysjfk ,   0 byyjhk ,    0 bysjhk , 0 xmrzRzze-->
+
+
+<!--        from    project_financing  b  LEFT JOIN   project_info c   on       b.xmrz_project_id =c.xmqk_project_id-->
+
+<!--        <where>-->
+
+
+
+<!--            <if test="yearValue != null and yearValue != ''">-->
+<!--                and   YEAR (b.xmrz_yjxbfksj)  =#{yearValue}-->
+<!--            </if>-->
+
+<!--            <if test="monthValue != null and monthValue != ''">-->
+<!--                and   MONTH (b.xmrz_yjxbfksj)  =#{monthValue}-->
+<!--            </if>-->
+
+<!--            <if test="projectType != null and projectType != ''">-->
+<!--                AND  c.xmqk_xmlx=#{projectType}-->
+<!--            </if>-->
+
+<!--            <if test="projectType == null or projectType == ''">-->
+<!--                AND c.xmqk_xmlx IN (30, 31)-->
+<!--            </if>-->
+
+<!--        </where>-->
+
+<!--        UNION  all-->
+
+
+<!--        select-->
+
+
+<!--        0 byyjfk , if(ISNULL(sum(a.january) ),0,sum(a.january) )     bysjfk , 0 byyjhk ,    0 bysjhk  , 0 xmrzRzze-->
+
+
+<!--        from  financing_date  a  LEFT JOIN   project_financing  b   on  a.financing_id=b.xmrz_id-->
+
+<!--        LEFT JOIN   project_info c   on       b.xmrz_project_id =c.xmqk_project_id-->
+
+
+<!--        <where>-->
+
+
+<!--            <if test="yearValue != null and yearValue != ''">-->
+<!--                and   YEAR (a.times)  =#{yearValue}-->
+<!--            </if>-->
+
+<!--            <if test="monthValue != null and monthValue != ''">-->
+<!--                and   MONTH (a.times)  =#{monthValue}-->
+<!--            </if>-->
+
+<!--            <if test="projectType != null and projectType != ''">-->
+<!--                AND c.xmqk_xmlx=#{projectType}-->
+<!--            </if>-->
+
+<!--            <if test="projectType == null or projectType == ''">-->
+<!--                AND c.xmqk_xmlx IN (30, 31)-->
+<!--            </if>-->
+<!--        </where>-->
+
+
+<!--        UNION  all-->
+
+<!--        select-->
+
+<!--        0 byyjfk  , 0 bysjfk ,   0 byyjhk ,  if(ISNULL(sum(a.financing_cb+a.financing_lx+a.financing_sxf) ),0,sum(a.financing_cb+a.financing_lx+a.financing_sxf) )     bysjhk  , 0 xmrzRzze-->
+
+
+<!--        from  financing_still a  LEFT JOIN   project_financing  b   on  a.financing_id=b.xmrz_id-->
+
+<!--        LEFT JOIN   project_info c   on       b.xmrz_project_id =c.xmqk_project_id-->
+
+
+<!--        <where>-->
+
+
+<!--            <if test="yearValue != null and yearValue != ''">-->
+<!--                and   YEAR (a.financing_rq)  =#{yearValue}-->
+<!--            </if>-->
+
+<!--            <if test="monthValue != null and monthValue != ''">-->
+<!--                and   MONTH (a.financing_rq)  =#{monthValue}-->
+<!--            </if>-->
+
+<!--            <if test="projectType != null and projectType != ''">-->
+<!--                AND c.xmqk_xmlx=#{projectType}-->
+<!--            </if>-->
+
+<!--            <if test="projectType == null or projectType == ''">-->
+<!--                AND c.xmqk_xmlx IN (30, 31)-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        UNION  all-->
+
+
+
+<!--        select-->
+
+
+<!--        0 byyjfk  , 0 bysjfk ,   0 byyjhk ,  0     bysjhk , if(ISNULL(sum(a.xmrz_rzze)),0 ,sum(a.xmrz_rzze))   xmrzRzze-->
+
+<!--        from   project_financing  a-->
+
+<!--        LEFT JOIN   project_info b  on       a.xmrz_project_id =b.xmqk_project_id-->
+
+<!--        <where>-->
+<!--            <if test="yearValue != null and yearValue != ''">-->
+<!--                and   YEAR (a.xmrz_qyrq)  =#{yearValue}-->
+<!--            </if>-->
+
+<!--            <if test="monthValue != null and monthValue != ''">-->
+<!--                and   MONTH (a.xmrz_qyrq)  =#{monthValue}-->
+<!--            </if>-->
+
+<!--            <if test="projectType != null and projectType != ''">-->
+<!--                AND b.xmqk_xmlx = #{projectType}-->
+<!--            </if>-->
+
+<!--            &lt;!&ndash;            <if test="projectType == null or projectType == ''">&ndash;&gt;-->
+<!--            &lt;!&ndash;                AND b.xmqk_xmlx IN (30, 31)&ndash;&gt;-->
+<!--            &lt;!&ndash;            </if>&ndash;&gt;-->
+
+<!--        </where>-->
+
+<!--        ) e-->
+
+<!--    </select>-->
+    <!--  2022.12.21备份 -->
+    <select id="selectProjectZjRzqk" resultType="com.zkrs.system.domain.api.ApiXmXjrzqk">
+        select
+        sum(byyjfk) byyjfk  , sum(bysjfk) bysjfk ,   sum(byyjhk) byyjhk ,  sum(bysjhk)    bysjhk ,
+
+        sum(xmrzRzze)  xmrzRzze
+
+        from (
+
+        select   ifnull(sum(b.xmrz_yjxbfk),0)    byyjfk  , 0 bysjfk ,   0 byyjhk ,    0 bysjhk , 0 xmrzRzze
+
+
+        from    project_financing  b  LEFT JOIN   project_info c   on       b.xmrz_project_id =c.xmqk_project_id
+
+        <where>
+
+
+
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR (b.xmrz_yjxbfksj)  =#{yearValue}
+            </if>
+
+            <if test="monthValue != null and monthValue != ''">
+                and   MONTH (b.xmrz_yjxbfksj)  =#{monthValue}
+            </if>
+
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(b.xmrz_yjxbfksj,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(b.xmrz_yjxbfksj,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+
+
+            <if test="projectType != null and projectType != ''">
+                AND  c.xmqk_xmlx=#{projectType}
+            </if>
+
+            <if test="projectType == null or projectType == ''">
+                AND c.xmqk_xmlx IN (30, 31)
+            </if>
+
+        </where>
+
+        UNION  all
+
+
+        select
+
+
+        0 byyjfk , ifnull(sum(a.january),0)     bysjfk , 0 byyjhk ,    0 bysjhk  , 0 xmrzRzze
+
+
+        from  financing_date  a  LEFT JOIN   project_financing  b   on  a.financing_id=b.xmrz_id
+
+        LEFT JOIN   project_info c   on       b.xmrz_project_id =c.xmqk_project_id
+
+
+        <where>
+
+
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR (a.times)  =#{yearValue}
+            </if>
+
+            <if test="monthValue != null and monthValue != ''">
+                and   MONTH (a.times)  =#{monthValue}
+            </if>
+
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(a.times,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(a.times,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+
+            <if test="projectType != null and projectType != ''">
+                AND c.xmqk_xmlx=#{projectType}
+            </if>
+
+            <if test="projectType == null or projectType == ''">
+                AND c.xmqk_xmlx IN (30, 31)
+            </if>
+        </where>
+
+
+        UNION  all
+
+        select
+
+        0 byyjfk  , 0 bysjfk ,   0 byyjhk ,
+        ifnull(sum(a.financing_cb)+sum(a.financing_lx)+sum(a.financing_sxf),0)     bysjhk  , 0 xmrzRzze
+
+
+        from  financing_still a  LEFT JOIN   project_financing  b   on  a.financing_id=b.xmrz_id
+
+        LEFT JOIN   project_info c   on       b.xmrz_project_id =c.xmqk_project_id
+
+
+        <where>
+
+
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR (a.financing_rq)  =#{yearValue}
+            </if>
+
+            <if test="monthValue != null and monthValue != ''">
+                and   MONTH (a.financing_rq)  =#{monthValue}
+            </if>
+
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(a.financing_rq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(a.financing_rq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+
+            <if test="projectType != null and projectType != ''">
+                AND c.xmqk_xmlx=#{projectType}
+            </if>
+
+            <if test="projectType == null or projectType == ''">
+                AND c.xmqk_xmlx IN (30, 31)
+            </if>
+        </where>
+        UNION  all
+
+
+
+        select
+
+
+        0 byyjfk  , 0 bysjfk ,   0 byyjhk ,  0     bysjhk , ifnull(sum(a.xmrz_rzze),0)   xmrzRzze
+
+        from   project_financing  a
+
+        LEFT JOIN   project_info b  on       a.xmrz_project_id =b.xmqk_project_id
+
+        <where>
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR (a.xmrz_qyrq)  =#{yearValue}
+            </if>
+
+            <if test="monthValue != null and monthValue != ''">
+                and   MONTH (a.xmrz_qyrq)  =#{monthValue}
+            </if>
+
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(a.xmrz_qyrq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(a.xmrz_qyrq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+
+
+            <if test="projectType != null and projectType != ''">
+                AND b.xmqk_xmlx = #{projectType}
+            </if>
+
+            <!--            <if test="projectType == null or projectType == ''">-->
+            <!--                AND b.xmqk_xmlx IN (30, 31)-->
+            <!--            </if>-->
+
+        </where>
+
+        ) e
+
+    </select>
+    <!--  2022.12.19备份 -->
+    <!--    <select id="selectProjectJsxmszqk" resultType="com.zkrs.system.domain.api.ApiXmXmjsszqk">-->
+
+
+
+    <!--        select   c.xmqk_xmxz  xmqkXmxz ,  c.xmqk_xmmc  xmqkXmmc ,  a.xjlyjqk_sr_hj xjlyjqkSrHj-->
+    <!--        , a.xjlyjqk_zc_hj  xjlyjqkZcHj  , b.xjlsjqk_sr_hj xjlsjqkSrHj ,  b.xjlsjqk_zc_hj xjlsjqkZcHj-->
+    <!--        , b.xjlsjqk_yfzkye  xmqkQzyf  ,c.xmqk_lyfgs  xmqkLyfgs   ,   b.xjlsjqk_ysye xjlsjqkYsye ,b.xjlsjqk_yfwsk xjlsjqkYfwsk , c.xmqk_project_id xmqkProjectId-->
+    <!--        , c.xmqk_project_id  xmid ,   c.xmqk_xmlx   xmqkXmlxId  ,     c.xmqk_xmxz   xmqkXmxzId  ,  c.xmqk_jszt  xmqkJsztId  ,     c.xmqk_lyfgs  xmqkLyfgsId-->
+
+    <!--        from    expect_cash a   LEFT JOIN actual_cash b ON a.xjlsjqk_yjxjl_id = b.xjlsjqk_yjxjl_id-->
+
+    <!--        LEFT JOIN  project_info c   on  a.xjlyjqk_project_id=c.xmqk_project_id-->
+
+    <!--        <where>-->
+    <!--            <if test="yearValue != null and yearValue != ''">-->
+    <!--                and   YEAR( a.xjlyjqk_rq)=#{yearValue}-->
+    <!--            </if>-->
+    <!--            <if test="monthValue != null and monthValue != ''">-->
+    <!--                and     MONTH(a.xjlyjqk_rq)=#{monthValue}-->
+    <!--            </if>-->
+    <!--            <if test="corporation != null and corporation != ''">-->
+    <!--                and    c.xmqk_lyfgs=#{corporation}-->
+    <!--            </if>-->
+    <!--            <if test="xmmc != null and xmmc != ''">-->
+    <!--                and  c.xmqk_xmmc    like concat('%', #{xmmc} , '%')-->
+    <!--            </if>-->
+
+    <!--            <if test="projectState != null and projectState != ''">-->
+    <!--                and  c.xmqk_xmxz=#{projectState}-->
+    <!--            </if>-->
+
+    <!--            <if test=' xmFag=="0" '>  and  YEAR(c.xmqk_htsj) &lt;    #{newOldTime}   </if>-->
+
+    <!--            <if test=' xmFag=="1" '>  and ( YEAR(c.xmqk_htsj) >=    #{newOldTime}  or     c.xmqk_htsj is Null )</if>-->
+
+
+    <!--            <if test="xmqkJszt != null and xmqkJszt != ''  ">  and  c.xmqk_jszt=#{xmqkJszt}   </if>-->
+
+    <!--            <if test="xmqkXmlx != null and xmqkXmlx != ''  ">  and  c.xmqk_xmlx=#{xmqkXmlx}   </if>-->
+
+
+    <!--        </where>-->
+
+    <!--    </select>-->
+
+
+    <select id="selectProjectJsxmszqk" resultType="com.zkrs.system.domain.api.ApiXmXmjsszqk">
+
+
+        SELECT
+        c.xmqk_xmxz xmqkXmxz,
+        c.xmqk_xmmc xmqkXmmc,
+        ee.xjlyjqk_sr_hj xjlyjqkSrHj,
+        ee.xjlyjqk_zc_hj xjlyjqkZcHj,
+        ee.xjlsjqk_sr_hj xjlsjqkSrHj,
+        ee.xjlsjqk_zc_hj xjlsjqkZcHj,
+        ee.xjlsjqk_yfzkye xmqkQzyf,
+        c.xmqk_lyfgs xmqkLyfgs,
+        ee.xjlsjqk_ysye xjlsjqkYsye,
+        ee.xjlsjqk_yfwsk xjlsjqkYfwsk,
+        c.xmqk_project_id xmqkProjectId,
+        c.xmqk_project_id xmid,
+        c.xmqk_xmlx xmqkXmlxId,
+        c.xmqk_xmxz xmqkXmxzId,
+        c.xmqk_jszt xmqkJsztId,
+        c.xmqk_lyfgs xmqkLyfgsId
+        FROM
+        (
+        SELECT
+        a.xjlyjqk_project_id xjlyjqk_project_id,
+        sum(
+        IFNULL( a.xjlyjqk_sr_hj, 0 )) xjlyjqk_sr_hj,
+        sum(
+        IFNULL( a.xjlyjqk_zc_hj, 0 )) xjlyjqk_zc_hj,
+        sum(
+        IFNULL( b.xjlsjqk_zc_hj, 0 )) xjlsjqk_zc_hj,
+        sum(
+        IFNULL( b.xjlsjqk_yfzkye, 0 )) xjlsjqk_yfzkye,
+        sum(
+        IFNULL( b.xjlsjqk_ysye, 0 )) xjlsjqk_ysye,
+        sum(
+        IFNULL( b.xjlsjqk_yfwsk, 0 )) xjlsjqk_yfwsk,
+        sum(
+        IFNULL( a.xjlyjqk_sr_hj_all, 0 )) xjlsjqk_sr_hj
+        FROM
+        expect_cash a
+        LEFT JOIN actual_cash b ON a.xjlsjqk_yjxjl_id = b.xjlsjqk_yjxjl_id
+        <where>
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR( a.xjlyjqk_rq)=#{yearValue}
+            </if>
+            <if test="monthValue != null and monthValue != ''">
+                and     MONTH(a.xjlyjqk_rq)=#{monthValue}
+            </if>
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+        </where>
+        GROUP BY
+        a.xjlyjqk_project_id
+        ) ee
+        LEFT JOIN project_info c ON ee.xjlyjqk_project_id = c.xmqk_project_id
+        LEFT JOIN project_financing d ON ee.xjlyjqk_project_id = d.xmrz_project_id
+
+        <where>
+
+            <if test="corporation != null and corporation != ''">
+                and    c.xmqk_lyfgs=#{corporation}
+            </if>
+            <if test="xmmc != null and xmmc != ''">
+                and  c.xmqk_xmmc    like concat('%', #{xmmc} , '%')
+            </if>
+
+            <if test="projectState != null and projectState != ''">
+                and  c.xmqk_xmxz=#{projectState}
+            </if>
+
+            <if test=' xmFag=="0" '>  and  YEAR(c.xmqk_htsj) &lt;    #{newOldTime}   </if>
+
+            <if test=' xmFag=="1" '>  and ( YEAR(c.xmqk_htsj) >=    #{newOldTime}  or     c.xmqk_htsj is Null )</if>
+
+
+            <if test="xmqkJszt != null and xmqkJszt != ''  ">  and  c.xmqk_jszt=#{xmqkJszt}   </if>
+
+            <if test="xmqkXmlx != null and xmqkXmlx != ''  ">  and  c.xmqk_xmlx=#{xmqkXmlx}   </if>
+
+            <if test="xmrzRzqk != null and xmrzRzqk != ''  ">  and  d.xmrz_rzqk=#{xmrzRzqk}   </if>
+
+            <if test="xmqkHzf != null and xmqkHzf != ''  ">  and  c.xmqk_hzf like concat('%', #{xmqkHzf}, '%') </if>
+
+            <if test="xmqkSgf != null and xmqkSgf != ''  ">  and  c.xmqk_sgf  like concat('%', #{xmqkSgf}, '%')  </if>
+
+            <if test="xmqkRzf != null and xmqkRzf != ''  ">  and  c.xmqk_rzf   like concat('%', #{xmqkRzf}, '%')  </if>
+        </where>
+
+    </select>
+
+
+
+    <select id="selectProjectJsxmszqkTotal" resultType="com.zkrs.system.domain.api.ApiXmXmjsszqkTotal">
+
+
+
+        SELECT
+
+        IFNULL(sum(a.xjlyjqk_sr_hj),'0') xjlyjqkSrHj,
+        IFNULL(sum(a.xjlyjqk_zc_hj),'0') xjlyjqkZcHj,
+        IFNULL(sum(a.xjlyjqk_sr_hj_all),'0') xjlsjqkSrHj,
+        IFNULL(sum(b.xjlsjqk_zc_hj),'0') xjlsjqkZcHj,
+        IFNULL(sum(b.xjlsjqk_yfzkye),'0') xmqkQzyf,
+
+        IFNULL(sum(b.xjlsjqk_ysye),'0') xjlsjqkYsye,
+        IFNULL(sum(b.xjlsjqk_yfwsk),'0') xjlsjqkYfwsk
+
+        FROM
+        expect_cash a
+        LEFT JOIN actual_cash b ON a.xjlsjqk_yjxjl_id = b.xjlsjqk_yjxjl_id
+        LEFT JOIN project_info c ON a.xjlyjqk_project_id = c.xmqk_project_id
+        LEFT JOIN project_financing d ON a.xjlyjqk_project_id = xmrz_project_id
+
+        <where>
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR( a.xjlyjqk_rq)=#{yearValue}
+            </if>
+            <if test="monthValue != null and monthValue != ''">
+                and     MONTH(a.xjlyjqk_rq)=#{monthValue}
+            </if>
+
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(a.xjlyjqk_rq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+
+            <if test="corporation != null and corporation != ''">
+                and    c.xmqk_lyfgs=#{corporation}
+            </if>
+            <if test="xmmc != null and xmmc != ''">
+                and  c.xmqk_xmmc    like concat('%', #{xmmc} , '%')
+            </if>
+
+            <if test="projectState != null and projectState != ''">
+                and  c.xmqk_xmxz=#{projectState}
+            </if>
+            <if test=' xmFag=="0" '>  and  YEAR(c.xmqk_htsj) &lt;   #{newOldTime}    </if>
+
+            <if test=' xmFag=="1" '>  and ( YEAR(c.xmqk_htsj) >=  #{newOldTime} or c.xmqk_htsj is Null )   </if>
+            <if test="xmqkJszt != null and xmqkJszt != ''  ">  and  c.xmqk_jszt=#{xmqkJszt}   </if>
+
+            <if test="xmqkXmlx != null and xmqkXmlx != ''  ">  and  c.xmqk_xmlx=#{xmqkXmlx}   </if>
+
+            <if test="xmrzRzqk != null and xmrzRzqk != ''  ">  and  d.xmrz_rzqk=#{xmrzRzqk}   </if>
+
+            <if test="xmqkHzf != null and xmqkHzf != ''  ">  and  c.xmqk_hzf like concat('%', #{xmqkHzf}, '%') </if>
+
+            <if test="xmqkSgf != null and xmqkSgf != ''  ">  and  c.xmqk_sgf  like concat('%', #{xmqkSgf}, '%')  </if>
+
+            <if test="xmqkRzf != null and xmqkRzf != ''  ">  and  c.xmqk_rzf   like concat('%', #{xmqkRzf}, '%')  </if>
+
+        </where>
+
+    </select>
+    <!--  修改代码2022.10.12 -->
+    <!--    <select id="selectProjectZjXmrz" resultType="com.zkrs.system.domain.api.ApiXmZjrz">-->
+    <!--        select-->
+    <!--        b.xmrz_rzjg  xmrzRzjg , c.xmqk_xmmc xmqkXmmc ,   YEAR(a.times)  fknf ,   MONTH(a.times)  fkyf  , b.xmrz_rzze  xmrzRzze  ,-->
+
+    <!--        b.xmrz_yfkze xmrzYfkze ,    b.xmrz_xbfktj  xmrzXbfktj ,  c.xmqk_project_id  xmid ,-->
+
+    <!--        c.xmqk_xmlx   xmqkXmlxId  ,     c.xmqk_xmxz   xmqkXmxzId  ,  c.xmqk_jszt  xmqkJsztId  ,     c.xmqk_lyfgs  xmqkLyfgsId ,-->
+
+    <!--        a.january  byyjfk,    a.january  bysjfk-->
+
+    <!--        from   financing_date  a LEFT JOIN     project_financing   b  on a.financing_id=b.xmrz_id-->
+
+    <!--        LEFT JOIN  project_info c  on   b.xmrz_project_id=c.xmqk_project_id-->
+
+    <!--        <where>-->
+    <!--            <if test="yearValue != null and yearValue != ''">-->
+    <!--                and   YEAR( a.times)=#{yearValue}-->
+    <!--            </if>-->
+    <!--            <if test="monthValue != null and monthValue != ''">-->
+    <!--                and     MONTH(a.times)=#{monthValue}-->
+    <!--            </if>-->
+    <!--            <if test="xllx != null and xllx != ''">-->
+    <!--                and    c.xmqk_xmlx=#{xllx}-->
+    <!--            </if>-->
+    <!--        </where>-->
+    <!--    </select>-->
+
+    <select id="selectProjectZjXmrz" resultType="com.zkrs.system.domain.api.ApiXmZjrz">
+        select
+        b.xmrz_rzjg  xmrzRzjg , c.xmqk_xmmc xmqkXmmc ,     b.xmrz_rzze  xmrzRzze  ,
+
+        b.xmrz_yfkze xmrzYfkze ,    b.xmrz_yjxbfk  xmrzXbfktj ,  c.xmqk_project_id  xmid ,
+
+        c.xmqk_xmlx   xmqkXmlxId  ,     c.xmqk_xmxz   xmqkXmxzId  ,  c.xmqk_jszt  xmqkJsztId  ,     c.xmqk_lyfgs  xmqkLyfgsId ,
+
+        a.january  byyjfk,    a.january  bysjfk  ,    if( ifnull(b.xmrz_snirr ,0)=0,0, concat(ROUND( ifnull(b.xmrz_snirr ,0)*100, 2) ,'%'))   xmrzSnirr,
+
+        if( ifnull(b.xmrz_qzqzhirr ,0)=0,0, concat(ROUND( ifnull(b.xmrz_qzqzhirr ,0)*100, 2) ,'%'))     xmrzQzqzhirr
+
+        from   project_financing   b    inner JOIN  (
+
+        select financing_id , sum( january) january from   financing_date
+        <where>
+
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR( times)=#{yearValue}
+            </if>
+            <if test="monthValue != null and monthValue != ''">
+                and     MONTH(times)=#{monthValue}
+            </if>
+
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(times,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(times,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+<!--            <if test="monthValue == null and  yearValue == null">-->
+<!--                and     DATE_FORMAT(CURRENT_Date(),'%Y-%m')= DATE_FORMAT(times,'%Y-%m')-->
+<!--            </if>-->
+        </where>
+
+        GROUP BY  financing_id	)  a    on a.financing_id=b.xmrz_id
+
+        LEFT JOIN  project_info c  on   b.xmrz_project_id=c.xmqk_project_id
+
+        <where>
+
+            <if test="xllx != null and xllx != ''">
+                and    c.xmqk_xmlx=#{xllx}
+            </if>
+
+            <if test="xmqkXmmc != null and xmqkXmmc != ''">
+                and    c.xmqk_xmmc  like concat('%', #{xmqkXmmc}, '%')
+            </if>
+
+            <if test="financeManager != null and financeManager != ''">
+                and     c.xmqk_rzjl  like concat('%', #{financeManager}, '%')
+            </if>
+
+            <if test="financingInstitutions != null and financingInstitutions != ''">
+                and     b.xmrz_rzjg  like concat('%', #{financingInstitutions}, '%')
+            </if>
+            <if test="financingSituation != null and financingSituation != ''">
+                and     b.xmrz_rzqk=#{financingSituation}
+            </if>
+
+            <if test=' xmFag=="0" '>  and  YEAR(c.xmqk_htsj) <![CDATA[ < ]]> #{newOldTime}    </if>
+            <if test=' xmFag=="1" '>  and ( YEAR(c.xmqk_htsj) <![CDATA[ >= ]]> #{newOldTime}  or c.xmqk_htsj is Null )   </if>
+
+            <if test="xmqkXmxz != null  and  xmqkXmxz != ''"> and c.xmqk_xmxz = #{xmqkXmxz}</if>
+
+            <if test="xmqkJszt != null and xmqkJszt != ''  ">  and  c.xmqk_jszt=#{xmqkJszt}   </if>
+
+            <if test="xmrzQyrq != null and xmrzQyrq != ''  ">  and  DATE_FORMAT(b.xmrz_qyrq,'%Y-%m-%d')=#{xmrzQyrq}   </if>
+
+        </where>
+
+    </select>
+
+    <select id="selectProjectElectricityList" resultType="com.zkrs.system.domain.api.ApiXmElectricityList">
+
+        SELECT
+        b.xmqk_rl xmqkRl,
+        b.xmqk_project_id xmId,
+        b.xmqk_xmmc xmqkXmmc,
+        b.xmqk_xmlx xmqkXmlx,
+        b.xmqk_lyfgs xmqkLyfgs,
+        b. xmqk_qy xmqkQy,
+        a.dltj_ljjsdl dltjLjjsdl,
+        a.dltj_yjfdl dltjYjfdl,
+        a.dltj_sjfdl dltjSjfdl,
+        a.dltj_bysrhj dltjBysrhj ,
+        a.dltj_byzchj dltjByzchj
+        FROM  (
+
+        select
+        dltj_project_id  ,
+        truncate(sum(ifnull(dltj_ljjsdl,0  )),2)  dltj_ljjsdl,
+        truncate(sum(ifnull(dltj_yjfdl,0  )),2)  dltj_yjfdl,
+        truncate(sum(ifnull(dltj_sjfdl,0  )),2)  dltj_sjfdl,
+        truncate(sum(ifnull(dltj_bysrhj,0  )),2)  dltj_bysrhj ,
+        truncate(sum(ifnull(dltj_byzchj,0  )),2)  dltj_byzchj
+        from
+        electricity_statistics
+        <where>
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR( dltj_rq)=#{yearValue}
+            </if>
+            <if test="monthValue != null and monthValue != ''">
+                and     MONTH(dltj_rq)=#{monthValue}
+            </if>
+
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(dltj_rq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(dltj_rq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+        </where>
+
+        GROUP BY  dltj_project_id
+
+        ) a
+        LEFT JOIN project_info b ON a.dltj_project_id = b.xmqk_project_id
+
+        <where>
+
+            <if test="xmqkLyfgs != null and xmqkLyfgs != ''">
+                and   b.xmqk_lyfgs=#{xmqkLyfgs}
+            </if>
+            <if test="xmqkQy != null and xmqkQy != ''">
+                and    b.xmqk_qy=#{xmqkQy}
+            </if>
+            <if test="xmqkXmlx != null and xmqkXmlx != ''">
+                and     b.xmqk_xmlx=#{xmqkXmlx}
+            </if>
+
+            <if test=' xmFag=="0" '>  and  YEAR(b.xmqk_htsj) <![CDATA[ < ]]> #{newOldTime}    </if>
+            <if test=' xmFag=="1" '>  and ( YEAR(b.xmqk_htsj) <![CDATA[ >= ]]> #{newOldTime}  or xmqk_htsj is Null )   </if>
+
+            <if test="xmqkXmxz != null  and  xmqkXmxz != ''"> and b.xmqk_xmxz = #{xmqkXmxz}</if>
+
+        </where>
+
+    </select>
+    <select id="selectProjectElectricityTotal" resultType="com.zkrs.system.domain.api.ApiXmElectricityTotal">
+
+        SELECT
+        truncate(sum(b.xmqk_rl),2) xmqkRl,
+        truncate(sum(a.dltj_ljjsdl),2) dltjLjjsdl,
+        truncate(sum(a.dltj_yjfdl),2) dltjYjfdl,
+        truncate(sum(a.dltj_sjfdl),2) dltjSjfdl,
+        truncate(sum(a.dltj_bysrhj),2) dltjBysrhj ,
+        truncate(sum(a.dltj_byzchj),2) dltjByzchj
+        FROM  (
+
+        select
+        dltj_project_id  ,
+        sum(ifnull(dltj_ljjsdl,0  ))  dltj_ljjsdl,
+        sum(ifnull(dltj_yjfdl,0  ))  dltj_yjfdl,
+        sum(ifnull(dltj_sjfdl,0  ))  dltj_sjfdl,
+        sum(ifnull(dltj_bysrhj,0  ))  dltj_bysrhj ,
+        sum(ifnull(dltj_byzchj,0  ))  dltj_byzchj
+        from
+        electricity_statistics
+        <where>
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR( dltj_rq)=#{yearValue}
+            </if>
+            <if test="monthValue != null and monthValue != ''">
+                and     MONTH(dltj_rq)=#{monthValue}
+            </if>
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(dltj_rq,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(dltj_rq,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+        </where>
+
+        GROUP BY  dltj_project_id
+
+        ) a
+        LEFT JOIN project_info b ON a.dltj_project_id = b.xmqk_project_id
+
+        <where>
+
+            <if test="xmqkLyfgs != null and xmqkLyfgs != ''">
+                and   b.xmqk_lyfgs=#{xmqkLyfgs}
+            </if>
+            <if test="xmqkQy != null and xmqkQy != ''">
+                and    b.xmqk_qy=#{xmqkQy}
+            </if>
+            <if test="xmqkXmlx != null and xmqkXmlx != ''">
+                and     b.xmqk_xmlx=#{xmqkXmlx}
+            </if>
+
+            <if test=' xmFag=="0" '>  and  YEAR(b.xmqk_htsj) <![CDATA[ < ]]> #{newOldTime}    </if>
+            <if test=' xmFag=="1" '>  and ( YEAR(b.xmqk_htsj) <![CDATA[ >= ]]> #{newOldTime}  or xmqk_htsj is Null )   </if>
+
+            <if test="xmqkXmxz != null  and  xmqkXmxz != ''"> and b.xmqk_xmxz = #{xmqkXmxz}</if>
+        </where>
+
+    </select>
+
+    <select id="selectProjectZjXmrzTotal" resultType="com.zkrs.system.domain.api.ApiXmZjrzTotal">
+
+        select  sum(ifnull(ee.xmrzRzzeItem ,0)) xmrzRzze , sum(ifnull(ee.xmrzYfkzeItem,0))  xmrzYfkze ,
+        sum(ifnull(ee.january,0)) byyjfk,
+        sum(ifnull(ee.january,0)) bysjfk,
+        sum(ifnull(ee.xmrzXbfktj,0)) xmrzXbfktj    from(
+        select
+        b.xmrz_rzze  xmrzRzzeItem ,
+
+        b.xmrz_yfkze xmrzYfkzeItem,
+
+        b.xmrz_yjxbfk xmrzXbfktj,
+
+        a.january january
+
+        from   project_financing   b    LEFT JOIN  (
+
+        select financing_id , sum( january) january from   financing_date
+        <where>
+
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR( times)=#{yearValue}
+            </if>
+            <if test="monthValue != null and monthValue != ''">
+                and     MONTH(times)=#{monthValue}
+            </if>
+            <if test="beginTime != null and beginTime != ''  ">
+                and   DATE_FORMAT(times,'%Y-%m') <![CDATA[ >= ]]>  #{beginTime}
+            </if>
+
+            <if test="endTime != null and endTime != ''  ">
+                and    DATE_FORMAT(times,'%Y-%m') <![CDATA[ < ]]>  #{endTime}
+            </if>
+<!--            <if test="monthValue == null and  yearValue == null">-->
+<!--                and     DATE_FORMAT(CURRENT_Date(),'%Y-%m')= DATE_FORMAT(times,'%Y-%m')-->
+<!--            </if>-->
+
+        </where>
+
+        GROUP BY  financing_id	)  a    on a.financing_id=b.xmrz_id
+
+        LEFT JOIN  project_info c  on   b.xmrz_project_id=c.xmqk_project_id
+
+        <where>
+
+            <if test="xllx != null and xllx != ''">
+                and    c.xmqk_xmlx=#{xllx}
+            </if>
+
+            <if test="xmqkXmmc != null and xmqkXmmc != ''">
+                and    c.xmqk_xmmc  like concat('%', #{xmqkXmmc}, '%')
+            </if>
+
+            <if test="financeManager != null and financeManager != ''">
+                and     c.xmqk_rzjl  like concat('%', #{financeManager}, '%')
+            </if>
+
+            <if test="financingInstitutions != null and financingInstitutions != ''">
+                and     b.xmrz_rzjg  like concat('%', #{financingInstitutions}, '%')
+            </if>
+            <if test="financingSituation != null and financingSituation != ''">
+                and     b.xmrz_rzqk=#{financingSituation}
+            </if>
+
+            <if test=' xmFag=="0" '>  and  YEAR(c.xmqk_htsj) <![CDATA[ < ]]> #{newOldTime}    </if>
+            <if test=' xmFag=="1" '>  and ( YEAR(c.xmqk_htsj) <![CDATA[ >= ]]> #{newOldTime}  or c.xmqk_htsj is Null )   </if>
+
+            <if test="xmqkXmxz != null  and  xmqkXmxz != ''"> and c.xmqk_xmxz = #{xmqkXmxz}</if>
+
+            <if test="xmqkJszt != null and xmqkJszt != ''  ">  and  c.xmqk_jszt=#{xmqkJszt}   </if>
+
+            <if test="xmrzQyrq != null and xmrzQyrq != ''  ">  and  DATE_FORMAT(b.xmrz_qyrq,'%Y-%m-%d')=#{xmrzQyrq}   </if>
+
+        </where>
+
+        ) ee
+
+    </select>
+
+    <!-- 2022.12.12备份-->
+    <!--    <select id="selectProjectZjHk" resultType="com.zkrs.system.domain.api.ApiXmZjhk">-->
+    <!--        select  c.xmqk_xmmc  xmqkXmmc  ,  a.financing_cb   financingCb ,  YEAR(a.financing_rq)   fknf-->
+    <!--        , MONTH(a.financing_rq)  fkyf , a.financing_lx financing_lx  , a.financing_sxf-->
+    <!--        ,  a.financing_bysjhk financingBysjhk ,a.financing_bzj financingBzj ,  c.xmqk_project_id  xmid-->
+    <!--        , c.xmqk_xmlx   xmqkXmlxId  ,     c.xmqk_xmxz   xmqkXmxzId  ,  c.xmqk_jszt  xmqkJsztId  ,     c.xmqk_lyfgs  xmqkLyfgsId-->
+
+    <!--        from   financing_still  a LEFT JOIN     project_financing   b  on a.financing_id=b.xmrz_id-->
+
+    <!--        LEFT JOIN  project_info c  on   b.xmrz_project_id=c.xmqk_project_id-->
+
+    <!--        <where>-->
+
+
+    <!--            <if test="yearValue != null and yearValue != ''">-->
+    <!--                and   YEAR( a.financing_rq)=#{yearValue}-->
+    <!--            </if>-->
+    <!--            <if test="monthValue != null and monthValue != ''">-->
+    <!--                and     MONTH(a.financing_rq)=#{monthValue}-->
+    <!--            </if>-->
+    <!--            <if test="xllx != null and xllx != ''">-->
+
+    <!--                and    c.xmqk_xmlx =#{xllx}-->
+
+    <!--            </if>-->
+
+
+    <!--        </where>-->
+
+    <!--    </select>-->
+
+
+    <select id="selectProjectZjHk" resultType="com.zkrs.system.domain.api.ApiXmZjhk">
+
+        select  c.xmqk_xmmc  xmakXmmc
+        , a.financingCb
+        ,  a.financingLx
+        , a.financingSxf
+        , a.financingBysjhk
+        , a.financingBzj
+        ,  c.xmqk_project_id  xmid
+        , c.xmqk_xmlx   xmqkXmlxId
+        ,  c.xmqk_xmxz   xmqkXmxzId
+        ,  c.xmqk_jszt  xmqkJsztId
+        , c.xmqk_lyfgs  xmqkLyfgsId
+        , YEAR( a.financing_rq) as fknf
+        , MONTH(a.financing_rq) as fkyf
+
+        from    project_financing   b  LEFT JOIN   (
+
+        select    financing_id , sum(financing_cb)  financingCb  ,financing_rq,
+        sum(ifnull(financing_cb,0))+sum(ifnull(financing_lx,0))+sum(ifnull(financing_sxf,0))  financingBysjhk  ,
+        sum(financing_sxf)  financingSxf ,
+        sum(financing_bzj) financingBzj,
+        sum(financing_lx) financingLx
+
+        from     financing_still
+        <where>
+
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR( financing_rq)=#{yearValue}
+            </if>
+            <if test="monthValue != null and monthValue != ''">
+                and     MONTH(financing_rq)=#{monthValue}
+            </if>
+
+        </where>
+
+        GROUP BY     financing_id
+        )  a    on a.financing_id=b.xmrz_id
+
+        LEFT JOIN  project_info c  on   b.xmrz_project_id=c.xmqk_project_id
+        <where>
+            <if test="xllx != null and xllx != ''">
+                and    c.xmqk_xmlx =#{xllx}
+            </if>
+            <if test="xmqkXmmc != null and xmqkXmmc != ''">
+                and    c.xmqk_xmmc  like concat('%', #{xmqkXmmc}, '%')
+            </if>
+
+
+            <if test="financeManager != null and financeManager != ''">
+                and     c.xmqk_rzjl  like concat('%', #{financeManager}, '%')
+            </if>
+
+            <if test="financingInstitutions != null and financingInstitutions != ''">
+                and     b.xmrz_rzjg  like concat('%', #{financingInstitutions}, '%')
+            </if>
+            <if test="financingSituation != null and financingSituation != ''">
+                and     b.xmrz_rzqk=#{financingSituation}
+            </if>
+
+           and  a.financingBysjhk>0
+        </where>
+
+
+    </select>
+
+
+
+    <select id="selectProjectZjHkTotal" resultType="com.zkrs.system.domain.api.ApiXmZjrzTotal">
+        select
+        sum(ifnull(ee.financingCb ,0)) financingCb
+        ,sum(ifnull(ee.financingLx ,0)) financingLx
+        ,sum(ifnull(ee.financingSxf ,0)) financingSxf
+        ,sum(ifnull(ee.financingBysjhk ,0)) financingBysjhk
+        from (
+        select
+        a.financingCb  financingCb
+        ,  a.financingLx  financingLx
+        , a.financingSxf  financingSxf
+        , a.financingBysjhk  financingBysjhk
+
+        from    project_financing   b  LEFT JOIN   (
+
+        select    financing_id , sum(financing_cb)  financingCb  ,
+        sum(ifnull(financing_cb,0))+sum(ifnull(financing_lx,0))+sum(ifnull(financing_sxf,0))  financingBysjhk  ,
+        sum(financing_sxf)  financingSxf ,
+        sum(financing_bzj) financingBzj,
+        sum(financing_lx) financingLx
+
+        from     financing_still
+        <where>
+
+            <if test="yearValue != null and yearValue != ''">
+                and   YEAR( financing_rq)=#{yearValue}
+            </if>
+            <if test="monthValue != null and monthValue != ''">
+                and     MONTH(financing_rq)=#{monthValue}
+            </if>
+
+        </where>
+
+        GROUP BY     financing_id
+        )  a    on a.financing_id=b.xmrz_id
+
+        LEFT JOIN  project_info c  on   b.xmrz_project_id=c.xmqk_project_id
+        <where>
+            <if test="xllx != null and xllx != ''">
+                and    c.xmqk_xmlx =#{xllx}
+            </if>
+            <if test="xmqkXmmc != null and xmqkXmmc != ''">
+                and    c.xmqk_xmmc  like concat('%', #{xmqkXmmc}, '%')
+            </if>
+
+
+            <if test="financeManager != null and financeManager != ''">
+                and     c.xmqk_rzjl  like concat('%', #{financeManager}, '%')
+            </if>
+
+            <if test="financingInstitutions != null and financingInstitutions != ''">
+                and     b.xmrz_rzjg  like concat('%', #{financingInstitutions}, '%')
+            </if>
+            <if test="financingSituation != null and financingSituation != ''">
+                and     b.xmrz_rzqk=#{financingSituation}
+            </if>
+
+           and  a.financingBysjhk>0
+        </where>
+
+        ) ee
+
+    </select>
+
+
+    <select id="selectLybzjBack" resultType="java.lang.String">
+        SELECT sum(xjlsjqk_lybzj_back) - SUM(xjlsjqk_lybzj) as num  from actual_cash
+    </select>
+
+    <select id="selectCash" resultType="java.lang.String">
+        SELECT sum(xjlsjqk_sr_hj) - SUM(xjlsjqk_zc_hj)  from actual_cash
+    </select>
+
+</mapper>

@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkrs.system.mapper.ActualCashMapper">
+
+    <resultMap type="ActualCash" id="ActualCashResult">
+        <result property="xjlsjqkId"    column="xjlsjqk_id"    />
+        <result property="xjlsjqkYjxjlId"    column="xjlsjqk_yjxjl_id"    />
+        <result property="xjlsjqkProjectId"    column="xjlsjqk_project_id"    />
+        <result property="xjlsjqkSk"    column="xjlsjqk_sk"    />
+        <result property="xjlsjqkRzk"    column="xjlsjqk_rzk"    />
+        <result property="xjlsjqkDfsk"    column="xjlsjqk_dfsk"    />
+        <result property="xjlsjqkSrHj"    column="xjlsjqk_sr_hj"    />
+        <result property="xjlsjqkSbk"    column="xjlsjqk_sbk"    />
+        <result property="xjlsjqkJak"    column="xjlsjqk_jak"    />
+        <result property="xjlsjqkZcHj"    column="xjlsjqk_zc_hj"    />
+        <result property="xjlsjqkYfzkye"    column="xjlsjqk_yfzkye"    />
+        <result property="xjlsjqkYfwsk"    column="xjlsjqk_yfwsk"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="isDelete"    column="is_delete"    />
+        <result property="xjlsjqkLybzjBack"    column="xjlsjqk_lybzj_back"    />
+        <result property="xjlsjqkLybzj"    column="xjlsjqk_lybzj"    />
+        <result property="xjlsjqkQt"    column="xjlsjqk_qt"    />
+        <result property="xjlsjqkGck"    column="xjlsjqk_gck"    />
+        <result property="xjlsjqkXmyszkze"    column="xjlsjqk_xmyszkze"    />
+        <result property="xjlsjqkXmyfzkzje"    column="xjlsjqk_xmyfzkzje"    />
+        <result property="xjlsjqkYsye"    column="xjlsjqk_ysye"    />
+    </resultMap>
+
+    <resultMap type="ExportManagementCash" id="ManagementCashResult">
+        <result property="xmqkXmmc"    column="xmqk_xmmc"    />
+        <result property="xjlyjqkRq"    column="xjlyjqk_rq"    />
+        <result property="xjlyjqkYjcszj"    column="xjlyjqk_yjcszj"    />
+        <result property="xjlyjqkYjepcjsj"    column="xjlyjqk_yjepcjsj" />
+        <result property="xjlyjqkSrHjAll"    column="xjlyjqk_sr_hj_all"    />
+        <result property="xjlyjqkYjxmgscb"    column="xjlyjqk_yjxmgscb"    />
+        <result property="xjlyjqkYjecpcb"    column="xjlyjqk_yjecpcb"    />
+        <result property="xjlyjqkYjxmcb"    column="xjlyjqk_yjxmcb"    />
+        <result property="xjlyjqkYjlr"    column="xjlyjqk_yjlr"    />
+        <result property="xjlsjqkXmyszkze"    column="xjlsjqk_xmyszkze"    />
+        <result property="xjlsjqkSk"    column="xjlsjqk_sk"    />
+        <result property="xjlsjqkRzk"    column="xjlsjqk_rzk"    />
+        <result property="xjlsjqkGck"    column="xjlsjqk_gck"    />
+        <result property="xjlsjqkDfsk"    column="xjlsjqk_dfsk"    />
+        <result property="xjlsjqkSrHj"    column="xjlsjqk_sr_hj"    />
+        <result property="xjlsjqkYsye"    column="xjlsjqk_ysye"    />
+        <result property="xjlsjqkXmyfzkzje"    column="xjlsjqk_xmyfzkzje"    />
+        <result property="xjlsjqkSbk"    column="xjlsjqk_sbk"    />
+        <result property="xjlsjqkJak"    column="xjlsjqk_jak"    />
+        <result property="xjlsjqkQt"    column="xjlsjqk_qt"    />
+        <result property="xjlsjqkZcHj"    column="xjlsjqk_zc_hj"    />
+        <result property="xjlsjqkYfwsk"    column="xjlsjqk_yfwsk"    />
+        <result property="xjlsjqkYfzkye"    column="xjlsjqk_yfzkye"    />
+        <result property="xjlsjqkLybzj"    column="xjlsjqk_lybzj"    />
+        <result property="xjlsjqkLybzjBack"    column="xjlsjqk_lybzj_back"    />
+        <result property="xjlyjqkRzk"    column="xjlyjqk_rzk"    />
+        <result property="xjlyjqkGck"    column="xjlyjqk_gck"    />
+        <result property="xjlyjqkSk"    column="xjlyjqk_sk"    />
+        <result property="xjlyjqkSrHj"    column="xjlyjqk_sr_hj"    />
+        <result property="xjlyjqkSbk"    column="xjlyjqk_sbk"    />
+        <result property="xjlyjqkJak"    column="xjlyjqk_jak"    />
+        <result property="xjlyjqkQtkx"    column="xjlyjqk_qtkx"    />
+        <result property="xjlyjqkBzj"    column="xjlyjqk_bzj" />
+        <result property="xjlyjqkZcHj"    column="xjlyjqk_zc_hj"    />
+    </resultMap>
+
+    <sql id="selectActualCashVo">
+        select xjlsjqk_id, xjlsjqk_yjxjl_id, xjlsjqk_project_id, xjlsjqk_sk, xjlsjqk_rzk, xjlsjqk_dfsk, xjlsjqk_sr_hj, xjlsjqk_sbk, xjlsjqk_jak, xjlsjqk_zc_hj,xjlsjqk_yfzkye, xjlsjqk_yfwsk, create_by, create_time, update_by, update_time, is_delete,xjlsjqk_lybzj_back, xjlsjqk_lybzj, xjlsjqk_qt, xjlsjqk_gck
+         ,xjlsjqk_xmyszkze , xjlsjqk_xmyfzkzje,xjlsjqk_ysye
+         from actual_cash
+    </sql>
+
+    <select id="selectActualCashList" parameterType="ActualCash" resultMap="ActualCashResult">
+        <include refid="selectActualCashVo"/>
+        <where>
+            <if test="xjlsjqkYjxjlId != null  and xjlsjqkYjxjlId != ''"> and xjlsjqk_yjxjl_id = #{xjlsjqkYjxjlId}</if>
+            <if test="xjlsjqkProjectId != null  and xjlsjqkProjectId != ''"> and xjlsjqk_project_id = #{xjlsjqkProjectId}</if>
+            <if test="xjlsjqkSk != null "> and xjlsjqk_sk = #{xjlsjqkSk}</if>
+            <if test="xjlsjqkRzk != null "> and xjlsjqk_rzk = #{xjlsjqkRzk}</if>
+            <if test="xjlsjqkDfsk != null "> and xjlsjqk_dfsk = #{xjlsjqkDfsk}</if>
+            <if test="xjlsjqkSrHj != null "> and xjlsjqk_sr_hj = #{xjlsjqkSrHj}</if>
+            <if test="xjlsjqkSbk != null "> and xjlsjqk_sbk = #{xjlsjqkSbk}</if>
+            <if test="xjlsjqkJak != null "> and xjlsjqk_jak = #{xjlsjqkJak}</if>
+            <if test="xjlsjqkZcHj != null "> and xjlsjqk_zc_hj = #{xjlsjqkZcHj}</if>
+            <if test="xjlsjqkYfwsk != null "> and xjlsjqk_yfwsk = #{xjlsjqkYfwsk}</if>
+            <if test="isDelete != null  and isDelete != ''"> and is_delete = #{isDelete}</if>
+            <if test="xjlsjqkLybzj != null "> and xjlsjqk_lybzj = #{xjlsjqkLybzj}</if>
+            <if test="xjlsjqkQt != null "> and xjlsjqk_qt = #{xjlsjqkQt}</if>
+            <if test="xjlsjqkGck != null "> and xjlsjqk_gck = #{xjlsjqkGck}</if>
+        </where>
+    </select>
+
+    <select id="selectActualCashexport" parameterType="ActualCash" resultMap="ActualCashResult">
+        select b.xmqk_xmmc  xmqkXmmc ,   a.xjlsjqk_id, a.xjlsjqk_yjxjl_id, a.xjlsjqk_project_id, a.xjlsjqk_sk,
+        a.xjlsjqk_rzk, a.xjlsjqk_dfsk, a.xjlsjqk_sr_hj, a.xjlsjqk_sbk, a.xjlsjqk_jak,
+        a.xjlsjqk_zc_hj, a.xjlsjqk_yfwsk,  a.xjlsjqk_lybzj, a.xjlsjqk_qt, a.xjlsjqk_gck , a.xjlsjqk_xmyszkze , a.xjlsjqk_xmyfzkzje,a.xjlsjqk_ysye
+        from actual_cash  a LEFT JOIN   project_info    b   on  a.xjlsjqk_project_id=b.xmqk_project_id
+        <where>
+            <if test="xjlsjqkYjxjlId != null  and xjlsjqkYjxjlId != ''"> and a.xjlsjqk_yjxjl_id = #{xjlsjqkYjxjlId}</if>
+            <if test="xjlsjqkProjectId != null  and xjlsjqkProjectId != ''"> and a.xjlsjqk_project_id = #{xjlsjqkProjectId}</if>
+            <if test="xjlsjqkSk != null "> and a.xjlsjqk_sk = #{xjlsjqkSk}</if>
+            <if test="xjlsjqkRzk != null "> and a.xjlsjqk_rzk = #{xjlsjqkRzk}</if>
+            <if test="xjlsjqkDfsk != null "> and a.xjlsjqk_dfsk = #{xjlsjqkDfsk}</if>
+            <if test="xjlsjqkSrHj != null "> and a.xjlsjqk_sr_hj = #{xjlsjqkSrHj}</if>
+            <if test="xjlsjqkSbk != null "> and a.xjlsjqk_sbk = #{xjlsjqkSbk}</if>
+            <if test="xjlsjqkJak != null "> and a.xjlsjqk_jak = #{xjlsjqkJak}</if>
+            <if test="xjlsjqkZcHj != null "> and a.xjlsjqk_zc_hj = #{xjlsjqkZcHj}</if>
+            <if test="xjlsjqkYfwsk != null "> and a.xjlsjqk_yfwsk = #{xjlsjqkYfwsk}</if>
+            <if test="xjlsjqkLybzj != null "> and a.xjlsjqk_lybzj = #{xjlsjqkLybzj}</if>
+            <if test="xjlsjqkQt != null "> and a.xjlsjqk_qt = #{xjlsjqkQt}</if>
+            <if test="xjlsjqkGck != null "> and a.xjlsjqk_gck = #{xjlsjqkGck}</if>
+        </where>
+    </select>
+
+
+    <select id="selectActualCashByXjlsjqkId" parameterType="Long" resultMap="ActualCashResult">
+        <include refid="selectActualCashVo"/>
+        where xjlsjqk_id = #{xjlsjqkId}
+    </select>
+    <select id="selectActualCashByxjlsjqkYjxjlId" parameterType="String" resultMap="ActualCashResult">
+        <include refid="selectActualCashVo"/>
+        where xjlsjqk_yjxjl_id = #{xjlsjqkYjxjlId}
+    </select>
+    <insert id="insertActualCash" parameterType="ActualCash" useGeneratedKeys="true" keyProperty="xjlsjqkId">
+        insert into actual_cash
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="xjlsjqkYjxjlId != null">xjlsjqk_yjxjl_id,</if>
+            <if test="xjlsjqkProjectId != null">xjlsjqk_project_id,</if>
+            <if test="xjlsjqkSk != null">xjlsjqk_sk,</if>
+            <if test="xjlsjqkRzk != null">xjlsjqk_rzk,</if>
+            <if test="xjlsjqkDfsk != null">xjlsjqk_dfsk,</if>
+            <if test="xjlsjqkSrHj != null">xjlsjqk_sr_hj,</if>
+            <if test="xjlsjqkSbk != null">xjlsjqk_sbk,</if>
+            <if test="xjlsjqkJak != null">xjlsjqk_jak,</if>
+            <if test="xjlsjqkZcHj != null">xjlsjqk_zc_hj,</if>
+            <if test="xjlsjqkYfwsk != null">xjlsjqk_yfwsk,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="isDelete != null">is_delete,</if>
+            <if test="xjlsjqkLybzj != null">xjlsjqk_lybzj,</if>
+            <if test="xjlsjqkQt != null">xjlsjqk_qt,</if>
+            <if test="xjlsjqkGck != null">xjlsjqk_gck,</if>
+            <if test="xjlsjqkXmyszkze != null">xjlsjqk_xmyszkze,</if>
+            <if test="xjlsjqkXmyfzkzje != null">xjlsjqk_Xmyfzkzje,</if>
+            <if test="xjlsjqkYsye != null">xjlsjqk_ysye,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="xjlsjqkYjxjlId != null">#{xjlsjqkYjxjlId},</if>
+            <if test="xjlsjqkProjectId != null">#{xjlsjqkProjectId},</if>
+            <if test="xjlsjqkSk != null">#{xjlsjqkSk},</if>
+            <if test="xjlsjqkRzk != null">#{xjlsjqkRzk},</if>
+            <if test="xjlsjqkDfsk != null">#{xjlsjqkDfsk},</if>
+            <if test="xjlsjqkSrHj != null">#{xjlsjqkSrHj},</if>
+            <if test="xjlsjqkSbk != null">#{xjlsjqkSbk},</if>
+            <if test="xjlsjqkJak != null">#{xjlsjqkJak},</if>
+            <if test="xjlsjqkZcHj != null">#{xjlsjqkZcHj},</if>
+            <if test="xjlsjqkYfwsk != null">#{xjlsjqkYfwsk},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="isDelete != null">#{isDelete},</if>
+            <if test="xjlsjqkLybzj != null">#{xjlsjqkLybzj},</if>
+            <if test="xjlsjqkQt != null">#{xjlsjqkQt},</if>
+            <if test="xjlsjqkGck != null">#{xjlsjqkGck},</if>
+            <if test="xjlsjqkXmyszkze != null">#{xjlsjqkXmyszkze},</if>
+            <if test="xjlsjqkXmyfzkzje != null">#{xjlsjqkXmyfzkzje},</if>
+            <if test="xjlsjqkYsye != null">#{xjlsjqkYsye},</if>
+
+        </trim>
+    </insert>
+
+    <update id="updateActualCash" parameterType="ActualCash">
+        update actual_cash
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="xjlsjqkYjxjlId != null">xjlsjqk_yjxjl_id = #{xjlsjqkYjxjlId},</if>
+            <if test="xjlsjqkProjectId != null">xjlsjqk_project_id = #{xjlsjqkProjectId},</if>
+            <if test="xjlsjqkSk != null">xjlsjqk_sk = #{xjlsjqkSk},</if>
+            <if test="xjlsjqkRzk != null">xjlsjqk_rzk = #{xjlsjqkRzk},</if>
+            <if test="xjlsjqkDfsk != null">xjlsjqk_dfsk = #{xjlsjqkDfsk},</if>
+            <if test="xjlsjqkSrHj != null">xjlsjqk_sr_hj = #{xjlsjqkSrHj},</if>
+            <if test="xjlsjqkSbk != null">xjlsjqk_sbk = #{xjlsjqkSbk},</if>
+            <if test="xjlsjqkJak != null">xjlsjqk_jak = #{xjlsjqkJak},</if>
+            <if test="xjlsjqkZcHj != null">xjlsjqk_zc_hj = #{xjlsjqkZcHj},</if>
+            <if test="xjlsjqkYfwsk != null">xjlsjqk_yfwsk = #{xjlsjqkYfwsk},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="isDelete != null">is_delete = #{isDelete},</if>
+            <if test="xjlsjqkLybzj != null">xjlsjqk_lybzj = #{xjlsjqkLybzj},</if>
+            <if test="xjlsjqkQt != null">xjlsjqk_qt = #{xjlsjqkQt},</if>
+            <if test="xjlsjqkGck != null">xjlsjqk_gck = #{xjlsjqkGck},</if>
+            <if test="xjlsjqkXmyszkze != null">xjlsjqk_xmyszkze = #{xjlsjqkXmyszkze},</if>
+            <if test="xjlsjqkXmyfzkzje != null">xjlsjqk_xmyfzkzje = #{xjlsjqkXmyfzkzje},</if>
+            <if test="xjlsjqkYsye != null">xjlsjqk_ysye = #{xjlsjqkYsye},</if>
+            <if test="xjlsjqkYfzkye != null">xjlsjqk_yfzkye = #{xjlsjqkYfzkye},</if>
+
+        </trim>
+        where xjlsjqk_id = #{xjlsjqkId}
+    </update>
+
+    <delete id="deleteActualCashByXjlsjqkId" parameterType="Long">
+        delete from actual_cash where xjlsjqk_id = #{xjlsjqkId}
+    </delete>
+
+    <delete id="deleteActualCashByXjlsjqkIds" parameterType="String">
+        delete from actual_cash where xjlsjqk_id in
+        <foreach item="xjlsjqkId" collection="array" open="(" separator="," close=")">
+            #{xjlsjqkId}
+        </foreach>
+    </delete>
+
+
+    <insert id="importBox" >
+        insert into actual_cash(
+        xjlsjqk_yjxjl_id,
+        xjlsjqk_project_id,
+        xjlsjqk_sk,
+        xjlsjqk_rzk,
+        xjlsjqk_dfsk,
+        xjlsjqk_sr_hj,
+        xjlsjqk_sbk,
+        xjlsjqk_jak,
+        xjlsjqk_zc_hj,
+        xjlsjqk_yfwsk,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        xjlsjqk_lybzj,
+        xjlsjqk_qt,
+        xjlsjqk_gck,
+        xjlsjqk_xmyszkze,
+        xjlsjqk_xmyfzkzje,
+        xjlsjqk_ysye
+        )
+        values
+        <foreach collection="listData" item="listItme" separator=",">
+            (
+            #{listItme.xjlsjqkYjxjlId},
+            #{listItme.xjlsjqkProjectId},
+            #{listItme.xjlsjqkSk},
+            #{listItme.xjlsjqkRzk},
+            #{listItme.xjlsjqkDfsk},
+            #{listItme.xjlsjqkSrHj},
+            #{listItme.xjlsjqkSbk},
+            #{listItme.xjlsjqkJak},
+            #{listItme.xjlsjqkZcHj},
+            #{listItme.xjlsjqkYfwsk},
+            #{listItme.createBy},
+            #{listItme.createTime},
+            #{listItme.updateBy},
+            #{listItme.updateTime},
+            #{listItme.xjlsjqkLybzj},
+            #{listItme.xjlsjqkQt},
+            #{listItme.xjlsjqkGck},
+            #{listItme.xjlsjqkXmyszkze},
+            #{listItme.xjlsjqkXmyfzkzje},
+            #{listItme.xjlsjqkYsye}
+            )
+        </foreach>
+
+    </insert>
+
+
+
+    <delete id="deleteActualCashByXjlsjqkIdJl" parameterType="String">
+        delete from actual_cash where xjlsjqk_project_id = #{xjlsjqkId}
+    </delete>
+
+    <delete id="deleteActualCashByXjlsjqkIdsJl" parameterType="String">
+        delete from actual_cash where xjlsjqk_project_id in
+        <foreach item="xjlsjqkId" collection="array" open="(" separator="," close=")">
+            #{xjlsjqkId}
+        </foreach>
+    </delete>
+
+
+
+    <delete id="deleteActualCashByXjlsjqkIdsJll" parameterType="String">
+
+        delete from actual_cash  where  xjlsjqk_yjxjl_id  in (
+        select  xjlsjqk_yjxjl_id  from  expect_cash  where  xjlyjqk_id  in
+        <foreach item="xjlsjqkId" collection="array" open="(" separator="," close=")">
+            #{xjlsjqkId}
+        </foreach>
+        )
+    </delete>
+
+    <insert id="addBatch">
+        insert into actual_cash(
+        xjlsjqk_yjxjl_id,
+        xjlsjqk_project_id,
+        xjlsjqk_xmyszkze,
+        xjlsjqk_sk,
+        xjlsjqk_rzk,
+        xjlsjqk_gck,
+        xjlsjqk_dfsk,
+        xjlsjqk_sr_hj,
+        xjlsjqk_ysye,
+        xjlsjqk_Xmyfzkzje,
+        xjlsjqk_sbk,
+        xjlsjqk_jak,
+        xjlsjqk_qt,
+        xjlsjqk_zc_hj,
+        xjlsjqk_yfwsk,
+        xjlsjqk_yfzkye,
+        xjlsjqk_lybzj,
+        xjlsjqk_lybzj_back
+        )
+        values
+        <foreach collection="listData" item="managementCash" separator=",">
+            (
+            #{managementCash.xjlsjqkYjxjlId},
+            #{managementCash.xmqkProjectId},
+            #{managementCash.xjlsjqkXmyszkze},
+            #{managementCash.xjlsjqkSk},
+            #{managementCash.xjlsjqkRzk},
+            #{managementCash.xjlsjqkGck},
+            #{managementCash.xjlsjqkDfsk},
+            #{managementCash.xjlsjqkSrHj},
+            #{managementCash.xjlsjqkYsye},
+            #{managementCash.xjlsjqkXmyfzkzje},
+            #{managementCash.xjlsjqkSbk},
+            #{managementCash.xjlsjqkJak},
+            #{managementCash.xjlsjqkQt},
+            #{managementCash.xjlsjqkZcHj},
+            #{managementCash.xjlsjqkYfwsk},
+            #{managementCash.xjlsjqkYfzkye},
+            #{managementCash.xjlsjqkLybzj},
+            #{managementCash.xjlsjqkLybzjBack}
+            )
+        </foreach>
+    </insert>
+
+
+    <insert id="importBoxManagement" parameterType="ManagementCash" useGeneratedKeys="true" keyProperty="xjlsjqkId">
+        insert into actual_cash (
+        <trim suffix="" suffixOverrides=",">
+            <if test="managementCash.xjlsjqkYjxjlId != null">        xjlsjqk_yjxjl_id,</if>
+            <if test="managementCash.xmqkProjectId != null">         xjlsjqk_project_id,</if>
+            <if test="managementCash.xjlsjqkXmyszkze != null">xjlsjqk_xmyszkze,</if>
+            <if test="managementCash.xjlsjqkSk != null">xjlsjqk_sk,</if>
+            <if test="managementCash.xjlsjqkRzk != null">xjlsjqk_rzk,</if>
+            <if test="managementCash.xjlsjqkGck != null">xjlsjqk_gck,</if>
+            <if test="managementCash.xjlsjqkDfsk != null">xjlsjqk_dfsk,</if>
+            <if test="managementCash.xjlsjqkSrHj != null">xjlsjqk_sr_hj,</if>
+            <if test="managementCash.xjlsjqkYsye != null">xjlsjqk_ysye,</if>
+            <if test="managementCash.xjlsjqkXmyfzkzje != null">xjlsjqk_Xmyfzkzje,</if>
+            <if test="managementCash.xjlsjqkSbk != null">xjlsjqk_sbk,</if>
+            <if test="managementCash.xjlsjqkJak != null">xjlsjqk_jak,</if>
+            <if test="managementCash.xjlsjqkQt != null">xjlsjqk_qt,</if>
+            <if test="managementCash.xjlsjqkZcHj != null">xjlsjqk_zc_hj,</if>
+            <if test="managementCash.xjlsjqkYfwsk != null">xjlsjqk_yfwsk,</if>
+            <if test="managementCash.xjlsjqkYfzkye != null">xjlsjqk_yfzkye,</if>
+            <if test="managementCash.xjlsjqkLybzj != null">xjlsjqk_lybzj,</if>
+            <if test="managementCash.xjlsjqkLybzjBack != null">xjlsjqk_lybzj_back,</if>
+            <!--            <if test="managementCash.xjlsjqkCwskhj != null">xjlsjqk_cwskhj,</if>-->
+            <!--            <if test="managementCash.xjlsjqkCwyf != null">xjlsjqk_cwyf,</if>-->
+        </trim>
+        )values(
+        <trim suffix="" suffixOverrides=",">
+            <if test="managementCash.xjlsjqkYjxjlId != null">#{managementCash.xjlsjqkYjxjlId},</if>
+            <if test="managementCash.xmqkProjectId != null">#{managementCash.xmqkProjectId},</if>
+            <if test="managementCash.xjlsjqkXmyszkze != null">#{managementCash.xjlsjqkXmyszkze},</if>
+            <if test="managementCash.xjlsjqkSk != null">#{managementCash.xjlsjqkSk},</if>
+            <if test="managementCash.xjlsjqkRzk != null">#{managementCash.xjlsjqkRzk},</if>
+            <if test="managementCash.xjlsjqkGck != null">#{managementCash.xjlsjqkGck},</if>
+            <if test="managementCash.xjlsjqkDfsk != null">#{managementCash.xjlsjqkDfsk},</if>
+            <if test="managementCash.xjlsjqkSrHj != null">#{managementCash.xjlsjqkSrHj},</if>
+            <if test="managementCash.xjlsjqkYsye != null">#{managementCash.xjlsjqkYsye},</if>
+            <if test="managementCash.xjlsjqkXmyfzkzje != null">#{managementCash.xjlsjqkXmyfzkzje},</if>
+            <if test="managementCash.xjlsjqkSbk != null">#{managementCash.xjlsjqkSbk},</if>
+            <if test="managementCash.xjlsjqkJak != null">#{managementCash.xjlsjqkJak},</if>
+            <if test="managementCash.xjlsjqkQt != null">#{managementCash.xjlsjqkQt},</if>
+            <if test="managementCash.xjlsjqkZcHj != null">#{managementCash.xjlsjqkZcHj},</if>
+            <if test="managementCash.xjlsjqkYfwsk != null">#{managementCash.xjlsjqkYfwsk},</if>
+            <if test="managementCash.xjlsjqkYfzkye != null">#{managementCash.xjlsjqkYfzkye},</if>
+            <if test="managementCash.xjlsjqkLybzj != null">#{managementCash.xjlsjqkLybzj},</if>
+            <if test="managementCash.xjlsjqkLybzjBack != null">#{managementCash.xjlsjqkLybzjBack},</if>
+            <!--            <if test="managementCash.xjlsjqkCwskhj != null">#{managementCash.xjlsjqkCwskhj},</if>-->
+            <!--            <if test="managementCash.xjlsjqkCwyf != null">#{managementCash.xjlsjqkCwyf},</if>-->
+        </trim>
+        )
+    </insert>
+
+    <insert id="insertUpdateBatch"  >
+        insert into actual_cash (
+        <trim suffix="" suffixOverrides=",">
+            <if test="managementCash.xjlsjqkYjxjlId != null">        xjlsjqk_yjxjl_id,</if>
+            <if test="managementCash.xmqkProjectId != null">         xjlsjqk_project_id,</if>
+            <if test="managementCash.xjlsjqkXmyszkze != null">xjlsjqk_xmyszkze,</if>
+            <if test="managementCash.xjlsjqkSk != null">xjlsjqk_sk,</if>
+            <if test="managementCash.xjlsjqkRzk != null">xjlsjqk_rzk,</if>
+            <if test="managementCash.xjlsjqkGck != null">xjlsjqk_gck,</if>
+            <if test="managementCash.xjlsjqkDfsk != null">xjlsjqk_dfsk,</if>
+            <if test="managementCash.xjlsjqkSrHj != null">xjlsjqk_sr_hj,</if>
+            <if test="managementCash.xjlsjqkYsye != null">xjlsjqk_ysye,</if>
+            <if test="managementCash.xjlsjqkXmyfzkzje != null">xjlsjqk_Xmyfzkzje,</if>
+            <if test="managementCash.xjlsjqkSbk != null">xjlsjqk_sbk,</if>
+            <if test="managementCash.xjlsjqkJak != null">xjlsjqk_jak,</if>
+            <if test="managementCash.xjlsjqkQt != null">xjlsjqk_qt,</if>
+            <if test="managementCash.xjlsjqkZcHj != null">xjlsjqk_zc_hj,</if>
+            <if test="managementCash.xjlsjqkYfwsk != null">xjlsjqk_yfwsk,</if>
+            <if test="managementCash.xjlsjqkYfzkye != null">xjlsjqk_yfzkye,</if>
+            <if test="managementCash.xjlsjqkLybzj != null">xjlsjqk_lybzj,</if>
+            <if test="managementCash.xjlsjqkLybzjBack != null">xjlsjqk_lybzj_back,</if>
+            <!--            <if test="managementCash.xjlsjqkCwskhj != null">xjlsjqk_cwskhj,</if>-->
+            <!--            <if test="managementCash.xjlsjqkCwyf != null">xjlsjqk_cwyf,</if>-->
+        </trim>
+        )values(
+        <trim suffix="" suffixOverrides=",">
+            <if test="managementCash.xjlsjqkYjxjlId != null">#{managementCash.xjlsjqkYjxjlId},</if>
+            <if test="managementCash.xmqkProjectId != null">#{managementCash.xmqkProjectId},</if>
+            <if test="managementCash.xjlsjqkXmyszkze != null">#{managementCash.xjlsjqkXmyszkze},</if>
+            <if test="managementCash.xjlsjqkSk != null">#{managementCash.xjlsjqkSk},</if>
+            <if test="managementCash.xjlsjqkRzk != null">#{managementCash.xjlsjqkRzk},</if>
+            <if test="managementCash.xjlsjqkGck != null">#{managementCash.xjlsjqkGck},</if>
+            <if test="managementCash.xjlsjqkDfsk != null">#{managementCash.xjlsjqkDfsk},</if>
+            <if test="managementCash.xjlsjqkSrHj != null">#{managementCash.xjlsjqkSrHj},</if>
+            <if test="managementCash.xjlsjqkYsye != null">#{managementCash.xjlsjqkYsye},</if>
+            <if test="managementCash.xjlsjqkXmyfzkzje != null">#{managementCash.xjlsjqkXmyfzkzje},</if>
+            <if test="managementCash.xjlsjqkSbk != null">#{managementCash.xjlsjqkSbk},</if>
+            <if test="managementCash.xjlsjqkJak != null">#{managementCash.xjlsjqkJak},</if>
+            <if test="managementCash.xjlsjqkQt != null">#{managementCash.xjlsjqkQt},</if>
+            <if test="managementCash.xjlsjqkZcHj != null">#{managementCash.xjlsjqkZcHj},</if>
+            <if test="managementCash.xjlsjqkYfwsk != null">#{managementCash.xjlsjqkYfwsk},</if>
+            <if test="managementCash.xjlsjqkYfzkye != null">#{managementCash.xjlsjqkYfzkye},</if>
+            <if test="managementCash.xjlsjqkLybzj != null">#{managementCash.xjlsjqkLybzj},</if>
+            <if test="managementCash.xjlsjqkLybzjBack != null">#{managementCash.xjlsjqkLybzjBack},</if>
+            <!--            <if test="managementCash.xjlsjqkCwskhj != null">#{managementCash.xjlsjqkCwskhj},</if>-->
+            <!--            <if test="managementCash.xjlsjqkCwyf != null">#{managementCash.xjlsjqkCwyf},</if>-->
+        </trim>
+        )
+
+        on duplicate key update
+        <trim suffix="" suffixOverrides=",">
+            <if test="managementCash.xjlsjqkYjxjlId != null">xjlsjqk_yjxjl_id=#{managementCash.xjlsjqkYjxjlId},</if>
+            <if test="managementCash.xmqkProjectId != null">xjlsjqk_project_id=#{managementCash.xmqkProjectId},</if>
+            <if test="managementCash.xjlsjqkXmyszkze != null">xjlsjqk_xmyszkze=#{managementCash.xjlsjqkXmyszkze},</if>
+            <if test="managementCash.xjlsjqkSk != null">xjlsjqk_sk=#{managementCash.xjlsjqkSk},</if>
+            <if test="managementCash.xjlsjqkRzk != null">xjlsjqk_rzk=#{managementCash.xjlsjqkRzk},</if>
+            <if test="managementCash.xjlsjqkGck != null">xjlsjqk_gck=#{managementCash.xjlsjqkGck},</if>
+            <if test="managementCash.xjlsjqkDfsk != null">xjlsjqk_dfsk=#{managementCash.xjlsjqkDfsk},</if>
+            <if test="managementCash.xjlsjqkSrHj != null">xjlsjqk_sr_hj=#{managementCash.xjlsjqkSrHj},</if>
+            <if test="managementCash.xjlsjqkYsye != null">xjlsjqk_ysye=#{managementCash.xjlsjqkYsye},</if>
+            <if test="managementCash.xjlsjqkXmyfzkzje != null">xjlsjqk_Xmyfzkzje=#{managementCash.xjlsjqkXmyfzkzje},</if>
+            <if test="managementCash.xjlsjqkSbk != null">xjlsjqk_sbk=#{managementCash.xjlsjqkSbk},</if>
+            <if test="managementCash.xjlsjqkJak != null">xjlsjqk_jak=#{managementCash.xjlsjqkJak},</if>
+            <if test="managementCash.xjlsjqkQt != null">xjlsjqk_qt=#{managementCash.xjlsjqkQt},</if>
+            <if test="managementCash.xjlsjqkZcHj != null">xjlsjqk_zc_hj=#{managementCash.xjlsjqkZcHj},</if>
+            <if test="managementCash.xjlsjqkYfwsk != null">xjlsjqk_yfwsk=#{managementCash.xjlsjqkYfwsk},</if>
+            <if test="managementCash.xjlsjqkYfzkye != null">xjlsjqk_yfzkye=#{managementCash.xjlsjqkYfzkye},</if>
+            <if test="managementCash.xjlsjqkLybzj != null">xjlsjqk_lybzj=#{managementCash.xjlsjqkLybzj},</if>
+            <if test="managementCash.xjlsjqkLybzjBack != null">xjlsjqk_lybzj_back=#{managementCash.xjlsjqkLybzjBack},</if>
+            <!--            <if test="managementCash.xjlsjqkCwskhj != null">#{managementCash.xjlsjqkCwskhj},</if>-->
+            <!--            <if test="managementCash.xjlsjqkCwyf != null">#{managementCash.xjlsjqkCwyf},</if>-->
+        </trim>
+
+    </insert>
+    <update id="updateBatch">
+        <foreach collection="listData" item="managementCash" separator=";">
+            update actual_cash set
+            <trim suffix="" suffixOverrides=",">
+                <if test="managementCash.xjlsjqkYjxjlId != null">xjlsjqk_yjxjl_id=#{managementCash.xjlsjqkYjxjlId},</if>
+                <if test="managementCash.xmqkProjectId != null">xjlsjqk_project_id=#{managementCash.xmqkProjectId},</if>
+                <if test="managementCash.xjlsjqkXmyszkze != null">xjlsjqk_xmyszkze=#{managementCash.xjlsjqkXmyszkze},</if>
+                <if test="managementCash.xjlsjqkSk != null">xjlsjqk_sk=#{managementCash.xjlsjqkSk},</if>
+                <if test="managementCash.xjlsjqkRzk != null">xjlsjqk_rzk=#{managementCash.xjlsjqkRzk},</if>
+                <if test="managementCash.xjlsjqkGck != null">xjlsjqk_gck=#{managementCash.xjlsjqkGck},</if>
+                <if test="managementCash.xjlsjqkDfsk != null">xjlsjqk_dfsk=#{managementCash.xjlsjqkDfsk},</if>
+                <if test="managementCash.xjlsjqkSrHj != null">xjlsjqk_sr_hj=#{managementCash.xjlsjqkSrHj},</if>
+                <if test="managementCash.xjlsjqkYsye != null">xjlsjqk_ysye=#{managementCash.xjlsjqkYsye},</if>
+                <if test="managementCash.xjlsjqkXmyfzkzje != null">xjlsjqk_Xmyfzkzje=#{managementCash.xjlsjqkXmyfzkzje},</if>
+                <if test="managementCash.xjlsjqkSbk != null">xjlsjqk_sbk=#{managementCash.xjlsjqkSbk},</if>
+                <if test="managementCash.xjlsjqkJak != null">xjlsjqk_jak=#{managementCash.xjlsjqkJak},</if>
+                <if test="managementCash.xjlsjqkQt != null">xjlsjqk_qt=#{managementCash.xjlsjqkQt},</if>
+                <if test="managementCash.xjlsjqkZcHj != null">xjlsjqk_zc_hj=#{managementCash.xjlsjqkZcHj},</if>
+                <if test="managementCash.xjlsjqkYfwsk != null">xjlsjqk_yfwsk=#{managementCash.xjlsjqkYfwsk},</if>
+                <if test="managementCash.xjlsjqkYfzkye != null">xjlsjqk_yfzkye=#{managementCash.xjlsjqkYfzkye},</if>
+                <if test="managementCash.xjlsjqkLybzj != null">xjlsjqk_lybzj=#{managementCash.xjlsjqkLybzj},</if>
+                <if test="managementCash.xjlsjqkLybzjBack != null">xjlsjqk_lybzj_back=#{managementCash.xjlsjqkLybzjBack},</if>
+                <!--            <if test="managementCash.xjlsjqkCwskhj != null">#{managementCash.xjlsjqkCwskhj},</if>-->
+                <!--            <if test="managementCash.xjlsjqkCwyf != null">#{managementCash.xjlsjqkCwyf},</if>-->
+            </trim>
+            where xjlsjqk_id=#{managementCash.xjlsjqkId}
+        </foreach>
+    </update>
+
+
+    <!--        <insert id="insertUpdateBatch"  useGeneratedKeys="true" keyProperty="xjlsjqkId">-->
+    <!--            <foreach collection="listData" item="managementCash" separator=";">-->
+    <!--                insert into actual_cash (-->
+    <!--                <trim suffix="" suffixOverrides=",">-->
+    <!--                    <if test="managementCash.xjlsjqkYjxjlId != null">        xjlsjqk_yjxjl_id,</if>-->
+    <!--                    <if test="managementCash.xmqkProjectId != null">         xjlsjqk_project_id,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkXmyszkze != null">xjlsjqk_xmyszkze,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkSk != null">xjlsjqk_sk,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkRzk != null">xjlsjqk_rzk,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkGck != null">xjlsjqk_gck,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkDfsk != null">xjlsjqk_dfsk,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkSrHj != null">xjlsjqk_sr_hj,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkYsye != null">xjlsjqk_ysye,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkXmyfzkzje != null">xjlsjqk_Xmyfzkzje,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkSbk != null">xjlsjqk_sbk,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkJak != null">xjlsjqk_jak,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkQt != null">xjlsjqk_qt,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkZcHj != null">xjlsjqk_zc_hj,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkYfwsk != null">xjlsjqk_yfwsk,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkYfzkye != null">xjlsjqk_yfzkye,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkLybzj != null">xjlsjqk_lybzj,</if>-->
+    <!--                    <if test="managementCash.xjlsjqkLybzjBack != null">xjlsjqk_lybzj_back,</if>-->
+    <!--                    &lt;!&ndash;            <if test="managementCash.xjlsjqkCwskhj != null">xjlsjqk_cwskhj,</if>&ndash;&gt;-->
+    <!--                    &lt;!&ndash;            <if test="managementCash.xjlsjqkCwyf != null">xjlsjqk_cwyf,</if>&ndash;&gt;-->
+    <!--                </trim>-->
+    <!--                )values(-->
+    <!--                <trim suffix="" suffixOverrides=",">-->
+    <!--                    <if test="managementCash.xjlsjqkYjxjlId != null">#{managementCash.xjlsjqkYjxjlId},</if>-->
+    <!--                    <if test="managementCash.xmqkProjectId != null">#{managementCash.xmqkProjectId},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkXmyszkze != null">#{managementCash.xjlsjqkXmyszkze},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkSk != null">#{managementCash.xjlsjqkSk},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkRzk != null">#{managementCash.xjlsjqkRzk},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkGck != null">#{managementCash.xjlsjqkGck},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkDfsk != null">#{managementCash.xjlsjqkDfsk},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkSrHj != null">#{managementCash.xjlsjqkSrHj},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkYsye != null">#{managementCash.xjlsjqkYsye},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkXmyfzkzje != null">#{managementCash.xjlsjqkXmyfzkzje},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkSbk != null">#{managementCash.xjlsjqkSbk},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkJak != null">#{managementCash.xjlsjqkJak},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkQt != null">#{managementCash.xjlsjqkQt},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkZcHj != null">#{managementCash.xjlsjqkZcHj},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkYfwsk != null">#{managementCash.xjlsjqkYfwsk},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkYfzkye != null">#{managementCash.xjlsjqkYfzkye},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkLybzj != null">#{managementCash.xjlsjqkLybzj},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkLybzjBack != null">#{managementCash.xjlsjqkLybzjBack},</if>-->
+    <!--                    &lt;!&ndash;            <if test="managementCash.xjlsjqkCwskhj != null">#{managementCash.xjlsjqkCwskhj},</if>&ndash;&gt;-->
+    <!--                    &lt;!&ndash;            <if test="managementCash.xjlsjqkCwyf != null">#{managementCash.xjlsjqkCwyf},</if>&ndash;&gt;-->
+    <!--                </trim>-->
+    <!--                )-->
+
+    <!--                on duplicate key update-->
+    <!--                <trim suffix="" suffixOverrides=",">-->
+    <!--                    <if test="managementCash.xjlsjqkYjxjlId != null">xjlsjqk_yjxjl_id=#{managementCash.xjlsjqkYjxjlId},</if>-->
+    <!--                    <if test="managementCash.xmqkProjectId != null">xjlsjqk_project_id=#{managementCash.xmqkProjectId},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkXmyszkze != null">xjlsjqk_xmyszkze=#{managementCash.xjlsjqkXmyszkze},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkSk != null">xjlsjqk_sk=#{managementCash.xjlsjqkSk},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkRzk != null">xjlsjqk_rzk=#{managementCash.xjlsjqkRzk},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkGck != null">xjlsjqk_gck=#{managementCash.xjlsjqkGck},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkDfsk != null">xjlsjqk_dfsk=#{managementCash.xjlsjqkDfsk},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkSrHj != null">xjlsjqk_sr_hj=#{managementCash.xjlsjqkSrHj},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkYsye != null">xjlsjqk_ysye=#{managementCash.xjlsjqkYsye},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkXmyfzkzje != null">xjlsjqk_Xmyfzkzje=#{managementCash.xjlsjqkXmyfzkzje},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkSbk != null">xjlsjqk_sbk=#{managementCash.xjlsjqkSbk},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkJak != null">xjlsjqk_jak=#{managementCash.xjlsjqkJak},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkQt != null">xjlsjqk_qt=#{managementCash.xjlsjqkQt},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkZcHj != null">xjlsjqk_zc_hj=#{managementCash.xjlsjqkZcHj},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkYfwsk != null">xjlsjqk_yfwsk=#{managementCash.xjlsjqkYfwsk},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkYfzkye != null">xjlsjqk_yfzkye=#{managementCash.xjlsjqkYfzkye},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkLybzj != null">xjlsjqk_lybzj=#{managementCash.xjlsjqkLybzj},</if>-->
+    <!--                    <if test="managementCash.xjlsjqkLybzjBack != null">xjlsjqk_lybzj_back=#{managementCash.xjlsjqkLybzjBack},</if>-->
+    <!--                    &lt;!&ndash;            <if test="managementCash.xjlsjqkCwskhj != null">#{managementCash.xjlsjqkCwskhj},</if>&ndash;&gt;-->
+    <!--                    &lt;!&ndash;            <if test="managementCash.xjlsjqkCwyf != null">#{managementCash.xjlsjqkCwyf},</if>&ndash;&gt;-->
+    <!--                </trim>-->
+    <!--            </foreach>-->
+    <!--        </insert>-->
+
+
+    <select id="selectProjectInfoList" parameterType="ProjectInfo" resultMap="ManagementCashResult">
+        select  b.xmqk_xmmc,
+        a.*,c.*
+        from actual_cash  a
+        LEFT JOIN   project_info    b   on  a.xjlsjqk_project_id=b.xmqk_project_id
+        LEFT JOIN  expect_cash     c   on  a.xjlsjqk_yjxjl_id = c.xjlsjqk_yjxjl_id
+        <where>
+            <if test="projectInfo.xmqkProjectId != null  and projectInfo.xmqkProjectId != ''"> and b.xmqk_project_id = #{projectInfo.xmqkProjectId}</if>
+            <if test="projectInfo.xmqkXmmc != null  and projectInfo.xmqkXmmc != ''"> and b.xmqk_xmmc = #{projectInfo.xmqkXmmc}</if>
+            <if test="projectInfo.xmqkRl != null  and projectInfo.xmqkRl != ''"> and b.xmqk_rl = #{projectInfo.xmqkRl}</if>
+            <if test="projectInfo.xmqkXmlx != null "> and b.xmqk_xmlx = #{projectInfo.xmqkXmlx}</if>
+            <if test="projectInfo.xmqkXmxz != null "> and b.xmqk_xmxz = #{projectInfo.xmqkXmxz}</if>
+            <if test="projectInfo.xmqkLyfgs != null "> and b.xmqk_lyfgs = #{projectInfo.xmqkLyfgs}</if>
+            <if test="projectInfo.xmqkJszt != null "> and b.xmqk_jszt = #{projectInfo.xmqkJszt}</if>
+            <if test="projectInfo.xmqkQy != null "> and b.xmqk_qy = #{projectInfo.xmqkQy}</if>
+            <if test="projectInfo.xmqkHtsj != null "> and b.xmqk_htsj = #{projectInfo.xmqkHtsj}</if>
+            <if test="projectInfo.xmqkBwsj != null "> and b.xmqk_bwsj = #{projectInfo.xmqkBwsj}</if>
+            <if test="projectInfo.xmqkRzf != null  and projectInfo.xmqkRzf != ''"> and b.xmqk_rzf = #{projectInfo.xmqkRzf}</if>
+            <if test="projectInfo.xmqkSgf != null  and projectInfo.xmqkSgf != ''"> and b.xmqk_sgf = #{projectInfo.xmqkSgf}</if>
+            <if test="projectInfo.xmqkHzf != null  and projectInfo.xmqkHzf != ''"> and b.xmqk_hzf = #{projectInfo.xmqkHzf}</if>
+            <if test="projectInfo.xmqkRzjl != null  and projectInfo.xmqkRzjl != ''"> and b.xmqk_rzjl = #{projectInfo.xmqkRzjl}</if>
+            <if test="projectInfo.xmqkSwjl != null  and projectInfo.xmqkSwjl != ''"> and b.xmqk_swjl = #{projectInfo.xmqkSwjl}</if>
+            <if test="projectInfo.xmqkXmdqz != null  and projectInfo.xmqkXmdqz != ''"> and b.xmqk_xmdqz = #{projectInfo.xmqkXmdqz}</if>
+            <if test="projectInfo.xmqkSyzkw != null  and projectInfo.xmqkSyzkw != ''"> and b.xmqk_syzkw = #{projectInfo.xmqkSyzkw}</if>
+            <if test="projectInfo.xmqkJckw != null  and projectInfo.xmqkJckw != ''"> and b.xmqk_jckw = #{projectInfo.xmqkJckw}</if>
+            <if test="projectInfo.xmqkJsqk != null  and projectInfo.xmqkJsqk != ''"> and b.xmqk_jsqk = #{projectInfo.xmqkJsqk}</if>
+            <if test="projectInfo.xmqkSbdh != null  and projectInfo.xmqkSbdh != ''"> and b.xmqk_sbdh = #{projectInfo.xmqkSbdh}</if>
+            <if test="projectInfo.xmqkTzyjcsdj != null "> and b.xmqk_tzyjcsdj = #{projectInfo.xmqkTzyjcsdj}</if>
+            <if test="projectInfo.xmqkYjcszj != null "> and b.xmqk_yjcszj = #{projectInfo.xmqkYjcszj}</if>
+            <if test="projectInfo.xmqkEpcJsj != null "> and b.xmqk_epc_jsj = #{projectInfo.xmqkEpcJsj}</if>
+            <if test="projectInfo.xmqkEpcZjjsj != null "> and b.xmqk_epc_zjjsj = #{projectInfo.xmqkEpcZjjsj}</if>
+            <if test="projectInfo.xmqkYjsyhj != null "> and b.xmqk_yjsyhj = #{projectInfo.xmqkYjsyhj}</if>
+            <if test="projectInfo.xmqkXmgscb != null "> and b.xmqk_xmgscb = #{projectInfo.xmqkXmgscb}</if>
+            <if test="projectInfo.xmqkXmepccb != null "> and b.xmqk_xmepccb = #{projectInfo.xmqkXmepccb}</if>
+            <if test="projectInfo.xmqkQzzyf != null "> and b.xmqk_qzzyf = #{projectInfo.xmqkQzzyf}</if>
+            <if test="projectInfo.xmqkZcb != null "> and b.xmqk_zcb = #{projectInfo.xmqkZcb}</if>
+            <if test="projectInfo.xmqkSjYsysgk != null "> and b.xmqk_sj_ysysgk = #{projectInfo.xmqkSjYsysgk}</if>
+            <if test="projectInfo.xmqkYsrzk != null "> and b.xmqk_ysrzk = #{projectInfo.xmqkYsrzk}</if>
+            <if test="projectInfo.xmqkGzk != null "> and b.xmqk_gzk = #{projectInfo.xmqkGzk}</if>
+            <if test="projectInfo.xmqkYsdf != null "> and b.xmqk_ysdf = #{projectInfo.xmqkYsdf}</if>
+            <if test="projectInfo.xmqkSjsrhj != null "> and b.xmqk_sjsrhj = #{projectInfo.xmqkSjsrhj}</if>
+            <if test="projectInfo.xmqkYsye != null "> and b.xmqk_ysye = #{projectInfo.xmqkYsye}</if>
+            <if test="projectInfo.xmqkYfsbk != null "> and b.xmqk_yfsbk = #{projectInfo.xmqkYfsbk}</if>
+            <if test="projectInfo.xmqkYfjak != null "> and b.xmqk_yfjak = #{projectInfo.xmqkYfjak}</if>
+            <if test="projectInfo.xmqkYfqtkx != null "> and b.xmqk_yfqtkx = #{projectInfo.xmqkYfqtkx}</if>
+            <if test="projectInfo.xmqkYfzje != null "> and b.xmqk_yfzje = #{projectInfo.xmqkYfzje}</if>
+            <if test="projectInfo.xmqkYssjye != null "> and b.xmqk_yssjye = #{projectInfo.xmqkYssjye}</if>
+            <if test="projectInfo.xmqkSjyfwfkx != null "> and b.xmqk_sjyfwfkx = #{projectInfo.xmqkSjyfwfkx}</if>
+            <if test="projectInfo.xmqkHtzfye != null "> and b.xmqk_htzfye = #{projectInfo.xmqkHtzfye}</if>
+            <if test="projectInfo.xmqkYflybzj != null "> and b.xmqk_yflybzj = #{projectInfo.xmqkYflybzj}</if>
+            <if test="projectInfo.xmqkYtlybzj != null "> and b.xmqk_ytlybzj = #{projectInfo.xmqkYtlybzj}</if>
+            <if test="projectInfo.xmqkRemark != null  and projectInfo.xmqkRemark != ''"> and b.xmqk_remark = #{projectInfo.xmqkRemark}</if>
+            <if test="projectInfo.isDelete != null  and projectInfo.isDelete != ''"> and b.is_delete = #{projectInfo.isDelete}</if>
+        </where>
+    </select>
+</mapper>

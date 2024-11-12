@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkrs.system.mapper.ProjectInfoMapper">
+
+    <resultMap type="ProjectInfo" id="ProjectInfoResult">
+        <result property="xmqkProjectId"    column="xmqk_project_id"    />
+        <result property="xmqkXmmc"    column="xmqk_xmmc"    />
+        <result property="xmqkRl"    column="xmqk_rl"    />
+        <result property="xmqkXmlx"    column="xmqk_xmlx"    />
+        <result property="xmqkXmxz"    column="xmqk_xmxz"    />
+        <result property="xmqkLyfgs"    column="xmqk_lyfgs"    />
+        <result property="xmqkJszt"    column="xmqk_jszt"    />
+        <result property="xmqkQy"    column="xmqk_qy"    />
+        <result property="xmqkHtsj"    column="xmqk_htsj"    />
+        <result property="xmqkBwsj"    column="xmqk_bwsj"    />
+        <result property="xmqkRzf"    column="xmqk_rzf"    />
+        <result property="xmqkSgf"    column="xmqk_sgf"    />
+        <result property="xmqkHzf"    column="xmqk_hzf"    />
+        <result property="xmqkRzjl"    column="xmqk_rzjl"    />
+        <result property="xmqkSwjl"    column="xmqk_swjl"    />
+        <result property="xmqkXmdqz"    column="xmqk_xmdqz"    />
+        <result property="xmqkSyzkw"    column="xmqk_syzkw"    />
+        <result property="xmqkJckw"    column="xmqk_jckw"    />
+        <result property="xmqkJsqk"    column="xmqk_jsqk"    />
+        <result property="xmqkSbdh"    column="xmqk_sbdh"    />
+        <result property="xmqkTzyjcsdj"    column="xmqk_tzyjcsdj"    />
+        <result property="xmqkYjcszj"    column="xmqk_yjcszj"    />
+        <result property="xmqkEpcJsj"    column="xmqk_epc_jsj"    />
+        <result property="xmqkEpcZjjsj"    column="xmqk_epc_zjjsj"    />
+        <result property="xmqkYjsyhj"    column="xmqk_yjsyhj"    />
+        <result property="xmqkXmgscb"    column="xmqk_xmgscb"    />
+        <result property="xmqkXmepccb"    column="xmqk_xmepccb"    />
+        <result property="xmqkQzzyf"    column="xmqk_qzzyf"    />
+        <result property="xmqkZcb"    column="xmqk_zcb"    />
+        <result property="xmqkSjYsysgk"    column="xmqk_sj_ysysgk"    />
+        <result property="xmqkYsrzk"    column="xmqk_ysrzk"    />
+        <result property="xmqkGzk"    column="xmqk_gzk"    />
+        <result property="xmqkYsdf"    column="xmqk_ysdf"    />
+        <result property="xmqkSjsrhj"    column="xmqk_sjsrhj"    />
+        <result property="xmqkYsye"    column="xmqk_ysye"    />
+        <result property="xmqkYfsbk"    column="xmqk_yfsbk"    />
+        <result property="xmqkYfjak"    column="xmqk_yfjak"    />
+        <result property="xmqkYfqtkx"    column="xmqk_yfqtkx"    />
+        <result property="xmqkYfzje"    column="xmqk_yfzje"    />
+        <result property="xmqkYssjye"    column="xmqk_yssjye"    />
+        <result property="xmqkSjyfwfkx"    column="xmqk_sjyfwfkx"    />
+        <result property="xmqkHtzfye"    column="xmqk_htzfye"    />
+        <result property="xmqkYflybzj"    column="xmqk_yflybzj"    />
+        <result property="xmqkYtlybzj"    column="xmqk_ytlybzj"    />
+        <result property="xmqkRemark"    column="xmqk_remark"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="isDelete"    column="is_delete"    />
+        <result property="xmqkSbaz"    column="xmqk_sbaz"    />
+        <result property="xmqkWxsg"    column="xmqk_wxsg"    />
+        <result property="xmqkFjcs"    column="xmqk_fjcs"    />
+        <result property="xmqkTtcs"    column="xmqk_ttcs"    />
+        <result property="xmqkZjcs"    column="xmqk_zjcs"    />
+        <result property="xmqkZjiacs"    column="xmqk_zjiacs"    />
+        <result property="xmqkXmlxName"    column="xmqk_xmlx_name"    />
+        <result property="xmqkXmxzName"    column="xmqk_xmxz_name"    />
+        <result property="xmqkJsztName"    column="xmqk_jszt_name"    />
+        <result property="xmqkSgjd"    column="xmqk_sgjd"    />
+        <result property="xmqkYcsrq"    column="xmqk_ycsrq"    />
+        <result property="xmqkYjyy"    column="xmqk_yjyy"    />
+        <result property="xmqkSbdhl"    column="xmqk_sbdhl"    />
+
+    </resultMap>
+
+    <resultMap type="ProjectResult" id="getAllIdAndName">
+        <result property="id"    column="xmqk_project_id"    />
+        <result property="name"    column="xmqk_xmmc"    />
+        <result property="xmqkRzf"    column="xmqk_rzf"    />
+
+    </resultMap>
+
+    <sql id="selectProjectInfoVo">
+        select xmqk_project_id, xmqk_xmmc, xmqk_rl, xmqk_xmlx, xmqk_xmxz, xmqk_lyfgs, xmqk_jszt, xmqk_qy, xmqk_htsj, xmqk_bwsj, xmqk_rzf, xmqk_sgf, xmqk_hzf, xmqk_rzjl, xmqk_swjl, xmqk_xmdqz, xmqk_syzkw, xmqk_jckw, xmqk_jsqk, xmqk_sbdh, xmqk_tzyjcsdj, xmqk_yjcszj, xmqk_epc_jsj, xmqk_epc_zjjsj, xmqk_yjsyhj, xmqk_xmgscb, xmqk_xmepccb, xmqk_qzzyf, xmqk_zcb, xmqk_sj_ysysgk, xmqk_ysrzk, xmqk_gzk, xmqk_ysdf, xmqk_sjsrhj, xmqk_ysye, xmqk_yfsbk, xmqk_yfjak, xmqk_yfqtkx, xmqk_yfzje, xmqk_yssjye, xmqk_sjyfwfkx, xmqk_htzfye, xmqk_yflybzj, xmqk_ytlybzj, xmqk_remark, create_by, create_time, update_by, update_time, is_delete
+        ,xmqk_sbaz,xmqk_wxsg,xmqk_fjcs,xmqk_ttcs,xmqk_zjcs,xmqk_zjiacs,xmqk_sgjd,xmqk_ycsrq,xmqk_yjyy,xmqk_sbdhl
+
+        from project_info
+    </sql>
+
+    <sql id="selectProjectInfoVo1">
+        select xmqk_project_id, xmqk_xmmc, xmqk_rl, xmqk_xmlx, xmqk_xmxz, xmqk_lyfgs, xmqk_jszt, xmqk_qy, xmqk_htsj,
+        xmqk_bwsj, xmqk_rzf, xmqk_sgf, xmqk_hzf, xmqk_rzjl, xmqk_swjl, xmqk_xmdqz, xmqk_syzkw, xmqk_jckw, xmqk_jsqk, xmqk_sbdh, xmqk_tzyjcsdj, xmqk_yjcszj, xmqk_epc_jsj, xmqk_epc_zjjsj, xmqk_yjsyhj, xmqk_xmgscb, xmqk_xmepccb, xmqk_qzzyf, xmqk_zcb, xmqk_sj_ysysgk, xmqk_ysrzk, xmqk_gzk, xmqk_ysdf, xmqk_sjsrhj, xmqk_ysye, xmqk_yfsbk, xmqk_yfjak, xmqk_yfqtkx, xmqk_yfzje, xmqk_yssjye, xmqk_sjyfwfkx, xmqk_htzfye, xmqk_yflybzj, xmqk_ytlybzj, xmqk_remark,
+        xmqk_sbaz,xmqk_wxsg,xmqk_fjcs,xmqk_ttcs,xmqk_zjcs,xmqk_zjiacs,xmqk_sgjd,xmqk_ycsrq,xmqk_yjyy,xmqk_sbdhl,
+           ( SELECT	zd_name	FROM	business_dictionary WHERE	xmqk_xmlx = id ) xmqk_xmlx_name,
+           ( SELECT	zd_name	FROM	business_dictionary WHERE	xmqk_xmxz = id ) xmqk_xmxz_name,
+           ( SELECT	zd_name	FROM	business_dictionary WHERE	xmqk_jszt = id ) xmqk_jszt_name,
+           ( SELECT	zd_name	FROM	business_dictionary WHERE	xmqk_lyfgs = id ) xmqkLyfgsName
+
+
+        from project_info
+    </sql>
+
+    <select id="selectProjectInfoList" parameterType="ProjectInfo" resultMap="ProjectInfoResult">
+        <include refid="selectProjectInfoVo1"/>
+        <where>
+            <if test="xmqkProjectId != null  and xmqkProjectId != ''"> and xmqk_project_id = #{xmqkProjectId}</if>
+            <if test="xmqkXmmc != null  and xmqkXmmc != ''"> and xmqk_xmmc  like concat('%', #{xmqkXmmc}, '%')   </if>
+            <if test="xmqkRl != null  and xmqkRl != ''"> and xmqk_rl = #{xmqkRl}</if>
+            <if test="xmqkXmlx != null "> and xmqk_xmlx = #{xmqkXmlx}</if>
+            <if test="xmqkXmxz != null "> and xmqk_xmxz = #{xmqkXmxz}</if>
+            <if test="xmqkLyfgs != null "> and xmqk_lyfgs = #{xmqkLyfgs}</if>
+            <if test="xmqkJszt != null "> and xmqk_jszt = #{xmqkJszt}</if>
+            <if test="xmqkQy != null "> and xmqk_qy = #{xmqkQy}</if>
+            <if test="xmqkHtsj != null "> and xmqk_htsj = #{xmqkHtsj}</if>
+            <if test="xmqkBwsj != null "> and xmqk_bwsj = #{xmqkBwsj}</if>
+            <if test="xmqkRzf != null  and xmqkRzf != ''"> and xmqk_rzf = #{xmqkRzf}</if>
+            <if test="xmqkSgf != null  and xmqkSgf != ''"> and xmqk_sgf = #{xmqkSgf}</if>
+            <if test="xmqkHzf != null  and xmqkHzf != ''"> and xmqk_hzf = #{xmqkHzf}</if>
+            <if test="xmqkRzjl != null  and xmqkRzjl != ''"> and xmqk_rzjl = #{xmqkRzjl}</if>
+            <if test="xmqkSwjl != null  and xmqkSwjl != ''"> and xmqk_swjl = #{xmqkSwjl}</if>
+            <if test="xmqkXmdqz != null  and xmqkXmdqz != ''"> and xmqk_xmdqz = #{xmqkXmdqz}</if>
+            <if test="xmqkSyzkw != null  and xmqkSyzkw != ''"> and xmqk_syzkw = #{xmqkSyzkw}</if>
+            <if test="xmqkJckw != null  and xmqkJckw != ''"> and xmqk_jckw = #{xmqkJckw}</if>
+            <if test="xmqkJsqk != null  and xmqkJsqk != ''"> and xmqk_jsqk = #{xmqkJsqk}</if>
+            <if test="xmqkSbdh != null  and xmqkSbdh != ''"> and xmqk_sbdh = #{xmqkSbdh}</if>
+            <if test="xmqkTzyjcsdj != null "> and xmqk_tzyjcsdj = #{xmqkTzyjcsdj}</if>
+            <if test="xmqkYjcszj != null "> and xmqk_yjcszj = #{xmqkYjcszj}</if>
+            <if test="xmqkEpcJsj != null "> and xmqk_epc_jsj = #{xmqkEpcJsj}</if>
+            <if test="xmqkEpcZjjsj != null "> and xmqk_epc_zjjsj = #{xmqkEpcZjjsj}</if>
+            <if test="xmqkYjsyhj != null "> and xmqk_yjsyhj = #{xmqkYjsyhj}</if>
+            <if test="xmqkXmgscb != null "> and xmqk_xmgscb = #{xmqkXmgscb}</if>
+            <if test="xmqkXmepccb != null "> and xmqk_xmepccb = #{xmqkXmepccb}</if>
+            <if test="xmqkQzzyf != null "> and xmqk_qzzyf = #{xmqkQzzyf}</if>
+            <if test="xmqkZcb != null "> and xmqk_zcb = #{xmqkZcb}</if>
+            <if test="xmqkSjYsysgk != null "> and xmqk_sj_ysysgk = #{xmqkSjYsysgk}</if>
+            <if test="xmqkYsrzk != null "> and xmqk_ysrzk = #{xmqkYsrzk}</if>
+            <if test="xmqkGzk != null "> and xmqk_gzk = #{xmqkGzk}</if>
+            <if test="xmqkYsdf != null "> and xmqk_ysdf = #{xmqkYsdf}</if>
+            <if test="xmqkSjsrhj != null "> and xmqk_sjsrhj = #{xmqkSjsrhj}</if>
+            <if test="xmqkYsye != null "> and xmqk_ysye = #{xmqkYsye}</if>
+            <if test="xmqkYfsbk != null "> and xmqk_yfsbk = #{xmqkYfsbk}</if>
+            <if test="xmqkYfjak != null "> and xmqk_yfjak = #{xmqkYfjak}</if>
+            <if test="xmqkYfqtkx != null "> and xmqk_yfqtkx = #{xmqkYfqtkx}</if>
+            <if test="xmqkYfzje != null "> and xmqk_yfzje = #{xmqkYfzje}</if>
+            <if test="xmqkYssjye != null "> and xmqk_yssjye = #{xmqkYssjye}</if>
+            <if test="xmqkSjyfwfkx != null "> and xmqk_sjyfwfkx = #{xmqkSjyfwfkx}</if>
+            <if test="xmqkHtzfye != null "> and xmqk_htzfye = #{xmqkHtzfye}</if>
+            <if test="xmqkYflybzj != null "> and xmqk_yflybzj = #{xmqkYflybzj}</if>
+            <if test="xmqkYtlybzj != null "> and xmqk_ytlybzj = #{xmqkYtlybzj}</if>
+            <if test="xmqkRemark != null  and xmqkRemark != ''"> and xmqk_remark = #{xmqkRemark}</if>
+            <if test="isDelete != null  and isDelete != ''"> and is_delete = #{isDelete}</if>
+        </where>
+    </select>
+
+
+    <select id="selectProjectInfoByXmqkProjectId" parameterType="String" resultMap="ProjectInfoResult">
+        <include refid="selectProjectInfoVo"/>
+        where xmqk_project_id = #{xmqkProjectId}
+    </select>
+
+    <insert id="insertProjectInfo" parameterType="ProjectInfo">
+        insert into project_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="xmqkProjectId != null">xmqk_project_id,</if>
+            <if test="xmqkXmmc != null">xmqk_xmmc,</if>
+            <if test="xmqkRl != null">xmqk_rl,</if>
+            <if test="xmqkXmlx != null">xmqk_xmlx,</if>
+            <if test="xmqkXmxz != null">xmqk_xmxz,</if>
+            <if test="xmqkLyfgs != null">xmqk_lyfgs,</if>
+            <if test="xmqkJszt != null">xmqk_jszt,</if>
+            <if test="xmqkQy != null">xmqk_qy,</if>
+            <if test="xmqkHtsj != null">xmqk_htsj,</if>
+            <if test="xmqkBwsj != null">xmqk_bwsj,</if>
+            <if test="xmqkRzf != null">xmqk_rzf,</if>
+            <if test="xmqkSgf != null">xmqk_sgf,</if>
+            <if test="xmqkHzf != null">xmqk_hzf,</if>
+            <if test="xmqkRzjl != null">xmqk_rzjl,</if>
+            <if test="xmqkSwjl != null">xmqk_swjl,</if>
+            <if test="xmqkXmdqz != null">xmqk_xmdqz,</if>
+            <if test="xmqkSyzkw != null">xmqk_syzkw,</if>
+            <if test="xmqkJckw != null">xmqk_jckw,</if>
+            <if test="xmqkJsqk != null">xmqk_jsqk,</if>
+            <if test="xmqkSbdh != null">xmqk_sbdh,</if>
+            <if test="xmqkTzyjcsdj != null">xmqk_tzyjcsdj,</if>
+            <if test="xmqkYjcszj != null">xmqk_yjcszj,</if>
+            <if test="xmqkEpcJsj != null">xmqk_epc_jsj,</if>
+            <if test="xmqkEpcZjjsj != null">xmqk_epc_zjjsj,</if>
+            <if test="xmqkYjsyhj != null">xmqk_yjsyhj,</if>
+            <if test="xmqkXmgscb != null">xmqk_xmgscb,</if>
+            <if test="xmqkXmepccb != null">xmqk_xmepccb,</if>
+            <if test="xmqkQzzyf != null">xmqk_qzzyf,</if>
+            <if test="xmqkZcb != null">xmqk_zcb,</if>
+            <if test="xmqkSjYsysgk != null">xmqk_sj_ysysgk,</if>
+            <if test="xmqkYsrzk != null">xmqk_ysrzk,</if>
+            <if test="xmqkGzk != null">xmqk_gzk,</if>
+            <if test="xmqkYsdf != null">xmqk_ysdf,</if>
+            <if test="xmqkSjsrhj != null">xmqk_sjsrhj,</if>
+            <if test="xmqkYsye != null">xmqk_ysye,</if>
+            <if test="xmqkYfsbk != null">xmqk_yfsbk,</if>
+            <if test="xmqkYfjak != null">xmqk_yfjak,</if>
+            <if test="xmqkYfqtkx != null">xmqk_yfqtkx,</if>
+            <if test="xmqkYfzje != null">xmqk_yfzje,</if>
+            <if test="xmqkYssjye != null">xmqk_yssjye,</if>
+            <if test="xmqkSjyfwfkx != null">xmqk_sjyfwfkx,</if>
+            <if test="xmqkHtzfye != null">xmqk_htzfye,</if>
+            <if test="xmqkYflybzj != null">xmqk_yflybzj,</if>
+            <if test="xmqkYtlybzj != null">xmqk_ytlybzj,</if>
+            <if test="xmqkRemark != null">xmqk_remark,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="isDelete != null">is_delete,</if>
+            <if test="xmqkSbaz != null">xmqk_sbaz,</if>
+            <if test="xmqkWxsg != null">xmqk_wxsg,</if>
+            <if test="xmqkFjcs != null">xmqk_fjcs,</if>
+            <if test="xmqkTtcs != null">xmqk_ttcs,</if>
+            <if test="xmqkZjcs != null">xmqk_zjcs,</if>
+            <if test="xmqkZjiacs != null">xmqk_zjiacs,</if>
+            <if test="xmqkSgjd != null">xmqk_sgjd,</if>
+            <if test="xmqkYcsrq != null">xmqk_ycsrq,</if>
+            <if test="xmqkYjyy != null">xmqk_yjyy,</if>
+            <if test="xmqkSbdhl != null">xmqk_sbdhl,</if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="xmqkProjectId != null">#{xmqkProjectId},</if>
+            <if test="xmqkXmmc != null">#{xmqkXmmc},</if>
+            <if test="xmqkRl != null">#{xmqkRl},</if>
+            <if test="xmqkXmlx != null">#{xmqkXmlx},</if>
+            <if test="xmqkXmxz != null">#{xmqkXmxz},</if>
+            <if test="xmqkLyfgs != null">#{xmqkLyfgs},</if>
+            <if test="xmqkJszt != null">#{xmqkJszt},</if>
+            <if test="xmqkQy != null">#{xmqkQy},</if>
+            <if test="xmqkHtsj != null">#{xmqkHtsj},</if>
+            <if test="xmqkBwsj != null">#{xmqkBwsj},</if>
+            <if test="xmqkRzf != null">#{xmqkRzf},</if>
+            <if test="xmqkSgf != null">#{xmqkSgf},</if>
+            <if test="xmqkHzf != null">#{xmqkHzf},</if>
+            <if test="xmqkRzjl != null">#{xmqkRzjl},</if>
+            <if test="xmqkSwjl != null">#{xmqkSwjl},</if>
+            <if test="xmqkXmdqz != null">#{xmqkXmdqz},</if>
+            <if test="xmqkSyzkw != null">#{xmqkSyzkw},</if>
+            <if test="xmqkJckw != null">#{xmqkJckw},</if>
+            <if test="xmqkJsqk != null">#{xmqkJsqk},</if>
+            <if test="xmqkSbdh != null">#{xmqkSbdh},</if>
+            <if test="xmqkTzyjcsdj != null">#{xmqkTzyjcsdj},</if>
+            <if test="xmqkYjcszj != null">#{xmqkYjcszj},</if>
+            <if test="xmqkEpcJsj != null">#{xmqkEpcJsj},</if>
+            <if test="xmqkEpcZjjsj != null">#{xmqkEpcZjjsj},</if>
+            <if test="xmqkYjsyhj != null">#{xmqkYjsyhj},</if>
+            <if test="xmqkXmgscb != null">#{xmqkXmgscb},</if>
+            <if test="xmqkXmepccb != null">#{xmqkXmepccb},</if>
+            <if test="xmqkQzzyf != null">#{xmqkQzzyf},</if>
+            <if test="xmqkZcb != null">#{xmqkZcb},</if>
+            <if test="xmqkSjYsysgk != null">#{xmqkSjYsysgk},</if>
+            <if test="xmqkYsrzk != null">#{xmqkYsrzk},</if>
+            <if test="xmqkGzk != null">#{xmqkGzk},</if>
+            <if test="xmqkYsdf != null">#{xmqkYsdf},</if>
+            <if test="xmqkSjsrhj != null">#{xmqkSjsrhj},</if>
+            <if test="xmqkYsye != null">#{xmqkYsye},</if>
+            <if test="xmqkYfsbk != null">#{xmqkYfsbk},</if>
+            <if test="xmqkYfjak != null">#{xmqkYfjak},</if>
+            <if test="xmqkYfqtkx != null">#{xmqkYfqtkx},</if>
+            <if test="xmqkYfzje != null">#{xmqkYfzje},</if>
+            <if test="xmqkYssjye != null">#{xmqkYssjye},</if>
+            <if test="xmqkSjyfwfkx != null">#{xmqkSjyfwfkx},</if>
+            <if test="xmqkHtzfye != null">#{xmqkHtzfye},</if>
+            <if test="xmqkYflybzj != null">#{xmqkYflybzj},</if>
+            <if test="xmqkYtlybzj != null">#{xmqkYtlybzj},</if>
+            <if test="xmqkRemark != null">#{xmqkRemark},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="isDelete != null">#{isDelete},</if>
+            <if test="xmqkSbaz != null">#{xmqkSbaz},</if>
+            <if test="xmqkWxsg != null">#{xmqkWxsg},</if>
+            <if test="xmqkFjcs != null">#{xmqkFjcs},</if>
+            <if test="xmqkTtcs != null">#{xmqkTtcs},</if>
+            <if test="xmqkZjcs != null">#{xmqkZjcs},</if>
+            <if test="xmqkZjiacs != null">#{xmqkZjiacs},</if>
+            <if test="xmqkSgjd != null">#{xmqkSgjd},</if>
+            <if test="xmqkYcsrq != null">#{xmqkYcsrq},</if>
+            <if test="xmqkYjyy != null">#{xmqkYjyy},</if>
+            <if test="xmqkSbdhl != null">#{xmqkSbdhl},</if>
+
+
+        </trim>
+    </insert>
+
+    <update id="updateProjectInfo" parameterType="ProjectInfo">
+        update project_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="xmqkXmmc != null">xmqk_xmmc = #{xmqkXmmc},</if>
+            <if test="xmqkRl != null">xmqk_rl = #{xmqkRl},</if>
+            xmqk_xmlx = #{xmqkXmlx},
+            xmqk_xmxz = #{xmqkXmxz},
+            <if test="xmqkLyfgs != null">xmqk_lyfgs = #{xmqkLyfgs},</if>
+            xmqk_jszt = #{xmqkJszt},
+            <if test="xmqkQy != null">xmqk_qy = #{xmqkQy},</if>
+            xmqk_htsj = #{xmqkHtsj},
+            xmqk_bwsj = #{xmqkBwsj},
+            <if test="xmqkRzf != null">xmqk_rzf = #{xmqkRzf},</if>
+            <if test="xmqkSgf != null">xmqk_sgf = #{xmqkSgf},</if>
+            <if test="xmqkHzf != null">xmqk_hzf = #{xmqkHzf},</if>
+            <if test="xmqkRzjl != null">xmqk_rzjl = #{xmqkRzjl},</if>
+            <if test="xmqkSwjl != null">xmqk_swjl = #{xmqkSwjl},</if>
+            <if test="xmqkXmdqz != null">xmqk_xmdqz = #{xmqkXmdqz},</if>
+            <if test="xmqkSyzkw != null">xmqk_syzkw = #{xmqkSyzkw},</if>
+            <if test="xmqkJckw != null">xmqk_jckw = #{xmqkJckw},</if>
+            <if test="xmqkJsqk != null">xmqk_jsqk = #{xmqkJsqk},</if>
+            <if test="xmqkSbdh != null">xmqk_sbdh = #{xmqkSbdh},</if>
+            <if test="xmqkTzyjcsdj != null">xmqk_tzyjcsdj = #{xmqkTzyjcsdj},</if>
+            <if test="xmqkYjcszj != null">xmqk_yjcszj = #{xmqkYjcszj},</if>
+            <if test="xmqkEpcJsj != null">xmqk_epc_jsj = #{xmqkEpcJsj},</if>
+            <if test="xmqkEpcZjjsj != null">xmqk_epc_zjjsj = #{xmqkEpcZjjsj},</if>
+            <if test="xmqkYjsyhj != null">xmqk_yjsyhj = #{xmqkYjsyhj},</if>
+            <if test="xmqkXmgscb != null">xmqk_xmgscb = #{xmqkXmgscb},</if>
+            <if test="xmqkXmepccb != null">xmqk_xmepccb = #{xmqkXmepccb},</if>
+            <if test="xmqkQzzyf != null">xmqk_qzzyf = #{xmqkQzzyf},</if>
+            <if test="xmqkZcb != null">xmqk_zcb = #{xmqkZcb},</if>
+            <if test="xmqkSjYsysgk != null">xmqk_sj_ysysgk = #{xmqkSjYsysgk},</if>
+            <if test="xmqkYsrzk != null">xmqk_ysrzk = #{xmqkYsrzk},</if>
+            <if test="xmqkGzk != null">xmqk_gzk = #{xmqkGzk},</if>
+            <if test="xmqkYsdf != null">xmqk_ysdf = #{xmqkYsdf},</if>
+            <if test="xmqkSjsrhj != null">xmqk_sjsrhj = #{xmqkSjsrhj},</if>
+            <if test="xmqkYsye != null">xmqk_ysye = #{xmqkYsye},</if>
+            <if test="xmqkYfsbk != null">xmqk_yfsbk = #{xmqkYfsbk},</if>
+            <if test="xmqkYfjak != null">xmqk_yfjak = #{xmqkYfjak},</if>
+            <if test="xmqkYfqtkx != null">xmqk_yfqtkx = #{xmqkYfqtkx},</if>
+            <if test="xmqkYfzje != null">xmqk_yfzje = #{xmqkYfzje},</if>
+            <if test="xmqkYssjye != null">xmqk_yssjye = #{xmqkYssjye},</if>
+            <if test="xmqkSjyfwfkx != null">xmqk_sjyfwfkx = #{xmqkSjyfwfkx},</if>
+            <if test="xmqkHtzfye != null">xmqk_htzfye = #{xmqkHtzfye},</if>
+            <if test="xmqkYflybzj != null">xmqk_yflybzj = #{xmqkYflybzj},</if>
+            <if test="xmqkYtlybzj != null">xmqk_ytlybzj = #{xmqkYtlybzj},</if>
+            <if test="xmqkRemark != null">xmqk_remark = #{xmqkRemark},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="isDelete != null">is_delete = #{isDelete},</if>
+            <if test="xmqkSbaz != null">xmqk_sbaz=#{xmqkSbaz},</if>
+            <if test="xmqkWxsg != null">xmqk_wxsg=#{xmqkWxsg},</if>
+            <if test="xmqkFjcs != null">xmqk_fjcs=#{xmqkFjcs},</if>
+            <if test="xmqkTtcs != null">xmqk_ttcs=#{xmqkTtcs},</if>
+            <if test="xmqkZjcs != null">xmqk_zjcs=#{xmqkZjcs},</if>
+            <if test="xmqkZjiacs != null">xmqk_zjiacs=#{xmqkZjiacs},</if>
+            <if test="xmqkSgjd != null">xmqk_sgjd=#{xmqkSgjd},</if>
+            xmqk_ycsrq=#{xmqkYcsrq},
+            <if test="xmqkYjyy != null">xmqk_yjyy=#{xmqkYjyy},</if>
+            <if test="xmqkSbdhl != null">xmqk_sbdhl=#{xmqkSbdhl},</if>
+
+
+        </trim>
+        where xmqk_project_id = #{xmqkProjectId}
+    </update>
+
+    <delete id="deleteProjectInfoByXmqkProjectId" parameterType="String">
+        delete from project_info where xmqk_project_id = #{xmqkProjectId}
+    </delete>
+
+    <delete id="deleteProjectInfoByXmqkProjectIds" parameterType="String">
+        delete from project_info where xmqk_project_id in
+        <foreach item="xmqkProjectId" collection="array" open="(" separator="," close=")">
+            #{xmqkProjectId}
+        </foreach>
+    </delete>
+
+    <!--  缓存对象-->
+    <select id="selectProjectInfoCache" parameterType="ProjectInfo" resultMap="ProjectInfoResult" >
+        select xmqk_project_id, xmqk_xmmc
+        from project_info
+    </select>
+
+
+    <insert id="importBox"  useGeneratedKeys="true"  keyProperty="xmqk_project_id" >
+        insert into project_info(
+        xmqk_project_id,
+        xmqk_xmmc,
+        xmqk_rl,
+        xmqk_xmlx,
+        xmqk_xmxz,
+        xmqk_lyfgs,
+        xmqk_jszt,
+        xmqk_qy,
+        xmqk_htsj,
+        xmqk_bwsj,
+        xmqk_rzf,
+        xmqk_sgf,
+        xmqk_hzf,
+        xmqk_rzjl,
+        xmqk_swjl,
+        xmqk_xmdqz,
+        xmqk_syzkw,
+        xmqk_jckw,
+        xmqk_jsqk,
+        xmqk_sbdh,
+        xmqk_tzyjcsdj,
+        xmqk_yjcszj,
+        xmqk_epc_jsj,
+        xmqk_epc_zjjsj,
+        xmqk_yjsyhj,
+        xmqk_xmgscb,
+        xmqk_xmepccb,
+        xmqk_qzzyf,
+        xmqk_zcb,
+        xmqk_sj_ysysgk,
+        xmqk_ysrzk,
+        xmqk_gzk,
+        xmqk_ysdf,
+        xmqk_sjsrhj,
+        xmqk_ysye,
+        xmqk_yfsbk,
+        xmqk_yfjak,
+        xmqk_yfqtkx,
+        xmqk_yfzje,
+        xmqk_yssjye,
+        xmqk_sjyfwfkx,
+        xmqk_htzfye,
+        xmqk_yflybzj,
+        xmqk_ytlybzj,
+        xmqk_remark,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        xmqk_sbaz,
+        xmqk_wxsg,
+        xmqk_fjcs,
+        xmqk_ttcs,
+        xmqk_zjcs,
+        xmqk_zjiacs,
+        xmqk_sgjd,
+        xmqk_ycsrq,
+        xmqk_yjyy,
+        xmqk_sbdhl
+        )
+        values
+        <foreach collection="listData" item="listItme" separator=",">
+            (
+            #{listItme.xmqkProjectId},
+            #{listItme.xmqkXmmc},
+            #{listItme.xmqkRl},
+            #{listItme.xmqkXmlx},
+            #{listItme.xmqkXmxz},
+            #{listItme.xmqkLyfgs},
+            #{listItme.xmqkJszt},
+            #{listItme.xmqkQy},
+            #{listItme.xmqkHtsj},
+            #{listItme.xmqkBwsj},
+            #{listItme.xmqkRzf},
+            #{listItme.xmqkSgf},
+            #{listItme.xmqkHzf},
+            #{listItme.xmqkRzjl},
+            #{listItme.xmqkSwjl},
+            #{listItme.xmqkXmdqz},
+            #{listItme.xmqkSyzkw},
+            #{listItme.xmqkJckw},
+            #{listItme.xmqkJsqk},
+            #{listItme.xmqkSbdh},
+            #{listItme.xmqkTzyjcsdj},
+            #{listItme.xmqkYjcszj},
+            #{listItme.xmqkEpcJsj},
+            #{listItme.xmqkEpcZjjsj},
+            #{listItme.xmqkYjsyhj},
+            #{listItme.xmqkXmgscb},
+            #{listItme.xmqkXmepccb},
+            #{listItme.xmqkQzzyf},
+            #{listItme.xmqkZcb},
+            #{listItme.xmqkSjYsysgk},
+            #{listItme.xmqkYsrzk},
+            #{listItme.xmqkGzk},
+            #{listItme.xmqkYsdf},
+            #{listItme.xmqkSjsrhj},
+            #{listItme.xmqkYsye},
+            #{listItme.xmqkYfsbk},
+            #{listItme.xmqkYfjak},
+            #{listItme.xmqkYfqtkx},
+            #{listItme.xmqkYfzje},
+            #{listItme.xmqkYssjye},
+            #{listItme.xmqkSjyfwfkx},
+            #{listItme.xmqkHtzfye},
+            #{listItme.xmqkYflybzj},
+            #{listItme.xmqkYtlybzj},
+            #{listItme.xmqkRemark},
+            #{listItme.createBy},
+            #{listItme.createTime},
+            #{listItme.updateBy},
+            #{listItme.updateTime},
+            #{listItme.xmqkSbaz},
+            #{listItme.xmqkWxsg},
+            #{listItme.xmqkFjcs},
+            #{listItme.xmqkTtcs},
+            #{listItme.xmqkZjcs},
+            #{listItme.xmqkZjiacs},
+            #{listItme.xmqkSgjd},
+            #{listItme.xmqkYcsrq},
+            #{listItme.xmqkYjyy},
+            #{listItme.xmqkSbdhl}
+
+            )
+        </foreach>
+    </insert>
+
+    <!--  集连删除-->
+
+    <select id="checkByname" parameterType="ProjectInfo" resultMap="ProjectInfoResult" >
+        select xmqk_xmmc   from  project_info   where  xmqk_xmmc  in  (
+        <foreach collection="listData" item="listItme"  separator=",">
+            #{listItme.xmqkXmmc}
+        </foreach>
+        )
+    </select>
+
+    <select id="getAllNameAndId"  resultMap="getAllIdAndName" >
+        select xmqk_project_id,xmqk_xmmc  ,xmqk_rzf from  project_info
+    </select>
+
+    <update id="importBoxConstruction" parameterType="ProjectInfo">
+        update project_info
+        <set>
+            <if test="projectInfo.xmqkFjcs != null">xmqk_fjcs=#{projectInfo.xmqkFjcs},</if>
+            <if test="projectInfo.xmqkTtcs != null">xmqk_ttcs=#{projectInfo.xmqkTtcs},</if>
+            <if test="projectInfo.xmqkZjcs != null">xmqk_zjcs=#{projectInfo.xmqkZjcs},</if>
+            <if test="projectInfo.xmqkZjiacs != null">xmqk_zjiacs=#{projectInfo.xmqkZjiacs},</if>
+            <if test="projectInfo.xmqkSbdh != null">xmqk_sbdh = #{projectInfo.xmqkSbdh},</if>
+            <if test="projectInfo.xmqkSbaz != null">xmqk_sbaz=#{projectInfo.xmqkSbaz},</if>
+            <if test="projectInfo.xmqkSyzkw != null">xmqk_syzkw = #{projectInfo.xmqkSyzkw},</if>
+            <if test="projectInfo.xmqkJckw != null">xmqk_jckw = #{projectInfo.xmqkJckw},</if>
+            <if test="projectInfo.xmqkWxsg != null">xmqk_wxsg=#{projectInfo.xmqkWxsg},</if>
+            <if test="projectInfo.xmqkSgjd != null">xmqk_sgjd=#{projectInfo.xmqkSgjd},</if>
+        </set>
+        where xmqk_project_id = #{projectInfo.xmqkProjectId}
+    </update>
+
+
+    <select id="selectProjectIsExist"  parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1)  from  project_info where xmqk_xmmc = #{xmqkXmmc}
+    </select>
+
+    <update id="updateProjectInfoByXmmc" parameterType="ProjectInfo">
+        update project_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="xmqkXmmc != null">xmqk_xmmc = #{xmqkXmmc},</if>
+            <if test="xmqkRl != null">xmqk_rl = #{xmqkRl},</if>
+            <if test="xmqkXmlx != null">xmqk_xmlx = #{xmqkXmlx},</if>
+            <if test="xmqkXmxz != null">xmqk_xmxz = #{xmqkXmxz},</if>
+            <if test="xmqkLyfgs != null">xmqk_lyfgs = #{xmqkLyfgs},</if>
+            <if test="xmqkJszt != null">xmqk_jszt = #{xmqkJszt},</if>
+            <if test="xmqkQy != null">xmqk_qy = #{xmqkQy},</if>
+            <if test="xmqkHtsj != null">xmqk_htsj = #{xmqkHtsj},</if>
+            <if test="xmqkBwsj != null">xmqk_bwsj = #{xmqkBwsj},</if>
+            <if test="xmqkRzf != null">xmqk_rzf = #{xmqkRzf},</if>
+            <if test="xmqkSgf != null">xmqk_sgf = #{xmqkSgf},</if>
+            <if test="xmqkHzf != null">xmqk_hzf = #{xmqkHzf},</if>
+            <if test="xmqkRzjl != null">xmqk_rzjl = #{xmqkRzjl},</if>
+            <if test="xmqkSwjl != null">xmqk_swjl = #{xmqkSwjl},</if>
+            <if test="xmqkXmdqz != null">xmqk_xmdqz = #{xmqkXmdqz},</if>
+            <if test="xmqkSyzkw != null">xmqk_syzkw = #{xmqkSyzkw},</if>
+            <if test="xmqkJckw != null">xmqk_jckw = #{xmqkJckw},</if>
+            <if test="xmqkJsqk != null">xmqk_jsqk = #{xmqkJsqk},</if>
+            <if test="xmqkSbdh != null">xmqk_sbdh = #{xmqkSbdh},</if>
+            <if test="xmqkTzyjcsdj != null">xmqk_tzyjcsdj = #{xmqkTzyjcsdj},</if>
+            <if test="xmqkYjcszj != null">xmqk_yjcszj = #{xmqkYjcszj},</if>
+            <if test="xmqkEpcJsj != null">xmqk_epc_jsj = #{xmqkEpcJsj},</if>
+            <if test="xmqkEpcZjjsj != null">xmqk_epc_zjjsj = #{xmqkEpcZjjsj},</if>
+            <if test="xmqkYjsyhj != null">xmqk_yjsyhj = #{xmqkYjsyhj},</if>
+            <if test="xmqkXmgscb != null">xmqk_xmgscb = #{xmqkXmgscb},</if>
+            <if test="xmqkXmepccb != null">xmqk_xmepccb = #{xmqkXmepccb},</if>
+            <if test="xmqkQzzyf != null">xmqk_qzzyf = #{xmqkQzzyf},</if>
+            <if test="xmqkZcb != null">xmqk_zcb = #{xmqkZcb},</if>
+            <if test="xmqkSjYsysgk != null">xmqk_sj_ysysgk = #{xmqkSjYsysgk},</if>
+            <if test="xmqkYsrzk != null">xmqk_ysrzk = #{xmqkYsrzk},</if>
+            <if test="xmqkGzk != null">xmqk_gzk = #{xmqkGzk},</if>
+            <if test="xmqkYsdf != null">xmqk_ysdf = #{xmqkYsdf},</if>
+            <if test="xmqkSjsrhj != null">xmqk_sjsrhj = #{xmqkSjsrhj},</if>
+            <if test="xmqkYsye != null">xmqk_ysye = #{xmqkYsye},</if>
+            <if test="xmqkYfsbk != null">xmqk_yfsbk = #{xmqkYfsbk},</if>
+            <if test="xmqkYfjak != null">xmqk_yfjak = #{xmqkYfjak},</if>
+            <if test="xmqkYfqtkx != null">xmqk_yfqtkx = #{xmqkYfqtkx},</if>
+            <if test="xmqkYfzje != null">xmqk_yfzje = #{xmqkYfzje},</if>
+            <if test="xmqkYssjye != null">xmqk_yssjye = #{xmqkYssjye},</if>
+            <if test="xmqkSjyfwfkx != null">xmqk_sjyfwfkx = #{xmqkSjyfwfkx},</if>
+            <if test="xmqkHtzfye != null">xmqk_htzfye = #{xmqkHtzfye},</if>
+            <if test="xmqkYflybzj != null">xmqk_yflybzj = #{xmqkYflybzj},</if>
+            <if test="xmqkYtlybzj != null">xmqk_ytlybzj = #{xmqkYtlybzj},</if>
+            <if test="xmqkRemark != null">xmqk_remark = #{xmqkRemark},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="isDelete != null">is_delete = #{isDelete},</if>
+            <if test="xmqkSbaz != null">xmqk_sbaz = #{xmqkSbaz},</if>
+            <if test="xmqkWxsg != null">xmqk_wxsg = #{xmqkWxsg},</if>
+            <if test="xmqkFjcs != null">xmqk_fjcs = #{xmqkFjcs},</if>
+            <if test="xmqkTtcs != null">xmqk_ttcs = #{xmqkTtcs},</if>
+            <if test="xmqkZjcs != null">xmqk_zjcs = #{xmqkZjcs},</if>
+            <if test="xmqkZjiacs != null">xmqk_zjiacs = #{xmqkZjiacs},</if>
+            <if test="xmqkSgjd != null">xmqk_sgjd = #{xmqkSgjd},</if>
+            <if test="xmqkYcsrq != null">xmqk_ycsrq = #{xmqkYcsrq},</if>
+            <if test="xmqkYjyy != null">xmqk_yjyy = #{xmqkYjyy},</if>
+            <if test="xmqkSbdhl != null">xmqk_sbdhl = #{xmqkSbdhl},</if>
+        </trim>
+        where xmqk_xmmc = #{xmqkXmmc}
+    </update>
+</mapper>

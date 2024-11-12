@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkrs.system.mapper.FinancingStillMapper">
+
+    <resultMap type="FinancingStill" id="FinancingStillResult">
+        <result property="id"    column="id"    />
+        <result property="financingId"    column="financing_id"    />
+        <result property="financingRq"    column="financing_rq"    />
+        <result property="financingCb"    column="financing_cb"    />
+        <result property="financingLx"    column="financing_lx"    />
+        <result property="financingSxf"    column="financing_sxf"    />
+        <result property="financingBzj"    column="financing_bzj"    />
+        <result property="beginPay"    column="begin_pay"    />
+
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="isDelete"    column="is_delete"    />
+
+        <result property="isYjSj"    column="is_yj_sj"    />
+
+        <result property="financingBysjhk"    column="financing_bysjhk"    />
+
+
+    </resultMap>
+
+    <sql id="selectFinancingStillVo">
+        select id, financing_id, financing_rq, financing_cb, financing_lx, financing_sxf, financing_bzj, create_by, create_time, update_by,begin_pay,
+        update_time, is_delete,is_yj_sj ,financing_bysjhk from financing_still
+    </sql>
+
+    <select id="selectFinancingStillList" parameterType="FinancingStill" resultMap="FinancingStillResult">
+        select a.id, a.financing_id, a.financing_rq, a.financing_cb, a.financing_lx, a.financing_sxf, a.financing_bzj, a.begin_pay,a.create_by, a.create_time, a.update_by,
+        a.update_time, a.is_delete,a.is_yj_sj ,a.financing_bysjhk , c.xmqk_xmmc   xmqkXmmc
+        from 	financing_still  a
+        LEFT JOIN project_financing  b ON a.financing_id = b.xmrz_id
+        LEFT JOIN   project_info    c   on  b.xmrz_project_id=c.xmqk_project_id
+        <where>
+            <if test="financingId != null "> and a.financing_id = #{financingId}</if>
+            <if test="financingRq != null "> and a.financing_rq = #{financingRq}</if>
+            <if test="isYjSj != null "> and a.is_yj_sj = #{isYjSj}</if>
+        </where>
+    </select>
+
+    <select id="selectFinancingStillById" parameterType="Long" resultMap="FinancingStillResult">
+        <include refid="selectFinancingStillVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertFinancingStill" parameterType="FinancingStill" useGeneratedKeys="true" keyProperty="id">
+        insert into financing_still
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="financingId != null">financing_id,</if>
+            <if test="financingRq != null">financing_rq,</if>
+            <if test="financingCb != null">financing_cb,</if>
+            <if test="financingLx != null">financing_lx,</if>
+            <if test="financingSxf != null">financing_sxf,</if>
+            <if test="financingBzj != null">financing_bzj,</if>
+            <if test="beginPay != null">begin_pay,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="isDelete != null">is_delete,</if>
+            <if test="isYjSj != null">is_yj_sj,</if>
+            <if test="financingBysjhk != null">financing_bysjhk,</if>
+
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="financingId != null">#{financingId},</if>
+            <if test="financingRq != null">#{financingRq},</if>
+            <if test="financingCb != null">#{financingCb},</if>
+            <if test="financingLx != null">#{financingLx},</if>
+            <if test="financingSxf != null">#{financingSxf},</if>
+            <if test="financingBzj != null">#{financingBzj},</if>
+            <if test="beginPay != null">#{begin_pay},</if>
+
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="isDelete != null">#{isDelete},</if>
+            <if test="isYjSj != null">#{isYjSj},</if>
+            <if test="financingBysjhk != null">#{financingBysjhk},</if>
+
+        </trim>
+    </insert>
+
+    <update id="updateFinancingStill" parameterType="FinancingStill">
+        update financing_still
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="financingId != null">financing_id = #{financingId},</if>
+            <if test="financingRq != null">financing_rq = #{financingRq},</if>
+            <if test="financingCb != null">financing_cb = #{financingCb},</if>
+            <if test="financingLx != null">financing_lx = #{financingLx},</if>
+            <if test="financingSxf != null">financing_sxf = #{financingSxf},</if>
+            <if test="financingBzj != null">financing_bzj = #{financingBzj},</if>
+
+            <if test="beginPay != null">begin_pay = #{beginPay},</if>
+
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="isDelete != null">is_delete = #{isDelete},</if>
+            <if test="isYjSj != null">is_yj_sj = #{isYjSj},</if>
+            <if test="financingBysjhk != null">financing_bysjhk = #{financingBysjhk},</if>
+
+
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteFinancingStillById" parameterType="Long">
+        delete from financing_still where id = #{id}
+    </delete>
+
+    <delete id="deleteFinancingStillByIds" parameterType="String">
+        delete from financing_still where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <insert id="importBox"   keyProperty="id">
+        replace   into financing_still(
+        id,
+        financing_id,
+        financing_rq,
+        financing_cb,
+        financing_lx,
+        financing_sxf,
+        financing_bzj,
+        begin_pay,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        is_yj_sj,
+        financing_bysjhk
+
+        )
+        values
+        <foreach collection="listData" item="listItme" separator=",">
+            (
+            #{listItme.id},
+            #{listItme.financingId},
+            #{listItme.financingRq},
+            #{listItme.financingCb},
+            #{listItme.financingLx},
+            #{listItme.financingSxf},
+            #{listItme.financingBzj},
+            #{listItme.beginPay},
+            #{listItme.createBy},
+            #{listItme.createTime},
+            #{listItme.updateBy},
+            #{listItme.updateTime},
+            #{listItme.isYjSj},
+            #{listItme.financingBysjhk}
+
+            )
+        </foreach>
+
+    </insert>
+
+
+    <insert id="insertUpdateBatch"   keyProperty="id">
+
+        <foreach collection="listData" item="listItme" separator=";">
+            insert   into financing_still(
+            id,
+            financing_id,
+            financing_rq,
+            financing_cb,
+            financing_lx,
+            financing_sxf,
+            financing_bzj,
+            begin_pay,
+            create_by,
+            create_time,
+            update_by,
+            update_time,
+            is_yj_sj,
+            financing_bysjhk
+
+            )
+            values
+            (
+            #{listItme.id},
+            #{listItme.financingId},
+            #{listItme.financingRq},
+            #{listItme.financingCb},
+            #{listItme.financingLx},
+            #{listItme.financingSxf},
+            #{listItme.financingBzj},
+            #{listItme.beginPay},
+            #{listItme.createBy},
+            #{listItme.createTime},
+            #{listItme.updateBy},
+            #{listItme.updateTime},
+            #{listItme.isYjSj},
+            #{listItme.financingBysjhk}
+            )
+            on duplicate key update
+            begin_pay="${listItme.beginPay}",
+            financing_cb=${listItme.financingCb},
+            financing_lx=${listItme.financinglx},
+            financing_sxf=${listItme.financingSxf}
+
+        </foreach>
+
+    </insert>
+
+    <insert id="insertUpdateBatchSQl"   >
+          ${sqlv}
+    </insert>
+
+    <update id="updateBatch"  parameterType="java.util.List">
+        <foreach collection="listData" item="item" index="index" open="" close="" separator=";">
+            update financing_still
+            <set>
+
+                begin_pay=${item.beginPay},
+                financing_cb=${item.financingCb},
+                financing_lx=${item.financinglx},
+                financing_sxf=${item.financingSxf}
+            </set>
+            where DATE_FORMAT(financing_rq,'%Y-%m') = "${item.quDate}"  and   financing_id =${item.financingId}
+        </foreach>
+    </update>
+
+    <insert id="insertFinancingDateList"   keyProperty="id">
+        replace   into financing_still(
+        id,
+        financing_id,
+        financing_rq,
+        financing_cb,
+        financing_lx,
+        financing_sxf,
+        financing_bzj,
+        begin_pay,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        is_yj_sj,
+        financing_bysjhk
+
+      )
+        values
+        <foreach collection="financingDateList" item="listItme" separator=",">
+            (
+            #{listItme.id},
+            #{listItme.financingId},
+            #{listItme.financingRq},
+            #{listItme.financingCb},
+            #{listItme.financingLx},
+            #{listItme.financingSxf},
+            #{listItme.financingBzj},
+            #{listItme.begin_pay},
+
+            #{listItme.createBy},
+            #{listItme.createTime},
+            #{listItme.updateBy},
+            #{listItme.updateTime},
+            #{listItme.isYjSj},
+            #{listItme.financingBysjhk}
+
+            )
+        </foreach>
+
+    </insert>
+
+    <insert id="insertFinancingDateList1"   keyProperty="id">
+        replace   into financing_still(
+        id,
+        financing_id,
+        financing_rq,
+        financing_cb,
+        financing_lx,
+        financing_sxf,
+        financing_bzj,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        is_yj_sj,
+        financing_bysjhk
+
+        )
+        values
+        <foreach collection="financingDateList" item="listItme" separator=",">
+            (
+            #{listItme.id},
+            #{listItme.financingId},
+            #{listItme.financingRq},
+            #{listItme.financingCb},
+            #{listItme.financingLx},
+            #{listItme.financingSxf},
+            #{listItme.financingBzj},
+
+            #{listItme.createBy},
+            #{listItme.createTime},
+            #{listItme.updateBy},
+            #{listItme.updateTime},
+            #{listItme.isYjSj},
+            #{listItme.financingBysjhk}
+
+            )
+        </foreach>
+
+    </insert>
+
+    <insert id="importBoxFinancingInfo" parameterType="ExpectedFinancing" useGeneratedKeys="true" keyProperty="id">
+        insert into financing_still(
+        <trim prefix="" suffixOverrides=",">
+            <if test="financingId != null">financing_id,</if>
+            <if test="financingRq != null">financing_rq,</if>
+            <if test="financingCb != null">financing_cb,</if>
+            <if test="financingLx != null">financing_lx,</if>
+            <if test="financingSxf != null">financing_sxf,</if>
+            <if test="beginPay != null">begin_pay,</if>
+
+            <if test="isYjSj != null">is_yj_sj,</if>
+        </trim>
+        )values(
+        <trim prefix="" suffixOverrides=",">
+            <if test="financingId != null">#{financingId},</if>
+            <if test="financingRq != null">#{financingRq},</if>
+            <if test="financingCb != null">#{financingCb},</if>
+            <if test="financingLx != null">#{financingLx},</if>
+            <if test="financingSxf != null">#{financingSxf},</if>
+            <if test="beginPay != null">#{beginPay},</if>
+            <if test="isYjSj != null">#{isYjSj},</if>
+        </trim>
+        )
+    </insert>
+
+    <insert id="importBoxTrueFinancingInfo" parameterType="ExpectedFinancing" useGeneratedKeys="true" keyProperty="id">
+        insert into financing_still(
+        <trim prefix="" suffixOverrides=",">
+            <if test="financingId != null">financing_id,</if>
+            <if test="financingRq != null">financing_rq,</if>
+            <if test="financingCb != null">financing_cb,</if>
+            <if test="financingLx != null">financing_lx,</if>
+            <if test="financingSxf != null">financing_sxf,</if>
+            <if test="beginPay != null">begin_pay,</if>
+            <if test="isYjSj != null">is_yj_sj,</if>
+        </trim>
+        )values(
+        <trim prefix="" suffixOverrides=",">
+            <if test="financingId != null">#{financingId},</if>
+            <if test="financingRq != null">#{financingRq},</if>
+            <if test="financingCb != null">#{financingCb},</if>
+            <if test="financingLx != null">#{financingLx},</if>
+            <if test="financingSxf != null">#{financingSxf},</if>
+            <if test="beginPay != null">#{beginPay},</if>
+            <if test="isYjSj != null">#{isYjSj},</if>
+        </trim>
+        )
+    </insert>
+
+</mapper>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkrs.system.mapper.ProjectFinancingLoanMapper">
+
+    <resultMap type="ProjectFinancingLoan" id="ProjectFinancingLoanResult">
+        <result property="id"    column="id"    />
+        <result property="financingId"    column="financing_id"    />
+        <result property="projectId"    column="project_id"    />
+        <result property="loanYear"    column="loan_year"    />
+        <result property="jan"    column="jan"    />
+        <result property="feb"    column="feb"    />
+        <result property="mar"    column="mar"    />
+        <result property="apr"    column="apr"    />
+        <result property="may"    column="may"    />
+        <result property="jun"    column="jun"    />
+        <result property="jul"    column="jul"    />
+        <result property="aug"    column="aug"    />
+        <result property="sep"    column="sep"    />
+        <result property="oct"    column="oct"    />
+        <result property="nov"    column="nov"    />
+        <result property="dec"    column="dec"    />
+        <result property="all"    column="all"    />
+    </resultMap>
+
+    <sql id="selectProjectFinancingLoanVo">
+        select id, financing_id, project_id, loan_year, jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, `dec`, `all` from project_financing_loan
+    </sql>
+
+    <select id="selectProjectFinancingLoanList" parameterType="ProjectFinancingLoan" resultMap="ProjectFinancingLoanResult">
+        <include refid="selectProjectFinancingLoanVo"/>
+        <where>
+            <if test="financingId != null "> and financing_id = #{financingId}</if>
+            <if test="loanYear != null  and loanYear != ''"> and loan_year = #{loanYear}</if>
+            <if test="jan != null "> and jan = #{jan}</if>
+            <if test="feb != null "> and feb = #{feb}</if>
+            <if test="mar != null "> and mar = #{mar}</if>
+            <if test="apr != null "> and apr = #{apr}</if>
+            <if test="may != null "> and may = #{may}</if>
+            <if test="jun != null "> and jun = #{jun}</if>
+            <if test="jul != null "> and jul = #{jul}</if>
+            <if test="aug != null "> and aug = #{aug}</if>
+            <if test="sep != null "> and sep = #{sep}</if>
+            <if test="oct != null "> and oct = #{oct}</if>
+            <if test="nov != null "> and nov = #{nov}</if>
+            <if test="dec != null "> and `dec` = #{dec}</if>
+            <if test="all != null "> and `all` = #{all}</if>
+        </where>
+    </select>
+    
+    <select id="selectProjectFinancingLoanByFinancingId" parameterType="Long" resultMap="ProjectFinancingLoanResult">
+        <include refid="selectProjectFinancingLoanVo"/>
+        where financing_id = #{financingId}
+    </select>
+
+    <insert id="insertProjectFinancingLoan" parameterType="ProjectFinancingLoan" useGeneratedKeys="true" keyProperty="id">
+        insert into project_financing_loan
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="financingId != null">financing_id,</if>
+            <if test="projectId != null and projectId != ''">project_id,</if>
+            <if test="loanYear != null and loanYear != ''">loan_year,</if>
+            <if test="jan != null">jan,</if>
+            <if test="feb != null">feb,</if>
+            <if test="mar != null">mar,</if>
+            <if test="apr != null">apr,</if>
+            <if test="may != null">may,</if>
+            <if test="jun != null">jun,</if>
+            <if test="jul != null">jul,</if>
+            <if test="aug != null">aug,</if>
+            <if test="sep != null">sep,</if>
+            <if test="oct != null">oct,</if>
+            <if test="nov != null">nov,</if>
+            <if test="dec != null">`dec`,</if>
+            <if test="all != null">`all`,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="financingId != null">#{financingId},</if>
+            <if test="projectId != null and projectId != ''">#{projectId},</if>
+            <if test="loanYear != null and loanYear != ''">#{loanYear},</if>
+            <if test="jan != null">#{jan},</if>
+            <if test="feb != null">#{feb},</if>
+            <if test="mar != null">#{mar},</if>
+            <if test="apr != null">#{apr},</if>
+            <if test="may != null">#{may},</if>
+            <if test="jun != null">#{jun},</if>
+            <if test="jul != null">#{jul},</if>
+            <if test="aug != null">#{aug},</if>
+            <if test="sep != null">#{sep},</if>
+            <if test="oct != null">#{oct},</if>
+            <if test="nov != null">#{nov},</if>
+            <if test="dec != null">#{dec},</if>
+            <if test="all != null">#{all},</if>
+        </trim>
+    </insert>
+
+    <update id="updateProjectFinancingLoan" parameterType="ProjectFinancingLoan">
+        update project_financing_loan
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="financingId != null">financing_id = #{financingId},</if>
+            <if test="projectId != null and projectId != ''">project_id = #{projectId},</if>
+            <if test="loanYear != null and loanYear != ''">loan_year = #{loanYear},</if>
+            <if test="jan != null">jan = #{jan},</if>
+            <if test="feb != null">feb = #{feb},</if>
+            <if test="mar != null">mar = #{mar},</if>
+            <if test="apr != null">apr = #{apr},</if>
+            <if test="may != null">may = #{may},</if>
+            <if test="jun != null">jun = #{jun},</if>
+            <if test="jul != null">jul = #{jul},</if>
+            <if test="aug != null">aug = #{aug},</if>
+            <if test="sep != null">sep = #{sep},</if>
+            <if test="oct != null">oct = #{oct},</if>
+            <if test="nov != null">nov = #{nov},</if>
+            <if test="dec != null">`dec` = #{dec},</if>
+            <if test="all != null">`all` = #{all},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteProjectFinancingLoanByFinancingId" parameterType="Long">
+        delete from project_financing_loan where financing_id = #{financingId}
+    </delete>
+
+    <delete id="deleteProjectFinancingLoanByFinancingIds" parameterType="String">
+        delete from project_financing_loan where `id` in
+        <foreach item="financingId" collection="array" open="(" separator="," close=")">
+            #{financingId}
+        </foreach>
+    </delete>
+
+    <insert id="importBoxProjectFinancingLoan" parameterType="FinancingInfo">
+        insert into project_financing_loan
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="xmrzId != null">financing_id,</if>
+            <if test="xmrzProjectId != null">project_id,</if>
+            <if test="loanYear != null and loanYear != ''">loan_year,</if>
+            <if test="jan != null">jan,</if>
+            <if test="feb != null">feb,</if>
+            <if test="mar != null">mar,</if>
+            <if test="apr != null">apr,</if>
+            <if test="may != null">may,</if>
+            <if test="jun != null">jun,</if>
+            <if test="jul != null">jul,</if>
+            <if test="aug != null">aug,</if>
+            <if test="sep != null">sep,</if>
+            <if test="oct != null">oct,</if>
+            <if test="nov != null">nov,</if>
+            <if test="dec != null">`dec`,</if>
+            <if test="all != null">`all`,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="xmrzId != null">#{xmrzId},</if>
+            <if test="xmrzProjectId != null">#{xmrzProjectId},</if>
+            <if test="loanYear != null and loanYear != ''">#{loanYear},</if>
+            <if test="jan != null">#{jan},</if>
+            <if test="feb != null">#{feb},</if>
+            <if test="mar != null">#{mar},</if>
+            <if test="apr != null">#{apr},</if>
+            <if test="may != null">#{may},</if>
+            <if test="jun != null">#{jun},</if>
+            <if test="jul != null">#{jul},</if>
+            <if test="aug != null">#{aug},</if>
+            <if test="sep != null">#{sep},</if>
+            <if test="oct != null">#{oct},</if>
+            <if test="nov != null">#{nov},</if>
+            <if test="dec != null">#{dec},</if>
+            <if test="all != null">#{all},</if>
+        </trim>
+    </insert>
+
+<!--    <select id="isExistProject"  parameterType="FinancingInfo" resultType="java.lang.Integer">-->
+<!--        select  count(1) from project_financing where   DATE_FORMAT(xmrz_qyrq,'%Y-%m-%d')  = #{xmrzQyrq}-->
+<!--    </select>-->
+
+    <select id="isExistProject"  parameterType="FinancingInfo" resultType="java.lang.Integer">
+        select  count(1) from project_financing where     xmrz_project_id=#{financingInfo.xmrzProjectId}
+    </select>
+<!--    <select id="isExistProject"  parameterType="FinancingInfo" resultType="java.lang.Integer">-->
+<!--        select  count(1) from project_financing where     xmrz_project_id=#{financingInfo.xmrzProjectId} and     xmrz_rzjg=#{financingInfo.xmrzRzjg}-->
+<!--    </select>-->
+
+
+
+    <update id="updateProjectFinancingLoanInfo" parameterType="ProjectFinancingLoan">
+        update project_financing_loan
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="jan != null">jan = #{jan},</if>
+            <if test="feb != null">feb = #{feb},</if>
+            <if test="mar != null">mar = #{mar},</if>
+            <if test="apr != null">apr = #{apr},</if>
+            <if test="may != null">may = #{may},</if>
+            <if test="jun != null">jun = #{jun},</if>
+            <if test="jul != null">jul = #{jul},</if>
+            <if test="aug != null">aug = #{aug},</if>
+            <if test="sep != null">sep = #{sep},</if>
+            <if test="oct != null">oct = #{oct},</if>
+            <if test="nov != null">nov = #{nov},</if>
+            <if test="dec != null">`dec` = #{dec},</if>
+            <if test="all != null">`all` = #{all},</if>
+        </trim>
+        where project_id = #{xmrzProjectId} and loan_year = #{loanYear}
+    </update>
+
+
+
+    <insert id="insertFinancingLoanList"   keyProperty="id">
+        replace  into project_financing_loan(
+            financing_id,
+            project_id,
+             loan_year,
+            jan,
+            feb,
+            mar,
+            apr,
+            may,
+            jun,
+            jul,
+            aug,
+            sep,
+            oct,
+            nov,
+            `dec`,
+            `all`
+        )
+        values
+        <foreach collection="listData" item="listItme" separator=",">
+            (
+            #{listItme.financingId},
+            #{listItme.projectId},
+            #{listItme.loanYear},
+            #{listItme.jan},
+            #{listItme.feb},
+            #{listItme.mar},
+            #{listItme.apr},
+            #{listItme.may},
+            #{listItme.jun},
+            #{listItme.jul},
+            #{listItme.aug},
+            #{listItme.sep},
+            #{listItme.oct},
+            #{listItme.nov},
+            #{listItme.dec},
+            #{listItme.all}
+            )
+        </foreach>
+    </insert>
+
+    <delete id="deleteProjectFinancingLoanByIds" parameterType="String">
+        delete from project_financing_loan where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <delete id="deleteProjectFinancingLoan" parameterType="String">
+        delete from project_financing_loan where financing_id in
+        <foreach item="xmrzId" collection="array" open="(" separator="," close=")">
+            #{xmrzId}
+        </foreach>
+    </delete>
+</mapper>

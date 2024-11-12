@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkrs.system.mapper.BusinessDictionaryMapper">
+    
+    <resultMap type="BusinessDictionary" id="BusinessDictionaryResult">
+        <result property="id"    column="id"    />
+        <result property="pId"    column="p_id"    />
+        <result property="isCatalogue"    column="is_catalogue"    />
+        <result property="zdName"    column="zd_name"    />
+        <result property="remarks"    column="remarks"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="isDelete"    column="is_delete"    />
+        <result property="fName"    column="f_name"    />
+
+    </resultMap>
+
+    <sql id="selectBusinessDictionaryVo">
+        select id, p_id, is_catalogue, zd_name, remarks, create_by, create_time, update_by, update_time, is_delete , zd_name oldName  from business_dictionary
+    </sql>
+
+
+    <select id="selectBusinessDictionaryList" parameterType="BusinessDictionary" resultMap="BusinessDictionaryResult">
+        <include refid="selectBusinessDictionaryVo"/>
+        <where>  
+            <if test="pId != null "> and p_id = #{pId}</if>
+            <if test="isCatalogue != null  and isCatalogue != ''"> and is_catalogue = #{isCatalogue}</if>
+            <if test="zdName != null  and zdName != ''"> and zd_name like concat('%', #{zdName}, '%')</if>
+            <if test="remarks != null  and remarks != ''"> and remarks = #{remarks}</if>
+            <if test="isDelete != null  and isDelete != ''"> and is_delete = #{isDelete}</if>
+        </where>
+    </select>
+
+
+    <select id="selectApiList"   resultType="com.zkrs.system.domain.api.ApiDictionary" >
+        select id , zd_name  zdName, remarks  , p_id  pId   from business_dictionary
+        <where>
+
+            <if test="id != null  and id != ''"> and p_id = #{id}</if>
+        </where>
+    </select>
+
+
+    <select id="selectBusinessDictionaryById" parameterType="Long" resultMap="BusinessDictionaryResult">
+        <include refid="selectBusinessDictionaryVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBusinessDictionary" parameterType="BusinessDictionary" useGeneratedKeys="true" keyProperty="id">
+        insert into business_dictionary
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pId != null">p_id,</if>
+            <if test="isCatalogue != null">is_catalogue,</if>
+            <if test="zdName != null">zd_name,</if>
+            <if test="remarks != null">remarks,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="isDelete != null">is_delete,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pId != null">#{pId},</if>
+            <if test="isCatalogue != null">#{isCatalogue},</if>
+            <if test="zdName != null">#{zdName},</if>
+            <if test="remarks != null">#{remarks},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="isDelete != null">#{isDelete},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBusinessDictionary" parameterType="BusinessDictionary">
+        update business_dictionary
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="pId != null">p_id = #{pId},</if>
+            <if test="isCatalogue != null">is_catalogue = #{isCatalogue},</if>
+            <if test="zdName != null">zd_name = #{zdName},</if>
+            <if test="remarks != null">remarks = #{remarks},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="isDelete != null">is_delete = #{isDelete},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBusinessDictionaryById" parameterType="Long">
+        delete from business_dictionary where id = #{id}
+    </delete>
+
+    <delete id="deleteBusinessDictionaryByIds" parameterType="String">
+        delete from business_dictionary where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="selectBusinessDictionaryListData" parameterType="BusinessDictionary" resultMap="BusinessDictionaryResult">
+        SELECT
+        a.id id,
+        a.p_id p_id,
+        a.is_catalogue is_catalogue ,
+        a.zd_name zd_name,
+        a.remarks remarks,
+        b.zd_name   f_name
+        FROM
+        business_dictionary a  LEFT JOIN  business_dictionary b on a.p_id =b.id
+        <where>
+
+            <if test="pId != null "> and a.p_id = #{pId}</if>
+            <if test="isCatalogue != null  and isCatalogue != ''"> and a.is_catalogue = #{isCatalogue}</if>
+            <if test="zdName != null  and zdName != ''"> and a.zd_name like concat('%', #{zdName}, '%')</if>
+            <if test="remarks != null  and remarks != ''"> and a.remarks = #{remarks}</if>
+            <if test="isDelete != null  and isDelete != ''"> and a.is_delete = #{isDelete}</if>
+            <if test="fName != null  and fName != ''"> and b.zd_name like  concat('%',#{fName}, '%') </if>
+        </where>
+    </select>
+
+
+
+    <select id="checkData" parameterType="String"  resultType="int">
+           select count(1)  from  business_dictionary where   p_id in
+         <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="selectBusinessChekData" resultType="java.lang.Integer">
+
+        select count(id)  from  business_dictionary
+        where   p_id=#{pid}  and  #{name} in(zd_name);
+
+    </select>
+
+</mapper>

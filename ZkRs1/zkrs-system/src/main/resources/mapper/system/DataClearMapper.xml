@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkrs.system.mapper.DataClearMapper">
+
+
+    <delete id="dataClearInfo" >
+      delete from   project_info
+    </delete>
+
+
+    <delete id="dataClearConstruction" >
+
+    </delete>
+
+    <delete id="dataClearTepayment" >
+      delete from actual_cash
+    </delete>
+    <delete id="dataClearManagement" >
+        delete from expect_cash
+    </delete>
+
+
+
+
+    <delete id="dataClearFinancing" >
+        delete from project_financing
+    </delete>
+    <delete id="dataClearData" >
+        delete from financing_date
+    </delete>
+    <delete id="dataClearSill" >
+        delete from financing_still
+    </delete>
+
+
+    <delete id="dataClearElectricity" >
+       delete from  electricity_statistics
+    </delete>
+
+
+    <delete id="dataClearProjectCashZbOut" >
+         delete from project_cash   where out_in=1
+    </delete>
+    <delete id="dataClearProjectCashOut" >
+      delete from project_cash_info  where  cash_id in(select id from project_cash   where out_in=1)
+    </delete>
+    <delete id="dataClearProjectCashZbIn" >
+        delete from project_cash   where out_in=0
+    </delete>
+    <delete id="dataClearProjectCashIn" >
+        delete from project_cash_info  where  cash_id  in(select id from project_cash   where out_in=0)
+    </delete>
+    <delete id="dataClearProjectCashAll" >
+         delete from project_cash
+    </delete>
+    <delete id="dataClearProjectCashInfoAll" >
+        delete from project_cash_info
+    </delete>
+
+</mapper>

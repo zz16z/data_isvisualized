@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkrs.system.mapper.ProjectFinancingMapper">
+
+    <resultMap type="ProjectFinancing" id="ProjectFinancingResult">
+        <result property="xmrzId"    column="xmrz_id"    />
+        <result property="xmrzProjectId"    column="xmrz_project_id"    />
+        <result property="xmrzWfkze"    column="xmrz_wfkze"    />
+        <result property="xmrzIsxcfk"    column="xmrz_isxcfk"    />
+        <result property="xmrzRzjg"    column="xmrz_rzjg"    />
+        <result property="xmrzQyrq"    column="xmrz_qyrq"    />
+        <result property="xmrzRzfzr"    column="xmrz_rzfzr"    />
+        <result property="xmrzRzze"    column="xmrz_rzze"    />
+        <result property="xmrzYfkze"    column="xmrz_yfkze"    />
+        <result property="xmrzYjxbfk"    column="xmrz_yjxbfk"    />
+        <result property="xmrzBzj"    column="xmrz_bzj"    />
+        <result property="xmrzRzll"    column="xmrz_rzll"    />
+        <result property="xmrzSxfsqfs"    column="xmrz_sxfsqfs"    />
+        <result property="xmrzSnirr"    column="xmrz_snirr"    />
+        <result property="xmrzQzqzhirr"    column="xmrz_qzqzhirr"    />
+        <result property="xmrzRzqk"    column="xmrz_rzqk"    />
+        <result property="xmrzXbfktj"    column="xmrz_xbfktj"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="isDelete"    column="is_delete"    />
+        <result property="xmrzFxts"    column="xmrz_fxts"    />
+        <result property="xmrzYjxbfksj"    column="xmrz_yjxbfksj"    />
+        <result property="xmrzCb"    column="xmrz_cb"    />
+        <result property="xmrzLx"    column="xmrz_lx"    />
+        <result property="xmrzSxf"    column="xmrz_sxf"    />
+        <result property="xmrzHkbzj"    column="xmrz_hkbzj"    />
+    </resultMap>
+
+    <resultMap type="ExportFinancingDate" id="ExportProjectFinancingResult">
+        <result property="xmrzRzqkName"    column="xmrzRzqkName"    />
+        <result property="xmqkXmmc"    column="xmqk_xmmc"    />
+        <result property="financingId"    column="financing_id"    />
+        <result property="xmqkRzf"    column="xmqk_rzf"    />
+        <result property="xmrzQyrq"    column="xmrz_qyrq"    />
+        <result property="xmqkRzjl"    column="xmqk_rzjl"    />
+        <result property="xmrzRzze"    column="xmrz_rzze"    />
+        <result property="xmrzSnirr"    column="xmrz_snirr"    />
+        <result property="xmrzQzqzhirr"    column="xmrz_qzqzhirr"    />
+        <result property="xmrzYfkze"    column="xmrz_yfkze"    />
+        <result property="xmrzWfkze"    column="xmrz_wfkze"    />
+        <result property="xmrzRzqk"    column="xmrz_rzqk"    />
+        <result property="xmrzYjxbfksj"    column="xmrz_yjxbfksj"    />
+        <result property="xmrzYjxbfk"    column="xmrz_yjxbfk"    />
+        <result property="xmrzIsxcfk"    column="xmrz_isxcfk"    />
+        <result property="xmrzFxts"    column="xmrz_fxts"    />
+        <result property="times"    column="times"    />
+        <result property="january"    column="january"    />
+    </resultMap>
+
+    <sql id="selectProjectFinancingVo">
+        select xmrz_id, xmrz_project_id, xmrz_wfkze, xmrz_fxts,xmrz_isxcfk,xmrz_rzjg, xmrz_qyrq, xmrz_rzfzr, xmrz_rzze, xmrz_yfkze, xmrz_yjxbfk, xmrz_bzj, xmrz_rzll, xmrz_sxfsqfs, xmrz_snirr, xmrz_qzqzhirr, xmrz_rzqk, xmrz_xbfktj, create_by, create_time, update_by, update_time, is_delete
+        ,xmrz_yjxbfksj , xmrz_cb , xmrz_lx ,xmrz_sxf ,xmrz_hkbzj  from project_financing
+    </sql>
+
+    <select id="selectProjectFinancingList" parameterType="ProjectFinancing" resultMap="ProjectFinancingResult">
+        <include refid="selectProjectFinancingVo"/>
+        <where>
+            and xmrz_project_id = #{xmrzProjectId}
+            <if test="xmrzRzjg != null  and xmrzRzjg != ''"> and xmrz_rzjg = #{xmrzRzjg}</if>
+            <if test="xmrzQyrq != null "> and xmrz_qyrq = #{xmrzQyrq}</if>
+            <if test="xmrzRzfzr != null  and xmrzRzfzr != ''"> and xmrz_rzfzr = #{xmrzRzfzr}</if>
+            <if test="xmrzRzze != null "> and xmrz_rzze = #{xmrzRzze}</if>
+            <if test="xmrzYfkze != null "> and xmrz_yfkze = #{xmrzYfkze}</if>
+            <if test="xmrzYjxbfk != null "> and xmrz_yjxbfk = #{xmrzYjxbfk}</if>
+            <if test="xmrzBzj != null "> and xmrz_bzj = #{xmrzBzj}</if>
+            <if test="xmrzRzll != null  and xmrzRzll != ''"> and xmrz_rzll = #{xmrzRzll}</if>
+            <if test="xmrzSxfsqfs != null  and xmrzSxfsqfs != ''"> and xmrz_sxfsqfs = #{xmrzSxfsqfs}</if>
+            <if test="xmrzSnirr != null  and xmrzSnirr != ''"> and xmrz_snirr = #{xmrzSnirr}</if>
+            <if test="xmrzQzqzhirr != null  and xmrzQzqzhirr != ''"> and xmrz_qzqzhirr = #{xmrzQzqzhirr}</if>
+            <if test="xmrzRzqk != null  and xmrzRzqk != ''"> and xmrz_rzqk = #{xmrzRzqk}</if>
+            <if test="xmrzXbfktj != null  and xmrzXbfktj != ''"> and xmrz_xbfktj = #{xmrzXbfktj}</if>
+            <if test="isDelete != null  and isDelete != ''"> and is_delete = #{isDelete}</if>
+        </where>
+    </select>
+
+    <select id="selectProjectFinancingExport" parameterType="ProjectFinancing" resultMap="ProjectFinancingResult">
+        select   b.xmqk_xmmc  xmqkXmmc,  a.xmrz_rzjg,  a.xmrz_qyrq,
+        a.xmrz_rzfzr,  a.xmrz_rzze,  a.xmrz_yfkze,  a.xmrz_yjxbfk,  a.xmrz_bzj,
+        a.xmrz_rzll,  a.xmrz_sxfsqfs,  a.xmrz_snirr,  a.xmrz_qzqzhirr,
+        a.xmrz_rzqk,  a.xmrz_xbfktj ,a.xmrz_yjxbfksj , a.xmrz_cb , a.xmrz_lx , a.xmrz_sxf , a.xmrz_hkbzj
+        from project_financing  a LEFT JOIN   project_info    b   on  a.xmrz_project_id=b.xmqk_project_id
+
+        <where>
+            and a.xmrz_project_id = #{xmrzProjectId}
+            <if test="xmrzRzjg != null  and xmrzRzjg != ''"> and a.xmrz_rzjg = #{xmrzRzjg}</if>
+            <if test="xmrzQyrq != null "> and a.xmrz_qyrq = #{xmrzQyrq}</if>
+            <if test="xmrzRzfzr != null  and xmrzRzfzr != ''"> and a.xmrz_rzfzr = #{xmrzRzfzr}</if>
+            <if test="xmrzRzze != null "> and a.xmrz_rzze = #{xmrzRzze}</if>
+            <if test="xmrzYfkze != null "> and a.xmrz_yfkze = #{xmrzYfkze}</if>
+            <if test="xmrzYjxbfk != null "> and a.xmrz_yjxbfk = #{xmrzYjxbfk}</if>
+            <if test="xmrzBzj != null "> and a.xmrz_bzj = #{xmrzBzj}</if>
+            <if test="xmrzRzll != null  and xmrzRzll != ''"> and a.xmrz_rzll = #{xmrzRzll}</if>
+            <if test="xmrzSxfsqfs != null  and xmrzSxfsqfs != ''"> and a.xmrz_sxfsqfs = #{xmrzSxfsqfs}</if>
+            <if test="xmrzSnirr != null  and xmrzSnirr != ''"> and a.xmrz_snirr = #{xmrzSnirr}</if>
+            <if test="xmrzQzqzhirr != null  and xmrzQzqzhirr != ''"> and a.xmrz_qzqzhirr = #{xmrzQzqzhirr}</if>
+            <if test="xmrzRzqk != null  and xmrzRzqk != ''"> and a.xmrz_rzqk = #{xmrzRzqk}</if>
+            <if test="xmrzXbfktj != null  and xmrzXbfktj != ''"> and a.xmrz_xbfktj = #{xmrzXbfktj}</if>
+            <if test="isDelete != null  and isDelete != ''"> and is_delete = #{isDelete}</if>
+        </where>
+    </select>
+
+    <select id="selectProjectFinancingByXmrzId" parameterType="Long" resultMap="ProjectFinancingResult">
+        <include refid="selectProjectFinancingVo"/>
+        where xmrz_id = #{xmrzId}
+    </select>
+
+    <insert id="insertProjectFinancing" parameterType="ProjectFinancing" useGeneratedKeys="true" keyProperty="xmrzId">
+        insert into project_financing
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="xmrzProjectId != null">xmrz_project_id,</if>
+            <if test="xmrzRzjg != null">xmrz_rzjg,</if>
+            <if test="xmrzQyrq != null">xmrz_qyrq,</if>
+            <if test="xmrzRzfzr != null">xmrz_rzfzr,</if>
+            <if test="xmrzRzze != null">xmrz_rzze,</if>
+            <if test="xmrzWfkze != null">xmrz_wfkze,</if>
+            <if test="xmrzYfkze != null">xmrz_yfkze,</if>
+            <if test="xmrzYjxbfk != null">xmrz_yjxbfk,</if>
+            <if test="xmrzBzj != null">xmrz_bzj,</if>
+            <if test="xmrzRzll != null">xmrz_rzll,</if>
+            <if test="xmrzSxfsqfs != null">xmrz_sxfsqfs,</if>
+            <if test="xmrzSnirr != null">xmrz_snirr,</if>
+            <if test="xmrzQzqzhirr != null">xmrz_qzqzhirr,</if>
+            <if test="xmrzRzqk != null">xmrz_rzqk,</if>
+            <if test="xmrzXbfktj != null">xmrz_xbfktj,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="isDelete != null">is_delete,</if>
+            <if test="xmrzFxts != null">xmrz_fxts,</if>
+            <if test="xmrzYjxbfksj != null">xmrz_yjxbfksj,</if>
+            <if test="xmrzCb != null">xmrz_cb,</if>
+            <if test="xmrzLx != null">xmrz_lx,</if>
+            <if test="xmrzSxf != null">xmrz_sxf,</if>
+            <if test="xmrzIsxcfk != null">xmrz_isxcfk,</if>
+            <if test="xmrzHkbzj != null">xmrz_hkbzj,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="xmrzProjectId != null">#{xmrzProjectId},</if>
+            <if test="xmrzRzjg != null">#{xmrzRzjg},</if>
+            <if test="xmrzQyrq != null">#{xmrzQyrq},</if>
+            <if test="xmrzRzfzr != null">#{xmrzRzfzr},</if>
+            <if test="xmrzRzze != null">#{xmrzRzze},</if>
+            <if test="xmrzWfkze != null">#{xmrzWfkze},</if>
+            <if test="xmrzYfkze != null">#{xmrzYfkze},</if>
+            <if test="xmrzYjxbfk != null">#{xmrzYjxbfk},</if>
+            <if test="xmrzBzj != null">#{xmrzBzj},</if>
+            <if test="xmrzRzll != null">#{xmrzRzll},</if>
+            <if test="xmrzSxfsqfs != null">#{xmrzSxfsqfs},</if>
+            <if test="xmrzSnirr != null">#{xmrzSnirr},</if>
+            <if test="xmrzQzqzhirr != null">#{xmrzQzqzhirr},</if>
+            <if test="xmrzRzqk != null">#{xmrzRzqk},</if>
+            <if test="xmrzXbfktj != null">#{xmrzXbfktj},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="isDelete != null">#{isDelete},</if>
+            <if test="xmrzFxts != null">#{xmrzFxts},</if>
+            <if test="xmrzYjxbfksj != null">#{xmrzYjxbfksj},</if>
+            <if test="xmrzCb != null">#{xmrzCb},</if>
+            <if test="xmrzLx != null">#{xmrzLx},</if>
+            <if test="xmrzSxf != null">#{xmrzSxf},</if>
+            <if test="xmrzIsxcfk != null">#{xmrzIsxcfk},</if>
+            <if test="xmrzHkbzj != null">#{xmrzHkbzj},</if>
+        </trim>
+    </insert>
+
+    <update id="updateProjectFinancing" parameterType="ProjectFinancing">
+        update project_financing
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="xmrzProjectId != null">xmrz_project_id = #{xmrzProjectId},</if>
+            <if test="xmrzRzjg != null">xmrz_rzjg = #{xmrzRzjg},</if>
+            <if test="xmrzQyrq != null">xmrz_qyrq = #{xmrzQyrq},</if>
+            <if test="xmrzRzfzr != null">xmrz_rzfzr = #{xmrzRzfzr},</if>
+            <if test="xmrzRzze != null">xmrz_rzze = #{xmrzRzze},</if>
+            <if test="xmrzWfkze != null">xmrz_wfkze = #{xmrzWfkze},</if>
+            <if test="xmrzYfkze != null">xmrz_yfkze = #{xmrzYfkze},</if>
+            <if test="xmrzYjxbfk != null">xmrz_yjxbfk = #{xmrzYjxbfk},</if>
+            <if test="xmrzBzj != null">xmrz_bzj = #{xmrzBzj},</if>
+            <if test="xmrzRzll != null">xmrz_rzll = #{xmrzRzll},</if>
+            <if test="xmrzSxfsqfs != null">xmrz_sxfsqfs = #{xmrzSxfsqfs},</if>
+            <if test="xmrzSnirr != null">xmrz_snirr = #{xmrzSnirr},</if>
+            <if test="xmrzQzqzhirr != null">xmrz_qzqzhirr = #{xmrzQzqzhirr},</if>
+            <if test="xmrzRzqk != null">xmrz_rzqk = #{xmrzRzqk},</if>
+            <if test="xmrzXbfktj != null">xmrz_xbfktj = #{xmrzXbfktj},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="isDelete != null">is_delete = #{isDelete},</if>
+            <if test="xmrzFxts != null">xmrz_fxts = #{xmrzFxts},</if>
+            <if test="xmrzYjxbfksj != null">xmrz_yjxbfksj = #{xmrzYjxbfksj},</if>
+            <if test="xmrzCb != null">xmrz_cb = #{xmrzCb},</if>
+            <if test="xmrzLx != null">xmrz_lx = #{xmrzLx},</if>
+            <if test="xmrzSxf != null">xmrz_sxf = #{xmrzSxf},</if>
+            <if test="xmrzIsxcfk != null">xmrz_isxcfk = #{xmrzIsxcfk},</if>
+            <if test="xmrzHkbzj != null">xmrz_hkbzj = #{xmrzHkbzj},</if>
+        </trim>
+        where xmrz_id = #{xmrzId}
+    </update>
+
+    <delete id="deleteProjectFinancingByXmrzId" parameterType="Long">
+        delete from project_financing where xmrz_id = #{xmrzId}
+    </delete>
+
+    <delete id="deleteProjectFinancingByXmrzIds" parameterType="String">
+        delete from project_financing where xmrz_id in
+        <foreach item="xmrzId" collection="array" open="(" separator="," close=")">
+            #{xmrzId}
+        </foreach>
+    </delete>
+
+
+    <insert id="insertProjectFinancingAll"  useGeneratedKeys="true" keyProperty="xmrzId">
+
+        insert into project_financing
+        ( xmrz_project_id,
+        xmrz_rzjg,
+        xmrz_qyrq,
+        xmrz_rzfzr,
+        xmrz_rzze,
+        xmrz_yfkze,
+        xmrz_yjxbfk,
+        xmrz_bzj,
+        xmrz_rzll,
+        xmrz_sxfsqfs,
+        xmrz_snirr,
+        xmrz_qzqzhirr,
+        xmrz_rzqk,
+        xmrz_xbfktj,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        is_delete,
+        xmrz_yjxbfksj, xmrz_cb , xmrz_lx ,xmrz_sxf ,xmrz_hkbzj )
+        values
+        <foreach collection="list"   item="item" separator=",">
+            (
+            #{item.xmrzProjectId},
+            #{item.xmrzRzjg},
+            #{item.xmrzQyrq},
+            #{item.xmrzRzfzr},
+            #{item.xmrzRzze},
+            #{item.xmrzYfkze},
+            #{item.xmrzYjxbfk},
+            #{item.xmrzBzj},
+            #{item.xmrzRzll},
+            #{item.xmrzSxfsqfs},
+            #{item.xmrzSnirr},
+            #{item.xmrzQzqzhirr},
+            #{item.xmrzRzqk},
+            #{item.xmrzXbfktj},
+            #{item.createBy},
+            #{item.createTime},
+            #{item.updateBy},
+            #{item.updateTime},
+            #{item.isDelete},
+            #{item.xmrzYjxbfksj},
+            #{item.xmrz_cb},
+            #{item.xmrz_lx},
+            #{item.xmrz_sxf},
+            #{item.xmrz_hkbzj}
+            )
+        </foreach>
+
+
+</insert>
+
+    <insert id="importBox"  useGeneratedKeys="true" keyProperty="xmrzId">
+
+        insert into project_financing
+        ( xmrz_project_id,
+        xmrz_rzjg,
+        xmrz_qyrq,
+        xmrz_rzfzr,
+        xmrz_rzze,
+        xmrz_yfkze,
+        xmrz_yjxbfk,
+        xmrz_bzj,
+        xmrz_rzll,
+        xmrz_sxfsqfs,
+        xmrz_snirr,
+        xmrz_qzqzhirr,
+        xmrz_rzqk,
+        xmrz_xbfktj,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        is_delete,
+        xmrz_yjxbfksj, xmrz_cb , xmrz_lx ,xmrz_sxf ,xmrz_hkbzj )
+        values
+        <foreach collection="listData"   item="item" separator=",">
+            (
+            #{item.xmrzProjectId},
+            #{item.xmrzRzjg},
+            #{item.xmrzQyrq},
+            #{item.xmrzRzfzr},
+            #{item.xmrzRzze},
+            #{item.xmrzYfkze},
+            #{item.xmrzYjxbfk},
+            #{item.xmrzBzj},
+            #{item.xmrzRzll},
+            #{item.xmrzSxfsqfs},
+            #{item.xmrzSnirr},
+            #{item.xmrzQzqzhirr},
+            #{item.xmrzRzqk},
+            #{item.xmrzXbfktj},
+            #{item.createBy},
+            #{item.createTime},
+            #{item.updateBy},
+            #{item.updateTime},
+            #{item.isDelete},
+            #{item.xmrzYjxbfksj},
+            #{item.xmrzCb},
+            #{item.xmrzLx},
+            #{item.xmrzSxf},
+            #{item.xmrzHkbzj}
+            )
+        </foreach>
+
+
+    </insert>
+
+    <delete id="deleteProjectFinancingByXmrzIdJl" parameterType="String">
+        delete from project_financing where xmrz_project_id = #{xmrzId}
+    </delete>
+
+
+    <delete id="deleteProjectFinancingByXmrzIdsJl" parameterType="String">
+        delete from project_financing where xmrz_project_id in
+        <foreach item="xmrzId" collection="array" open="(" separator="," close=")">
+            #{xmrzId}
+        </foreach>
+    </delete>
+
+
+
+    <delete id="deleteProjectFinancingByXmrzIdJlL" parameterType="String">
+
+        delete from financing_date  where  financing_id  in (
+
+        select  xmrz_id  from  project_financing   where  xmrz_project_id  in
+
+        <foreach item="xmrzId" collection="array" open="(" separator="," close=")">
+            #{xmrzId}
+        </foreach>
+
+        )
+
+    </delete>
+
+
+    <delete id="deleteProjectFinancingByStil" parameterType="String">
+
+        delete from financing_still  where  financing_id  in (
+
+        select  xmrz_id  from  project_financing   where  xmrz_project_id  in
+
+        <foreach item="xmrzId" collection="array" open="(" separator="," close=")">
+            #{xmrzId}
+        </foreach>
+
+        )
+
+    </delete>
+
+    <insert id="importBoxFinancingInfo" parameterType="FinancingInfo" useGeneratedKeys="true" keyProperty="xmrzId">
+        insert into project_financing(
+            <if test="xmrzProjectId != null">xmrz_project_id,</if>
+            <if test="xmrzRzjg != null">xmrz_rzjg,</if>
+            <if test="xmrzQyrq != null and xmrzQyrq!=''">xmrz_qyrq,</if>
+            <if test="xmrzRzfzr != null">xmrz_rzfzr,</if>
+            <if test="xmrzRzze != null">xmrz_rzze,</if>
+            <if test="xmrzSnirr != null">xmrz_snirr,</if>
+            <if test="xmrzQzqzhirr != null">xmrz_qzqzhirr,</if>
+            <if test="xmrzYfkze != null">xmrz_yfkze,</if>
+            <if test="xmrzWfkze != null">xmrz_wfkze,</if>
+            <if test="xmrzRzqk != null">xmrz_rzqk,</if>
+            <if test="xmrzYjxbfksj != null and xmrzYjxbfksj != ''">xmrz_yjxbfksj,</if>
+            <if test="xmrzYjxbfk != null">xmrz_yjxbfk,</if>
+            <if test="xmrzIsxcfk != null">xmrz_isxcfk,</if>
+            <if test="xmrzFxts != null">xmrz_fxts,</if>
+            <if test="xmrzSxfsqfs != null">xmrz_sxfsqfs,</if>
+            create_time
+            )values(
+            <if test="xmrzProjectId != null">#{xmrzProjectId},</if>
+            <if test="xmrzRzjg != null">#{xmrzRzjg},</if>
+            <if test="xmrzQyrq != null and xmrzQyrq!=''">#{xmrzQyrq},</if>
+            <if test="xmrzRzfzr != null">#{xmrzRzfzr},</if>
+            <if test="xmrzRzze != null">#{xmrzRzze},</if>
+            <if test="xmrzSnirr != null">#{xmrzSnirr},</if>
+            <if test="xmrzQzqzhirr != null">#{xmrzQzqzhirr},</if>
+            <if test="xmrzYfkze != null">#{xmrzYfkze},</if>
+            <if test="xmrzWfkze != null">#{xmrzWfkze},</if>
+            <if test="xmrzRzqk != null">#{xmrzRzqk},</if>
+            <if test="xmrzYjxbfksj != null and xmrzYjxbfksj != ''">#{xmrzYjxbfksj},</if>
+            <if test="xmrzYjxbfk != null">#{xmrzYjxbfk},</if>
+            <if test="xmrzIsxcfk != null">#{xmrzIsxcfk},</if>
+            <if test="xmrzFxts != null">#{xmrzFxts},</if>
+            <if test="xmrzSxfsqfs != null">#{xmrzSxfsqfs},</if>
+            sysdate()
+            )
+    </insert>
+
+
+    <select id="selectByProjectId"  parameterType="java.lang.String" resultType="java.lang.Long">
+        select  xmrz_id from project_financing where xmrz_project_id = #{xmrzProjectId}
+    </select>
+
+    <select id="selectProjectInfoList"  parameterType="ProjectInfo" resultMap="ExportProjectFinancingResult">
+        select b.xmqk_xmmc,b.xmqk_rzf,b.xmqk_rzjl,a.*,c.*,d.zd_name as xmrzRzqkName  , a.xmrz_sxfsqfs xmrzSxfsqfs from project_financing a
+        LEFT JOIN  project_info b ON a.xmrz_project_id=b.xmqk_project_id
+        LEFT JOIN  financing_date c ON a.xmrz_id = c.financing_id
+        LEFT JOIN   business_dictionary d ON a.xmrz_rzqk = d.id
+        <where>
+            <if test="projectInfo.xmqkProjectId != null  and projectInfo.xmqkProjectId != ''"> and b.xmqk_project_id = #{projectInfo.xmqkProjectId}</if>
+            <if test="projectInfo.xmqkXmmc != null  and projectInfo.xmqkXmmc != ''"> and b.xmqk_xmmc = #{projectInfo.xmqkXmmc}</if>
+            <if test="projectInfo.xmqkRl != null  and projectInfo.xmqkRl != ''"> and b.xmqk_rl = #{projectInfo.xmqkRl}</if>
+            <if test="projectInfo.xmqkXmlx != null "> and b.xmqk_xmlx = #{projectInfo.xmqkXmlx}</if>
+            <if test="projectInfo.xmqkXmxz != null "> and b.xmqk_xmxz = #{projectInfo.xmqkXmxz}</if>
+            <if test="projectInfo.xmqkLyfgs != null "> and b.xmqk_lyfgs = #{projectInfo.xmqkLyfgs}</if>
+            <if test="projectInfo.xmqkJszt != null "> and b.xmqk_jszt = #{projectInfo.xmqkJszt}</if>
+            <if test="projectInfo.xmqkQy != null "> and b.xmqk_qy = #{projectInfo.xmqkQy}</if>
+            <if test="projectInfo.xmqkHtsj != null "> and b.xmqk_htsj = #{projectInfo.xmqkHtsj}</if>
+            <if test="projectInfo.xmqkBwsj != null "> and b.xmqk_bwsj = #{projectInfo.xmqkBwsj}</if>
+            <if test="projectInfo.xmqkRzf != null  and projectInfo.xmqkRzf != ''"> and b.xmqk_rzf = #{projectInfo.xmqkRzf}</if>
+            <if test="projectInfo.xmqkSgf != null  and projectInfo.xmqkSgf != ''"> and b.xmqk_sgf = #{projectInfo.xmqkSgf}</if>
+            <if test="projectInfo.xmqkHzf != null  and projectInfo.xmqkHzf != ''"> and b.xmqk_hzf = #{projectInfo.xmqkHzf}</if>
+            <if test="projectInfo.xmqkRzjl != null  and projectInfo.xmqkRzjl != ''"> and b.xmqk_rzjl = #{projectInfo.xmqkRzjl}</if>
+            <if test="projectInfo.xmqkSwjl != null  and projectInfo.xmqkSwjl != ''"> and b.xmqk_swjl = #{projectInfo.xmqkSwjl}</if>
+            <if test="projectInfo.xmqkXmdqz != null  and projectInfo.xmqkXmdqz != ''"> and b.xmqk_xmdqz = #{projectInfo.xmqkXmdqz}</if>
+            <if test="projectInfo.xmqkSyzkw != null  and projectInfo.xmqkSyzkw != ''"> and b.xmqk_syzkw = #{projectInfo.xmqkSyzkw}</if>
+            <if test="projectInfo.xmqkJckw != null  and projectInfo.xmqkJckw != ''"> and b.xmqk_jckw = #{projectInfo.xmqkJckw}</if>
+            <if test="projectInfo.xmqkJsqk != null  and projectInfo.xmqkJsqk != ''"> and b.xmqk_jsqk = #{projectInfo.xmqkJsqk}</if>
+            <if test="projectInfo.xmqkSbdh != null  and projectInfo.xmqkSbdh != ''"> and b.xmqk_sbdh = #{projectInfo.xmqkSbdh}</if>
+            <if test="projectInfo.xmqkTzyjcsdj != null "> and b.xmqk_tzyjcsdj = #{projectInfo.xmqkTzyjcsdj}</if>
+            <if test="projectInfo.xmqkYjcszj != null "> and b.xmqk_yjcszj = #{projectInfo.xmqkYjcszj}</if>
+            <if test="projectInfo.xmqkEpcJsj != null "> and b.xmqk_epc_jsj = #{projectInfo.xmqkEpcJsj}</if>
+            <if test="projectInfo.xmqkEpcZjjsj != null "> and b.xmqk_epc_zjjsj = #{projectInfo.xmqkEpcZjjsj}</if>
+            <if test="projectInfo.xmqkYjsyhj != null "> and b.xmqk_yjsyhj = #{projectInfo.xmqkYjsyhj}</if>
+            <if test="projectInfo.xmqkXmgscb != null "> and b.xmqk_xmgscb = #{projectInfo.xmqkXmgscb}</if>
+            <if test="projectInfo.xmqkXmepccb != null "> and b.xmqk_xmepccb = #{projectInfo.xmqkXmepccb}</if>
+            <if test="projectInfo.xmqkQzzyf != null "> and b.xmqk_qzzyf = #{projectInfo.xmqkQzzyf}</if>
+            <if test="projectInfo.xmqkZcb != null "> and b.xmqk_zcb = #{projectInfo.xmqkZcb}</if>
+            <if test="projectInfo.xmqkSjYsysgk != null "> and b.xmqk_sj_ysysgk = #{projectInfo.xmqkSjYsysgk}</if>
+            <if test="projectInfo.xmqkYsrzk != null "> and b.xmqk_ysrzk = #{projectInfo.xmqkYsrzk}</if>
+            <if test="projectInfo.xmqkGzk != null "> and b.xmqk_gzk = #{projectInfo.xmqkGzk}</if>
+            <if test="projectInfo.xmqkYsdf != null "> and b.xmqk_ysdf = #{projectInfo.xmqkYsdf}</if>
+            <if test="projectInfo.xmqkSjsrhj != null "> and b.xmqk_sjsrhj = #{projectInfo.xmqkSjsrhj}</if>
+            <if test="projectInfo.xmqkYsye != null "> and b.xmqk_ysye = #{projectInfo.xmqkYsye}</if>
+            <if test="projectInfo.xmqkYfsbk != null "> and b.xmqk_yfsbk = #{projectInfo.xmqkYfsbk}</if>
+            <if test="projectInfo.xmqkYfjak != null "> and b.xmqk_yfjak = #{projectInfo.xmqkYfjak}</if>
+            <if test="projectInfo.xmqkYfqtkx != null "> and b.xmqk_yfqtkx = #{projectInfo.xmqkYfqtkx}</if>
+            <if test="projectInfo.xmqkYfzje != null "> and b.xmqk_yfzje = #{projectInfo.xmqkYfzje}</if>
+            <if test="projectInfo.xmqkYssjye != null "> and b.xmqk_yssjye = #{projectInfo.xmqkYssjye}</if>
+            <if test="projectInfo.xmqkSjyfwfkx != null "> and b.xmqk_sjyfwfkx = #{projectInfo.xmqkSjyfwfkx}</if>
+            <if test="projectInfo.xmqkHtzfye != null "> and b.xmqk_htzfye = #{projectInfo.xmqkHtzfye}</if>
+            <if test="projectInfo.xmqkYflybzj != null "> and b.xmqk_yflybzj = #{projectInfo.xmqkYflybzj}</if>
+            <if test="projectInfo.xmqkYtlybzj != null "> and b.xmqk_ytlybzj = #{projectInfo.xmqkYtlybzj}</if>
+            <if test="projectInfo.xmqkRemark != null  and projectInfo.xmqkRemark != ''"> and b.xmqk_remark = #{projectInfo.xmqkRemark}</if>
+            <if test="projectInfo.isDelete != null  and projectInfo.isDelete != ''"> and b.is_delete = #{projectInfo.isDelete}</if>
+        </where>
+        ORDER BY a.xmrz_id,c.times
+    </select>
+
+
+    <select id="isExistProject"  parameterType="FinancingInfo" resultType="java.lang.Integer">
+        select  xmrz_id from project_financing where xmrz_project_id = #{xmrzProjectId}
+    </select>
+
+
+    <update id="updateProjectFinancingInfo" parameterType="FinancingInfo">
+        update project_financing
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="xmrzQyrq != null">xmrz_qyrq=#{xmrzQyrq},</if>
+            <if test="xmrzRzfzr != null">xmrz_rzfzr=#{xmrzRzfzr},</if>
+            <if test="xmrzRzze != null">xmrz_rzze=#{xmrzRzze},</if>
+            <if test="xmrzSnirr != null">xmrz_snirr=#{xmrzSnirr},</if>
+            <if test="xmrzQzqzhirr != null">xmrz_qzqzhirr=#{xmrzQzqzhirr},</if>
+            <if test="xmrzYfkze != null">xmrz_yfkze=#{xmrzYfkze},</if>
+            <if test="xmrzWfkze != null">xmrz_wfkze=#{xmrzWfkze},</if>
+            <if test="xmrzRzqk != null">xmrz_rzqk=#{xmrzRzqk},</if>
+            <if test="xmrzYjxbfksj != null and xmrzYjxbfksj !='' ">xmrz_yjxbfksj=#{xmrzYjxbfksj},</if>
+            <if test="xmrzYjxbfk != null">xmrz_yjxbfk=#{xmrzYjxbfk},</if>
+            <if test="xmrzIsxcfk != null">xmrz_isxcfk=#{xmrzIsxcfk},</if>
+            <if test="xmrzFxts != null">xmrz_fxts = #{xmrzFxts},</if>
+            <if test="xmrzSxfsqfs != null">xmrz_sxfsqfs = #{xmrzSxfsqfs},</if>
+
+        </trim>
+        where xmrz_project_id = #{xmrzProjectId} and xmrz_rzjg = #{xmrzRzjg}
+    </update>
+
+    <select id="selectProjectFinancingByProjectIdAndRzjg"   resultType="java.lang.Integer">
+        select  xmrz_id from project_financing where xmrz_project_id = #{projectId}
+    </select>
+
+<!--    <select id="selectProjectFinancingByProjectIdAndRzjg"   resultType="java.lang.Integer">-->
+<!--        select  xmrz_id from project_financing where xmrz_project_id = #{projectId} and xmrz_rzjg = #{rzjg}-->
+<!--    </select>-->
+
+
+    <select id="organNameChek"   resultType="java.lang.Integer">
+        select  count(1) from project_financing where xmrz_project_id = #{projectFinancing.xmrzProjectId}
+    </select>
+
+</mapper>

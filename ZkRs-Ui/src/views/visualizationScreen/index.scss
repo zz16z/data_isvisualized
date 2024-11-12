@@ -1,0 +1,667 @@
+@import "../../assets/styles/adapter";
+.main{
+  display: flex;
+  justify-content: space-around;
+  .side{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .middle{
+    width: 46%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .right{
+    width: 25%;
+    height: 100%;
+  }
+}
+
+.project_type{
+  height: 25%;
+  padding: 10px;
+}
+.project_condition{
+  height: 41%;
+  padding: 10px;
+}
+.project_status{
+  height: 28%;
+  padding: 10px;
+}
+
+p{
+  margin: 0;padding: 0;
+}
+
+.chilren{
+  border-radius: 5px;
+  box-shadow: 0 0 5px #2183c4 inset;
+  border: none;
+}
+
+.chilren_active{
+  background: rgba(54, 132, 132, 0.2);
+}
+.chilren_focus{
+  background: none;
+}
+
+/* 定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: rgba(240, 240, 240, 1);
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0px rgba(240, 240, 240, .5);
+  border-radius: 10px;
+  background-color: rgba(70, 130, 180,1);
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 0px rgba(240, 240, 240, 0.5);
+  background-color: #25e5df;
+}
+
+.pad-10{
+  padding: 10px;
+}
+.pad-b{
+  padding-bottom: 10px;
+}
+
+.p_details{
+  font-size: 15px;
+}
+
+.text-spacing{
+  margin-right: 20px
+}
+
+.text-color-size{
+  font-size: fontSize(13);
+  color: rgb(77, 179, 226);
+}
+
+.text-color-size-16{
+  font-size: fontSize(16);
+  color: rgb(77, 179, 226);
+}
+
+.condition_list {
+  height: 100%;
+  overflow: hidden;
+  .list_context{
+    li{
+      font-size: 1rem;
+    }
+  }
+  .list_title{
+    li{
+      font-size: fontSize(13);
+    }
+  }
+  .list_public {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin: 0;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    li {
+      list-style-type: none;
+      text-align: center;
+      width: 22.5%;
+      &:first-child{
+        width: 10%;
+      }
+      &:nth-child(2) {
+        width: 45%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+  }
+  .list_title {
+    background: rgba(33, 131, 196, 0.2);
+  }
+  .list_data {
+    li{
+      cursor: pointer;
+    }
+  }
+}
+
+//查看详情
+.detalis{
+  .el-dialog{
+
+  }
+}
+
+
+
+
+/**分页*/
+.dialog_ul{
+  .el-table{
+    &::before{
+      height: 0;
+    }
+  }
+  .paging{
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    /*position: fixed;*/
+    /*bottom:0;*/
+    /*right:0;*/
+    .el-pagination{
+      .el-pagination__sizes{
+        .el-select{
+          .el-input{
+            .el-input__inner{
+              background: none;
+              border: none;
+              box-shadow: 0 0 10px #2183c4 inset;
+            }
+          }
+        }
+      }
+      .btn-prev{
+        background: none;
+        box-shadow: 0 0 10px #2183c4 inset;
+      }
+      .el-pager{
+        .number{
+          background: none;
+          box-shadow: 0 0 10px #2183c4 inset;
+          color: #FFFFFF;
+        }
+        .more{
+          background: none;
+          color: #FFFFFF;
+          box-shadow: 0 0 10px #2183c4 inset;
+        }
+      }
+      .btn-next{
+        background: none;
+        box-shadow: 0 0 10px #2183c4 inset;
+        color: #FFFFFF;
+      }
+      .el-pagination__jump{
+        .el-input{
+          .el-input__inner{
+            background: none;
+            border: none;
+            box-shadow: 0 0 10px #2183c4 inset;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**项目经营详情*/
+.dltjDialog{
+  color: #FFFFFF;
+  padding: 10px;
+  .dltjDialog_params{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    .left{
+      width: 30%;
+      display: flex;
+      justify-content: space-between;
+      button{
+        width: 84px;
+        color: #FFFFFF;
+        border-radius: 5px;
+      }
+    }
+    .right{
+      width: 20%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .dltjDialog_title{
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span{
+      font-size: 20px;
+    }
+  }
+  .dltjDialog_charts{
+    display: flex;
+    justify-content: space-around;
+    .width{
+      width: 30%;
+      height: 40vh;
+    }
+    .charts_statistiacl{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      .article{
+        width: 45%;
+        height: 22%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: #fff;
+        span:first-child{
+          padding-right: 20px;
+          font-size: fontSize(16);
+        }
+        span:last-child{
+          color: #40abf3;
+          font-size: fontSize(16);
+        }
+      }
+    }
+    .shelf{
+      .shelf_header{
+        height: 30%;
+        padding: 10px;
+        div{
+          height: 50%;
+        }
+        .shelf_title{
+
+        }
+        .shelf_num{
+          p{
+            text-align: center;
+            &:first-child{
+              font-size: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .business_payment_container{
+    height: 300px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    .business_situation{
+      width: 49.5%;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background: rgba(27,73,112,0.5);
+      .business_title{
+        height: 30%;
+      }
+      .business_charts{
+
+      }
+    }
+    .payment_situation{
+      width: 49.5%;
+      display: flex;
+      border-radius: 5px;
+      padding: 10px 0;
+      background: rgba(27,73,112,0.5);
+      .payment_title{
+        width: 30%;
+        .title{
+          height: 20%;
+          //text-align: center;
+          margin: 0;
+        }
+        .money{
+          height: 80%;
+          display: flex;
+          flex-direction: column;
+          padding-left: fontSize(20);
+          .money_num{
+            .h3_title{
+              color: #00afff;
+              font-size: fontSize(20);
+              margin-right: fontSize(20);
+            }
+          }
+        }
+      }
+      .payment_charts{
+        width: 68%;
+      }
+    }
+  }
+  .actual_payment{
+    height: vh(250);
+    border-radius: 5px;
+    background: rgba(27,73,112,0.5);
+    display: flex;
+    .actual_situation{
+      width: 70%;
+      .actual_situation_title{
+        height: 40%;
+        padding:0 20px;
+        div:first-child{
+          padding: 15px 0;
+        }
+        div:last-child{
+          span:not(:first-child){
+            padding: 0 10px;
+          }
+          span:nth-child(2){
+            font-size: 18px;
+            color: #00afff;
+          }
+        }
+      }
+      .actual_charts_container{
+        height: 60%;
+        display: flex;
+        .actual_bar{
+          width: 25%;
+          height: 100%;
+          .unit_chart{
+            height: 100%;
+            .echarts{
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+    .actual_charts{
+      width: 30%;
+      height: 100%;
+      .chart-wrapper{
+        height: 100%;
+        .echarts{
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .business_payment_container{
+    height: vh(280);
+    padding-bottom: fontSize(15);
+    display: flex;
+    justify-content: space-between;
+    .business_situation{
+      width: 49.5%;
+      padding: fontSize(10) fontSize(20);
+      border-radius: 5px;
+      background: rgba(27,73,112,0.5);
+      .business_title{
+        height: 25%;
+        div:first-child{
+          p{
+            padding-bottom: fontSize(10);
+          }
+        }
+      }
+      .business_charts{
+        height: 75%;
+        .unit_chart{
+          height: 100%;
+          .expect_business_data_class{
+            height: 100%;
+          }
+        }
+      }
+    }
+    .payment_situation{
+      width: 49.5%;
+      display: flex;
+      border-radius: 5px;
+      padding: fontSize(10) 0;
+      background: rgba(27,73,112,0.5);
+      .payment_title{
+        width: 40%;
+        .title{
+          height: 20%;
+          ///text-align: center;
+        }
+
+        .money{
+          height: 70%;
+          display: flex;
+          flex-direction: column;
+          padding-left: fontSize(20);
+          .money_num{
+            padding: fontSize(5) 0;
+            .h3_title{
+              color: #00afff;
+              font-size: fontSize(20);
+              margin-right: fontSize(10);
+            }
+          }
+        }
+      }
+      .payment_charts{
+        width: 60%;
+        .chart-wrapper{
+          height: 100%;
+          .echarts{
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.paging{
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+::v-deep .el-pagination{
+  .el-pagination__sizes{
+    .el-select{
+      .el-input{
+        .el-input__inner{
+          background: none;
+          border: none;
+          box-shadow: 0 0 10px #2183c4 inset;
+        }
+      }
+    }
+  }
+  .btn-prev{
+    background: none;
+    box-shadow: 0 0 10px #2183c4 inset;
+  }
+  .el-pager{
+    .number{
+      background: none;
+      box-shadow: 0 0 10px #2183c4 inset;
+      color: #FFFFFF;
+    }
+    .more{
+      background: none;
+      color: #FFFFFF;
+      box-shadow: 0 0 10px #2183c4 inset;
+    }
+  }
+  .btn-next{
+    background: none;
+    box-shadow: 0 0 10px #2183c4 inset;
+    color: #FFFFFF;
+  }
+  .el-pagination__jump{
+    .el-input{
+      .el-input__inner{
+        background: none;
+        border: none;
+        box-shadow: 0 0 10px #2183c4 inset;
+      }
+    }
+  }
+}
+
+
+.select_view {
+  height: vh(20);
+  display: flex;
+  ::v-deep .el-input--medium {
+    width: 6rem;
+    background: none;
+    color: #c1cbcb;
+    margin-right: 15px;
+    box-shadow: none;
+    .el-input__inner {
+      height: vh(20);
+      background: none;
+      border-color: #2183c4;
+      line-height: vh(20);
+      font-size: 0.75rem !important;
+      border-radius: 0 !important;
+      box-shadow: none;
+      color: #ffffff;
+    }
+    .el-input__suffix {
+      top: fontSize(1);
+    }
+    .el-input__icon {
+      font-size: fontSize(10);
+      line-height: vh(20);
+    }
+    .el-input__suffix-inner {
+      display: inline-block;
+    }
+
+    .el-input__prefix{
+      .el-input__icon{
+        line-height: vh(20);
+      }
+    }
+  }
+  .business {
+    color: #c1cbcb;
+    background: none;
+  }
+}
+
+//选择器
+.option_btn {
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+  .time {
+
+    ::v-deep .el-input--medium {
+      width: vw(100);
+      background: none;
+      color: #c1cbcb;
+      box-shadow: none;
+      .el-input__inner {
+        height: vh(25);
+        padding-top: fontSize(15);
+        padding-bottom: fontSize(15);
+        background: none;
+        border-color: #2183c4;
+        line-height: 1.25rem;
+        font-size: 0.75rem !important;
+        box-shadow: none;
+        color: #cedee2;
+        border-radius: 5px;
+      }
+      .el-input__suffix {
+        top: fontSize(5);
+      }
+      .el-input__icon {
+        font-size: 10px;
+        line-height: inherit;
+      }
+      .el-input__suffix-inner {
+        display: inline-block;
+      }
+    }
+
+    .el-select {
+      .el-input {
+        .el-input__inner {
+          color: #c1cbcb;
+          height: vh(25);
+          background: none;
+          border-color: #2183c4;
+          line-height: 1.25rem;
+          font-size: 0.75rem !important;
+          border-radius: 0 !important;
+          box-shadow: none;
+          padding-left: 10px;
+        }
+        .el-input__suffix {
+          top: 2px;
+        }
+        .el-input__icon {
+          line-height: inherit;
+        }
+        .el-input__suffix-inner {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+::v-deep .el-tabs__item{
+  color: #ffffff;
+}
+
+::v-deep .el-tabs__item.is-active{
+  color: #1890ff;
+}
+
+
+.title_general{
+  font-size: fontSize(16);
+}
+
+.title_btn{
+  font-size: fontSize(10);
+  //ont-size: fontSize(13);
+}
+
+.h3_title{
+  color: #fff;
+  font-size: fontSize(17);
+}
+
+
+.pad-left{
+  padding-left: fontSize(10);
+}
+.pad-right{
+  padding-right: fontSize(10);
+}
+
+.mar-right{
+  margin-right: fontSize(10);
+}
+
+
+.time{
+  margin: 5px 0;
+}
